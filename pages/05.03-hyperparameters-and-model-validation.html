@@ -1665,7 +1665,7 @@ In the above case, half the dataset does not contribute to the training of the m
 This is not optimal, and can cause problems – especially if the initial set of training data is small.</p>
 <p>One way to address this is to use <em>cross-validation</em>; that is, to do a sequence of fits where each subset of the data is used both as a training set and as a validation set.
 Visually, it might look something like this:</p>
-<p><img src="/figures/05.03-2-fold-CV.png" alt="">
+<p><img src="/PythonDataScienceHandbook/figures/05.03-2-fold-CV.png" alt="">
 <a href="06.00-Figure-Code.html#2-Fold-Cross-Validation">figure source in Appendix</a></p>
 <p>Here we do two validation trials, alternately using each half of the data as a holdout set.
 Using the split data from before, we could implement it like this:</p>
@@ -1714,7 +1714,7 @@ Using the split data from before, we could implement it like this:</p>
 <p>What comes out are two accuracy scores, which we could combine (by, say, taking the mean) to get a better measure of the global model performance.
 This particular form of cross-validation is a <em>two-fold cross-validation</em>—that is, one in which we have split the data into two sets and used each in turn as a validation set.</p>
 <p>We could expand on this idea to use even more trials, and more folds in the data—for example, here is a visual depiction of five-fold cross-validation:</p>
-<p><img src="/figures/05.03-5-fold-CV.png" alt="">
+<p><img src="/PythonDataScienceHandbook/figures/05.03-5-fold-CV.png" alt="">
 <a href="06.00-Figure-Code.html#5-Fold-Cross-Validation">figure source in Appendix</a></p>
 <p>Here we split the data into five groups, and use each of them in turn to evaluate the model fit on the other 4/5 of the data.
 This would be rather tedious to do by hand, and so we can use Scikit-Learn's <code>cross_val_score</code> convenience routine to do it succinctly:</p>
@@ -1893,7 +1893,7 @@ The ability to determine what steps will improve your model is what separates th
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="The-Bias-variance-trade-off">The Bias-variance trade-off<a class="anchor-link" href="#The-Bias-variance-trade-off">&#182;</a></h3><p>Fundamentally, the question of "the best model" is about finding a sweet spot in the tradeoff between <em>bias</em> and <em>variance</em>.
 Consider the following figure, which presents two regression fits to the same dataset:</p>
-<p><img src="/figures/05.03-bias-variance.png" alt="">
+<p><img src="/PythonDataScienceHandbook/figures/05.03-bias-variance.png" alt="">
 <a href="06.00-Figure-Code.html#Bias-Variance-Tradeoff">figure source in Appendix</a></p>
 <p>It is clear that neither of these models is a particularly good fit to the data, but they fail in different ways.</p>
 <p>The model on the left attempts to find a straight-line fit through the data.
@@ -1913,7 +1913,7 @@ Such a model is said to <em>overfit</em> the data: that is, it has so much model
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>To look at this in another light, consider what happens if we use these two models to predict the y-value for some new data.
 In the following diagrams, the red/lighter points indicate data that is omitted from the training set:</p>
-<p><img src="/figures/05.03-bias-variance-2.png" alt="">
+<p><img src="/PythonDataScienceHandbook/figures/05.03-bias-variance-2.png" alt="">
 <a href="06.00-Figure-Code.html#Bias-Variance-Tradeoff-Metrics">figure source in Appendix</a></p>
 <p>The score here is the $R^2$ score, or <a href="https://en.wikipedia.org/wiki/Coefficient_of_determination">coefficient of determination</a>, which measures how well a model performs relative to a simple mean of the target values. $R^2=1$ indicates a perfect match, $R^2=0$ indicates the model does no better than simply taking the mean of the data, and negative values mean even worse models.
 From the scores associated with these two models, we can make an observation that holds more generally:</p>
@@ -1931,7 +1931,7 @@ From the scores associated with these two models, we can make an observation tha
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>If we imagine that we have some ability to tune the model complexity, we would expect the training score and validation score to behave as illustrated in the following figure:</p>
-<p><img src="/figures/05.03-validation-curve.png" alt="">
+<p><img src="/PythonDataScienceHandbook/figures/05.03-validation-curve.png" alt="">
 <a href="06.00-Figure-Code.html#Validation-Curve">figure source in Appendix</a></p>
 <p>The diagram shown here is often called a <em>validation curve</em>, and we see the following essential features:</p>
 <ul>
@@ -3870,7 +3870,7 @@ A plot of the training/validation score with respect to the size of the training
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><img src="/figures/05.03-learning-curve.png" alt="">
+<p><img src="/PythonDataScienceHandbook/figures/05.03-learning-curve.png" alt="">
 <a href="06.00-Figure-Code.html#Learning-Curve">figure source in Appendix</a></p>
 
 </div>
