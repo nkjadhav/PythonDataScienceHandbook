@@ -1422,7 +1422,7 @@ h6:hover .anchor-link {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><!--NAVIGATION-->
-&lt; <a href="03.08-aggregation-and-grouping.html">Aggregation and Grouping</a> | <a href="index.html">Contents</a> | <a href="03.10-working-with-strings.html">Vectorized String Operations</a> &gt;</p>
+&lt; <a href="/PythonDataScienceHandbook/pages/03.08-aggregation-and-grouping.html">Aggregation and Grouping</a> | <a href="/PythonDataScienceHandbook/pages/index.html">Contents</a> | <a href="/PythonDataScienceHandbook/pages/03.10-working-with-strings.html">Vectorized String Operations</a> &gt;</p>
 
 </div>
 </div>
@@ -1446,7 +1446,7 @@ That is, you split-apply-combine, but both the split and the combine happen acro
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Motivating-Pivot-Tables">Motivating Pivot Tables<a class="anchor-link" href="#Motivating-Pivot-Tables">&#182;</a></h2><p>For the examples in this section, we'll use the database of passengers on the <em>Titanic</em>, available through the Seaborn library (see <a href="04.14-visualization-with-seaborn.html">Visualization With Seaborn</a>):</p>
+<h2 id="Motivating-Pivot-Tables">Motivating Pivot Tables<a class="anchor-link" href="#Motivating-Pivot-Tables">&#182;</a></h2><p>For the examples in this section, we'll use the database of passengers on the <em>Titanic</em>, available through the Seaborn library (see <a href="/PythonDataScienceHandbook/pages/04.14-visualization-with-seaborn.html">Visualization With Seaborn</a>):</p>
 
 </div>
 </div>
@@ -2062,7 +2062,7 @@ We'll bin the age using the <code>pd.cut</code> function:</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>The result is a four-dimensional aggregation with hierarchical indices (see <a href="03.05-hierarchical-indexing.html">Hierarchical Indexing</a>), shown in a grid demonstrating the relationship between the values.</p>
+<p>The result is a four-dimensional aggregation with hierarchical indices (see <a href="/PythonDataScienceHandbook/pages/03.05-hierarchical-indexing.html">Hierarchical Indexing</a>), shown in a grid demonstrating the relationship between the values.</p>
 
 </div>
 </div>
@@ -2494,7 +2494,7 @@ Let's add a decade column, and take a look at male and female births as a functi
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>We immediately see that male births outnumber female births in every decade.
-To see this trend a bit more clearly, we can use the built-in plotting tools in Pandas to visualize the total number of births by year (see <a href="04.00-introduction-to-matplotlib.html">Introduction to Matplotlib</a> for a discussion of plotting with Matplotlib):</p>
+To see this trend a bit more clearly, we can use the built-in plotting tools in Pandas to visualize the total number of births by year (see <a href="/PythonDataScienceHandbook/pages/04.00-introduction-to-matplotlib.html">Introduction to Matplotlib</a> for a discussion of plotting with Matplotlib):</p>
 
 </div>
 </div>
@@ -3176,7 +3176,7 @@ One easy way to remove these all at once is to cut outliers; we'll do this via a
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>This final line is a robust estimate of the sample mean, where the 0.74 comes from the interquartile range of a Gaussian distribution (You can learn more about sigma-clipping operations in a book I coauthored with Željko Ivezić, Andrew J. Connolly, and Alexander Gray: <a href="http://press.princeton.edu/titles/10159.html">"Statistics, Data Mining, and Machine Learning in Astronomy"</a> (Princeton University Press, 2014)).</p>
-<p>With this we can use the <code>query()</code> method (discussed further in <a href="03.12-performance-eval-and-query.html">High-Performance Pandas: <code>eval()</code> and <code>query()</code></a>) to filter-out rows with births outside these values:</p>
+<p>With this we can use the <code>query()</code> method (discussed further in <a href="/PythonDataScienceHandbook/pages/03.12-performance-eval-and-query.html">High-Performance Pandas: <code>eval()</code> and <code>query()</code></a>) to filter-out rows with births outside these values:</p>
 
 </div>
 </div>
@@ -3223,7 +3223,7 @@ One easy way to remove these all at once is to cut outliers; we'll do this via a
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Finally, we can combine the day, month, and year to create a Date index (see <a href="03.11-working-with-time-series.html">Working with Time Series</a>).
+<p>Finally, we can combine the day, month, and year to create a Date index (see <a href="/PythonDataScienceHandbook/pages/03.11-working-with-time-series.html">Working with Time Series</a>).
 This allows us to quickly compute the weekday corresponding to each row:</p>
 
 </div>
@@ -4671,7 +4671,7 @@ ARgkExEREREF+P/ODMa/AE3zGwAAAABJRU5ErkJggg==
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>In particular, the striking feature of this graph is the dip in birthrate on US holidays (e.g., Independence Day, Labor Day, Thanksgiving, Christmas, New Year's Day) although this likely reflects trends in scheduled/induced births rather than some deep psychosomatic effect on natural births.
 For more discussion on this trend, see the analysis and links in <a href="http://andrewgelman.com/2012/06/14/cool-ass-signal-processing-using-gaussian-processes/">Andrew Gelman's blog post</a> on the subject.
-We'll return to this figure in <a href="04.09-text-and-annotation.html#Example:-Effect-of-Holidays-on-US-Births">Example:-Effect-of-Holidays-on-US-Births</a>, where we will use Matplotlib's tools to annotate this plot.</p>
+We'll return to this figure in <a href="/PythonDataScienceHandbook/pages/04.09-text-and-annotation.html#Example:-Effect-of-Holidays-on-US-Births">Example:-Effect-of-Holidays-on-US-Births</a>, where we will use Matplotlib's tools to annotate this plot.</p>
 <p>Looking at this short example, you can see that many of the Python and Pandas tools we've seen to this point can be combined and used to gain insight from a variety of datasets.
 We will see some more sophisticated applications of these data manipulations in future sections!</p>
 
@@ -4684,7 +4684,7 @@ We will see some more sophisticated applications of these data manipulations in 
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><!--NAVIGATION-->
-&lt; <a href="03.08-aggregation-and-grouping.html">Aggregation and Grouping</a> | <a href="index.html">Contents</a> | <a href="03.10-working-with-strings.html">Vectorized String Operations</a> &gt;</p>
+&lt; <a href="/PythonDataScienceHandbook/pages/03.08-aggregation-and-grouping.html">Aggregation and Grouping</a> | <a href="/PythonDataScienceHandbook/pages/index.html">Contents</a> | <a href="/PythonDataScienceHandbook/pages/03.10-working-with-strings.html">Vectorized String Operations</a> &gt;</p>
 
 </div>
 </div>

@@ -1422,7 +1422,7 @@ h6:hover .anchor-link {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><!--NAVIGATION-->
-&lt; <a href="05.10-manifold-learning.html">In-Depth: Manifold Learning</a> | <a href="index.html">Contents</a> | <a href="05.12-gaussian-mixtures.html">In Depth: Gaussian Mixture Models</a> &gt;</p>
+&lt; <a href="/PythonDataScienceHandbook/pages/05.10-manifold-learning.html">In-Depth: Manifold Learning</a> | <a href="/PythonDataScienceHandbook/pages/index.html">Contents</a> | <a href="/PythonDataScienceHandbook/pages/05.12-gaussian-mixtures.html">In Depth: Gaussian Mixture Models</a> &gt;</p>
 
 </div>
 </div>
@@ -2831,7 +2831,7 @@ The "M-step" or "Maximization step" is so-named because it involves maximizing s
 <p>The literature about this algorithm is vast, but can be summarized as follows: under typical circumstances, each repetition of the E-step and M-step will always result in a better estimate of the cluster characteristics.</p>
 <p>We can visualize the algorithm as shown in the following figure.
 For the particular initialization shown here, the clusters converge in just three iterations.
-For an interactive version of this figure, refer to the code in <a href="06.00-figure-code.html#Interactive-K-Means">the Appendix</a>.</p>
+For an interactive version of this figure, refer to the code in <a href="/PythonDataScienceHandbook/pages/06.00-figure-code.html#Interactive-K-Means">the Appendix</a>.</p>
 
 </div>
 </div>
@@ -2842,7 +2842,7 @@ For an interactive version of this figure, refer to the code in <a href="06.00-f
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><img src="/PythonDataScienceHandbook/figures/05.11-expectation-maximization.png" alt="(run code in Appendix to generate image)">
-<a href="06.00-figure-code.html#Expectation-Maximization">figure source in Appendix</a></p>
+<a href="/PythonDataScienceHandbook/pages/06.00-figure-code.html#Expectation-Maximization">figure source in Appendix</a></p>
 
 </div>
 </div>
@@ -5438,7 +5438,7 @@ AABJRU5ErkJggg==
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Whether the result is meaningful is a question that is difficult to answer definitively; one approach that is rather intuitive, but that we won't discuss further here, is called <a href="http://scikit-learn.org/stable/auto_examples/cluster/plot_kmeans_silhouette_analysis.html">silhouette analysis</a>.</p>
-<p>Alternatively, you might use a more complicated clustering algorithm which has a better quantitative measure of the fitness per number of clusters (e.g., Gaussian mixture models; see <a href="05.12-gaussian-mixtures.html">In Depth: Gaussian Mixture Models</a>) or which <em>can</em> choose a suitable number of clusters (e.g., DBSCAN, mean-shift, or affinity propagation, all available in the <code>sklearn.cluster</code> submodule)</p>
+<p>Alternatively, you might use a more complicated clustering algorithm which has a better quantitative measure of the fitness per number of clusters (e.g., Gaussian mixture models; see <a href="/PythonDataScienceHandbook/pages/05.12-gaussian-mixtures.html">In Depth: Gaussian Mixture Models</a>) or which <em>can</em> choose a suitable number of clusters (e.g., DBSCAN, mean-shift, or affinity propagation, all available in the <code>sklearn.cluster</code> submodule)</p>
 
 </div>
 </div>
@@ -6111,7 +6111,7 @@ QgghFCIHtxBCCKEQObiFEEIIhfwBiIgLgfNhbMUAAAAASUVORK5CYII=
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>This situation is reminiscent of the discussion in <a href="05.07-support-vector-machines.html">In-Depth: Support Vector Machines</a>, where we used a kernel transformation to project the data into a higher dimension where a linear separation is possible.
+<p>This situation is reminiscent of the discussion in <a href="/PythonDataScienceHandbook/pages/05.07-support-vector-machines.html">In-Depth: Support Vector Machines</a>, where we used a kernel transformation to project the data into a higher dimension where a linear separation is possible.
 We might imagine using the same trick to allow <em>k</em>-means to discover non-linear boundaries.</p>
 <p>One version of this kernelized <em>k</em>-means is implemented in Scikit-Learn within the <code>SpectralClustering</code> estimator.
 It uses the graph of nearest neighbors to compute a higher-dimensional representation of the data, and then assigns labels using a <em>k</em>-means algorithm:</p>
@@ -6798,7 +6798,7 @@ We'll now take a look at a couple examples.</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Example-1:-k-means-on-digits">Example 1: k-means on digits<a class="anchor-link" href="#Example-1:-k-means-on-digits">&#182;</a></h3><p>To start, let's take a look at applying <em>k</em>-means on the same simple digits data that we saw in <a href="05.08-random-forests.html">In-Depth: Decision Trees and Random Forests</a> and <a href="05.09-principal-component-analysis.html">In Depth: Principal Component Analysis</a>.
+<h3 id="Example-1:-k-means-on-digits">Example 1: k-means on digits<a class="anchor-link" href="#Example-1:-k-means-on-digits">&#182;</a></h3><p>To start, let's take a look at applying <em>k</em>-means on the same simple digits data that we saw in <a href="/PythonDataScienceHandbook/pages/05.08-random-forests.html">In-Depth: Decision Trees and Random Forests</a> and <a href="/PythonDataScienceHandbook/pages/05.09-principal-component-analysis.html">In Depth: Principal Component Analysis</a>.
 Here we will attempt to use <em>k</em>-means to try to identify similar digits <em>without using the original label information</em>; this might be similar to a first step in extracting meaning from a new dataset about which you don't have any <em>a priori</em> label information.</p>
 <p>We will start by loading the digits and then finding the <code>KMeans</code> clusters.
 Recall that the digits consist of 1,797 samples with 64 features, where each of the 64 features is the brightness of one pixel in an 8×8 image:</p>
@@ -7450,7 +7450,7 @@ MY2jFBGxiJYgREQsogAWEbGIAlhExCIKYBERiyiARUQsogAWEbGIAlhExCIKYBERi/wD9ChnSY7K
 <p>As we might expect from the cluster centers we visualized before, the main point of confusion is between the eights and ones.
 But this still shows that using <em>k</em>-means, we can essentially build a digit classifier <em>without reference to any known labels</em>!</p>
 <p>Just for fun, let's try to push this even farther.
-We can use the t-distributed stochastic neighbor embedding (t-SNE) algorithm (mentioned in <a href="05.10-manifold-learning.html">In-Depth: Manifold Learning</a>) to pre-process the data before performing <em>k</em>-means.
+We can use the t-distributed stochastic neighbor embedding (t-SNE) algorithm (mentioned in <a href="/PythonDataScienceHandbook/pages/05.10-manifold-learning.html">In-Depth: Manifold Learning</a>) to pre-process the data before performing <em>k</em>-means.
 t-SNE is a nonlinear embedding algorithm that is particularly adept at preserving points within clusters.
 Let's see how it does:</p>
 
@@ -29261,7 +29261,7 @@ But the example shows the power of thinking outside of the box with unsupervised
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><!--NAVIGATION-->
-&lt; <a href="05.10-manifold-learning.html">In-Depth: Manifold Learning</a> | <a href="index.html">Contents</a> | <a href="05.12-gaussian-mixtures.html">In Depth: Gaussian Mixture Models</a> &gt;</p>
+&lt; <a href="/PythonDataScienceHandbook/pages/05.10-manifold-learning.html">In-Depth: Manifold Learning</a> | <a href="/PythonDataScienceHandbook/pages/index.html">Contents</a> | <a href="/PythonDataScienceHandbook/pages/05.12-gaussian-mixtures.html">In Depth: Gaussian Mixture Models</a> &gt;</p>
 
 </div>
 </div>

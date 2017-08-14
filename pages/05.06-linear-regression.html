@@ -1422,7 +1422,7 @@ h6:hover .anchor-link {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><!--NAVIGATION-->
-&lt; <a href="05.05-naive-bayes.html">In Depth: Naive Bayes Classification</a> | <a href="index.html">Contents</a> | <a href="05.07-support-vector-machines.html">In-Depth: Support Vector Machines</a> &gt;</p>
+&lt; <a href="/PythonDataScienceHandbook/pages/05.05-naive-bayes.html">In Depth: Naive Bayes Classification</a> | <a href="/PythonDataScienceHandbook/pages/index.html">Contents</a> | <a href="/PythonDataScienceHandbook/pages/05.07-support-vector-machines.html">In-Depth: Support Vector Machines</a> &gt;</p>
 
 </div>
 </div>
@@ -1432,7 +1432,7 @@ h6:hover .anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Just as naive Bayes (discussed earlier in <a href="05.05-naive-bayes.html">In Depth: Naive Bayes Classification</a>) is a good starting point for classification tasks, linear regression models are a good starting point for regression tasks.
+<p>Just as naive Bayes (discussed earlier in <a href="/PythonDataScienceHandbook/pages/05.05-naive-bayes.html">In Depth: Naive Bayes Classification</a>) is a good starting point for classification tasks, linear regression models are a good starting point for regression tasks.
 Such models are popular because they can be fit very quickly, and are very interpretable.
 You are probably familiar with the simplest form of a linear regression model (i.e., fitting a straight line to data) but such models can be extended to model more complicated data behavior.</p>
 <p>In this section we will start with a quick intuitive walk-through of the mathematics behind this well-known problem, before seeing how before moving on to see how linear models can be generalized to account for more complicated patterns in data.</p>
@@ -2008,7 +2008,7 @@ It still appears that this approach would be limited to strictly linear relation
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Basis-Function-Regression">Basis Function Regression<a class="anchor-link" href="#Basis-Function-Regression">&#182;</a></h2><p>One trick you can use to adapt linear regression to nonlinear relationships between variables is to transform the data according to <em>basis functions</em>.
-We have seen one version of this before, in the <code>PolynomialRegression</code> pipeline used in <a href="05.03-hyperparameters-and-model-validation.html">Hyperparameters and Model Validation</a> and <a href="05.04-feature-engineering.html">Feature Engineering</a>.
+We have seen one version of this before, in the <code>PolynomialRegression</code> pipeline used in <a href="/PythonDataScienceHandbook/pages/05.03-hyperparameters-and-model-validation.html">Hyperparameters and Model Validation</a> and <a href="/PythonDataScienceHandbook/pages/05.04-feature-engineering.html">Feature Engineering</a>.
 The idea is to take our multidimensional linear model:
 $$
 y = a_0 + a_1 x_1 + a_2 x_2 + a_3 x_3 + \cdots
@@ -2078,7 +2078,7 @@ What we have effectively done is taken our one-dimensional $x$ values and projec
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>We see here that the transformer has converted our one-dimensional array into a three-dimensional array by taking the exponent of each value.
 This new, higher-dimensional data representation can then be plugged into a linear regression.</p>
-<p>As we saw in <a href="05.04-feature-engineering.html">Feature Engineering</a>, the cleanest way to accomplish this is to use a pipeline.
+<p>As we saw in <a href="/PythonDataScienceHandbook/pages/05.04-feature-engineering.html">Feature Engineering</a>, the cleanest way to accomplish this is to use a pipeline.
 Let's make a 7th-degree polynomial model in this way:</p>
 
 </div>
@@ -2893,7 +2893,7 @@ C2FzAAAAAElFTkSuQmCC
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Regularization">Regularization<a class="anchor-link" href="#Regularization">&#182;</a></h2><p>The introduction of basis functions into our linear regression makes the model much more flexible, but it also can very quickly lead to over-fitting (refer back to <a href="05.03-hyperparameters-and-model-validation.html">Hyperparameters and Model Validation</a> for a discussion of this).
+<h2 id="Regularization">Regularization<a class="anchor-link" href="#Regularization">&#182;</a></h2><p>The introduction of basis functions into our linear regression makes the model much more flexible, but it also can very quickly lead to over-fitting (refer back to <a href="/PythonDataScienceHandbook/pages/05.03-hyperparameters-and-model-validation.html">Hyperparameters and Model Validation</a> for a discussion of this).
 For example, if we choose too many Gaussian basis functions, we end up with results that don't look so good:</p>
 
 </div>
@@ -5259,7 +5259,7 @@ CPiCIAiCMAqIgC8IgiAIo4AI+IIgCIIwCvx/LtUSu+NQwFoAAAAASUVORK5CYII=
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>With the lasso regression penalty, the majority of the coefficients are exactly zero, with the functional behavior being modeled by a small subset of the available basis functions.
-As with ridge regularization, the $\alpha$ parameter tunes the strength of the penalty, and should be determined via, for example, cross-validation (refer back to <a href="05.03-hyperparameters-and-model-validation.html">Hyperparameters and Model Validation</a> for a discussion of this).</p>
+As with ridge regularization, the $\alpha$ parameter tunes the strength of the penalty, and should be determined via, for example, cross-validation (refer back to <a href="/PythonDataScienceHandbook/pages/05.03-hyperparameters-and-model-validation.html">Hyperparameters and Model Validation</a> for a discussion of this).</p>
 
 </div>
 </div>
@@ -5279,7 +5279,7 @@ As with ridge regularization, the $\alpha$ parameter tunes the strength of the p
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>As an example, let's take a look at whether we can predict the number of bicycle trips across Seattle's Fremont Bridge based on weather, season, and other factors.
-We have seen this data already in <a href="03.11-working-with-time-series.html">Working With Time Series</a>.</p>
+We have seen this data already in <a href="/PythonDataScienceHandbook/pages/03.11-working-with-time-series.html">Working With Time Series</a>.</p>
 <p>In this section, we will join the bike data with another dataset, and try to determine the extent to which weather and seasonal factors—temperature, precipitation, and daylight hours—affect the volume of bicycle traffic through this corridor.
 Fortunately, the NOAA makes available their daily <a href="http://www.ncdc.noaa.gov/cdo-web/search?datasetid=GHCND">weather station data</a> (I used station ID USW00024233) and we can easily use Pandas to join the two data sources.
 We will perform a simple linear regression to relate weather and other information to bicycle counts, in order to estimate how a change in any one of these parameters affects the number of riders on a given day.</p>
@@ -7249,7 +7249,7 @@ These are all potentially interesting effects, and you now have the tools to beg
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><!--NAVIGATION-->
-&lt; <a href="05.05-naive-bayes.html">In Depth: Naive Bayes Classification</a> | <a href="index.html">Contents</a> | <a href="05.07-support-vector-machines.html">In-Depth: Support Vector Machines</a> &gt;</p>
+&lt; <a href="/PythonDataScienceHandbook/pages/05.05-naive-bayes.html">In Depth: Naive Bayes Classification</a> | <a href="/PythonDataScienceHandbook/pages/index.html">Contents</a> | <a href="/PythonDataScienceHandbook/pages/05.07-support-vector-machines.html">In-Depth: Support Vector Machines</a> &gt;</p>
 
 </div>
 </div>

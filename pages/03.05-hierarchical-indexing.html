@@ -1422,7 +1422,7 @@ h6:hover .anchor-link {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><!--NAVIGATION-->
-&lt; <a href="03.04-missing-values.html">Handling Missing Data</a> | <a href="index.html">Contents</a> | <a href="03.06-concat-and-append.html">Combining Datasets: Concat and Append</a> &gt;</p>
+&lt; <a href="/PythonDataScienceHandbook/pages/03.04-missing-values.html">Handling Missing Data</a> | <a href="/PythonDataScienceHandbook/pages/index.html">Contents</a> | <a href="/PythonDataScienceHandbook/pages/03.06-concat-and-append.html">Combining Datasets: Concat and Append</a> &gt;</p>
 
 </div>
 </div>
@@ -1995,7 +1995,7 @@ Each extra level in a multi-index represents an extra dimension of data; taking 
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>In addition, all the ufuncs and other functionality discussed in <a href="03.03-operations-in-pandas.html">Operating on Data in Pandas</a> work with hierarchical indices as well.
+<p>In addition, all the ufuncs and other functionality discussed in <a href="/PythonDataScienceHandbook/pages/03.03-operations-in-pandas.html">Operating on Data in Pandas</a> work with hierarchical indices as well.
 Here we compute the fraction of people under 18 by year, given the above data:</p>
 
 </div>
@@ -2911,7 +2911,7 @@ dtype: int64</pre>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Other types of indexing and selection (discussed in <a href="03.02-data-indexing-and-selection.html">Data Indexing and Selection</a>) work as well; for example, selection based on Boolean masks:</p>
+<p>Other types of indexing and selection (discussed in <a href="/PythonDataScienceHandbook/pages/03.02-data-indexing-and-selection.html">Data Indexing and Selection</a>) work as well; for example, selection based on Boolean masks:</p>
 
 </div>
 </div>
@@ -3162,7 +3162,7 @@ Name: (Guido, HR), dtype: float64</pre>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Also, as with the single-index case, we can use the <code>loc</code>, <code>iloc</code>, and <code>ix</code> indexers introduced in <a href="03.02-data-indexing-and-selection.html">Data Indexing and Selection</a>. For example:</p>
+<p>Also, as with the single-index case, we can use the <code>loc</code>, <code>iloc</code>, and <code>ix</code> indexers introduced in <a href="/PythonDataScienceHandbook/pages/03.02-data-indexing-and-selection.html">Data Indexing and Selection</a>. For example:</p>
 
 </div>
 </div>
@@ -4268,7 +4268,7 @@ For hierarchically indexed data, these can be passed a <code>level</code> parame
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Thus in two lines, we've been able to find the average heart rate and temperature measured among all subjects in all visits each year.
-This syntax is actually a short cut to the <code>GroupBy</code> functionality, which we will discuss in <a href="03.08-aggregation-and-grouping.html">Aggregation and Grouping</a>.
+This syntax is actually a short cut to the <code>GroupBy</code> functionality, which we will discuss in <a href="/PythonDataScienceHandbook/pages/03.08-aggregation-and-grouping.html">Aggregation and Grouping</a>.
 While this is a toy example, many real-world datasets have similar hierarchical structure.</p>
 
 </div>
@@ -4282,12 +4282,12 @@ While this is a toy example, many real-world datasets have similar hierarchical 
 <h2 id="Aside:-Panel-Data">Aside: Panel Data<a class="anchor-link" href="#Aside:-Panel-Data">&#182;</a></h2><p>Pandas has a few other fundamental data structures that we have not yet discussed, namely the <code>pd.Panel</code> and <code>pd.Panel4D</code> objects.
 These can be thought of, respectively, as three-dimensional and four-dimensional generalizations of the (one-dimensional) <code>Series</code> and (two-dimensional) <code>DataFrame</code> structures.
 Once you are familiar with indexing and manipulation of data in a <code>Series</code> and <code>DataFrame</code>, <code>Panel</code> and <code>Panel4D</code> are relatively straightforward to use.
-In particular, the <code>ix</code>, <code>loc</code>, and <code>iloc</code> indexers discussed in <a href="03.02-data-indexing-and-selection.html">Data Indexing and Selection</a> extend readily to these higher-dimensional structures.</p>
+In particular, the <code>ix</code>, <code>loc</code>, and <code>iloc</code> indexers discussed in <a href="/PythonDataScienceHandbook/pages/03.02-data-indexing-and-selection.html">Data Indexing and Selection</a> extend readily to these higher-dimensional structures.</p>
 <p>We won't cover these panel structures further in this text, as I've found in the majority of cases that multi-indexing is a more useful and conceptually simpler representation for higher-dimensional data.
 Additionally, panel data is fundamentally a dense data representation, while multi-indexing is fundamentally a sparse data representation.
 As the number of dimensions increases, the dense representation can become very inefficient for the majority of real-world datasets.
 For the occasional specialized application, however, these structures can be useful.
-If you'd like to read more about the <code>Panel</code> and <code>Panel4D</code> structures, see the references listed in <a href="03.13-further-resources.html">Further Resources</a>.</p>
+If you'd like to read more about the <code>Panel</code> and <code>Panel4D</code> structures, see the references listed in <a href="/PythonDataScienceHandbook/pages/03.13-further-resources.html">Further Resources</a>.</p>
 
 </div>
 </div>
@@ -4298,7 +4298,7 @@ If you'd like to read more about the <code>Panel</code> and <code>Panel4D</code>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><!--NAVIGATION-->
-&lt; <a href="03.04-missing-values.html">Handling Missing Data</a> | <a href="index.html">Contents</a> | <a href="03.06-concat-and-append.html">Combining Datasets: Concat and Append</a> &gt;</p>
+&lt; <a href="/PythonDataScienceHandbook/pages/03.04-missing-values.html">Handling Missing Data</a> | <a href="/PythonDataScienceHandbook/pages/index.html">Contents</a> | <a href="/PythonDataScienceHandbook/pages/03.06-concat-and-append.html">Combining Datasets: Concat and Append</a> &gt;</p>
 
 </div>
 </div>

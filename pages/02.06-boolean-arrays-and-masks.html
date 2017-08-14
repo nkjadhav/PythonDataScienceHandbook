@@ -1422,7 +1422,7 @@ h6:hover .anchor-link {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><!--NAVIGATION-->
-&lt; <a href="02.05-computation-on-arrays-broadcasting.html">Computation on Arrays: Broadcasting</a> | <a href="index.html">Contents</a> | <a href="02.07-fancy-indexing.html">Fancy Indexing</a> &gt;</p>
+&lt; <a href="/PythonDataScienceHandbook/pages/02.05-computation-on-arrays-broadcasting.html">Computation on Arrays: Broadcasting</a> | <a href="/PythonDataScienceHandbook/pages/index.html">Contents</a> | <a href="/PythonDataScienceHandbook/pages/02.07-fancy-indexing.html">Fancy Indexing</a> &gt;</p>
 
 </div>
 </div>
@@ -1445,7 +1445,7 @@ In NumPy, Boolean masking is often the most efficient way to accomplish these ty
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Example:-Counting-Rainy-Days">Example: Counting Rainy Days<a class="anchor-link" href="#Example:-Counting-Rainy-Days">&#182;</a></h2><p>Imagine you have a series of data that represents the amount of precipitation each day for a year in a given city.
-For example, here we'll load the daily rainfall statistics for the city of Seattle in 2014, using Pandas (which is covered in more detail in <a href="03.00-introduction-to-pandas.html">Chapter 3</a>):</p>
+For example, here we'll load the daily rainfall statistics for the city of Seattle in 2014, using Pandas (which is covered in more detail in <a href="/PythonDataScienceHandbook/pages/03.00-introduction-to-pandas.html">Chapter 3</a>):</p>
 
 </div>
 </div>
@@ -1493,7 +1493,7 @@ For example, here we'll load the daily rainfall statistics for the city of Seatt
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>The array contains 365 values, giving daily rainfall in inches from January 1 to December 31, 2014.</p>
-<p>As a first quick visualization, let's look at the histogram of rainy days, which was generated using Matplotlib (we will explore this tool more fully in <a href="04.00-introduction-to-matplotlib.html">Chapter 4</a>):</p>
+<p>As a first quick visualization, let's look at the histogram of rainy days, which was generated using Matplotlib (we will explore this tool more fully in <a href="/PythonDataScienceHandbook/pages/04.00-introduction-to-matplotlib.html">Chapter 4</a>):</p>
 
 </div>
 </div>
@@ -1658,7 +1658,7 @@ But this doesn't do a good job of conveying some information we'd like to see: f
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Digging-into-the-data">Digging into the data<a class="anchor-link" href="#Digging-into-the-data">&#182;</a></h3><p>One approach to this would be to answer these questions by hand: loop through the data, incrementing a counter each time we see values in some desired range.
 For reasons discussed throughout this chapter, such an approach is very inefficient, both from the standpoint of time writing code and time computing the result.
-We saw in <a href="02.03-computation-on-arrays-ufuncs.html">Computation on NumPy Arrays: Universal Functions</a> that NumPy's ufuncs can be used in place of loops to do fast element-wise arithmetic operations on arrays; in the same way, we can use other ufuncs to do element-wise <em>comparisons</em> over arrays, and we can then manipulate the results to answer the questions we have.
+We saw in <a href="/PythonDataScienceHandbook/pages/02.03-computation-on-arrays-ufuncs.html">Computation on NumPy Arrays: Universal Functions</a> that NumPy's ufuncs can be used in place of loops to do fast element-wise arithmetic operations on arrays; in the same way, we can use other ufuncs to do element-wise <em>comparisons</em> over arrays, and we can then manipulate the results to answer the questions we have.
 We'll leave the data aside for right now, and discuss some general tools in NumPy to use <em>masking</em> to quickly answer these types of questions.</p>
 
 </div>
@@ -1669,7 +1669,7 @@ We'll leave the data aside for right now, and discuss some general tools in NumP
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Comparison-Operators-as-ufuncs">Comparison Operators as ufuncs<a class="anchor-link" href="#Comparison-Operators-as-ufuncs">&#182;</a></h2><p>In <a href="02.03-computation-on-arrays-ufuncs.html">Computation on NumPy Arrays: Universal Functions</a> we introduced ufuncs, and focused in particular on arithmetic operators. We saw that using <code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>, and others on arrays leads to element-wise operations.
+<h2 id="Comparison-Operators-as-ufuncs">Comparison Operators as ufuncs<a class="anchor-link" href="#Comparison-Operators-as-ufuncs">&#182;</a></h2><p>In <a href="/PythonDataScienceHandbook/pages/02.03-computation-on-arrays-ufuncs.html">Computation on NumPy Arrays: Universal Functions</a> we introduced ufuncs, and focused in particular on arithmetic operators. We saw that using <code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>, and others on arrays leads to element-wise operations.
 NumPy also implements comparison operators such as <code>&lt;</code> (less than) and <code>&gt;</code> (greater than) as element-wise ufuncs.
 The result of these comparison operators is always an array with a Boolean data type.
 All six of the standard comparison operations are available:</p>
@@ -2405,7 +2405,7 @@ Another way to get at this information is to use <code>np.sum</code>; in this ca
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Here all the elements in the first and third rows are less than 8, while this is not the case for the second row.</p>
-<p>Finally, a quick warning: as mentioned in <a href="02.04-computation-on-arrays-aggregates.html">Aggregations: Min, Max, and Everything In Between</a>, Python has built-in <code>sum()</code>, <code>any()</code>, and <code>all()</code> functions. These have a different syntax than the NumPy versions, and in particular will fail or produce unintended results when used on multidimensional arrays. Be sure that you are using <code>np.sum()</code>, <code>np.any()</code>, and <code>np.all()</code> for these examples!</p>
+<p>Finally, a quick warning: as mentioned in <a href="/PythonDataScienceHandbook/pages/02.04-computation-on-arrays-aggregates.html">Aggregations: Min, Max, and Everything In Between</a>, Python has built-in <code>sum()</code>, <code>any()</code>, and <code>all()</code> functions. These have a different syntax than the NumPy versions, and in particular will fail or produce unintended results when used on multidimensional arrays. Be sure that you are using <code>np.sum()</code>, <code>np.any()</code>, and <code>np.all()</code> for these examples!</p>
 
 </div>
 </div>
@@ -3222,7 +3222,7 @@ For Boolean NumPy arrays, the latter is nearly always the desired operation.</p>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><!--NAVIGATION-->
-&lt; <a href="02.05-computation-on-arrays-broadcasting.html">Computation on Arrays: Broadcasting</a> | <a href="index.html">Contents</a> | <a href="02.07-fancy-indexing.html">Fancy Indexing</a> &gt;</p>
+&lt; <a href="/PythonDataScienceHandbook/pages/02.05-computation-on-arrays-broadcasting.html">Computation on Arrays: Broadcasting</a> | <a href="/PythonDataScienceHandbook/pages/index.html">Contents</a> | <a href="/PythonDataScienceHandbook/pages/02.07-fancy-indexing.html">Fancy Indexing</a> &gt;</p>
 
 </div>
 </div>

@@ -1422,7 +1422,7 @@ h6:hover .anchor-link {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><!--NAVIGATION-->
-&lt; <a href="05.08-random-forests.html">In-Depth: Decision Trees and Random Forests</a> | <a href="index.html">Contents</a> | <a href="05.10-manifold-learning.html">In-Depth: Manifold Learning</a> &gt;</p>
+&lt; <a href="/PythonDataScienceHandbook/pages/05.08-random-forests.html">In-Depth: Decision Trees and Random Forests</a> | <a href="/PythonDataScienceHandbook/pages/index.html">Contents</a> | <a href="/PythonDataScienceHandbook/pages/05.10-manifold-learning.html">In-Depth: Manifold Learning</a> &gt;</p>
 
 </div>
 </div>
@@ -1463,7 +1463,7 @@ After a brief conceptual discussion of the PCA algorithm, we will see a couple e
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Introducing-Principal-Component-Analysis">Introducing Principal Component Analysis<a class="anchor-link" href="#Introducing-Principal-Component-Analysis">&#182;</a></h2><p>Principal component analysis is a fast and flexible unsupervised method for dimensionality reduction in data, which we saw briefly in <a href="05.02-introducing-scikit-learn.html">Introducing Scikit-Learn</a>.
+<h2 id="Introducing-Principal-Component-Analysis">Introducing Principal Component Analysis<a class="anchor-link" href="#Introducing-Principal-Component-Analysis">&#182;</a></h2><p>Principal component analysis is a fast and flexible unsupervised method for dimensionality reduction in data, which we saw briefly in <a href="/PythonDataScienceHandbook/pages/05.02-introducing-scikit-learn.html">Introducing Scikit-Learn</a>.
 Its behavior is easiest to visualize by looking at a two-dimensional dataset.
 Consider the following 200 points:</p>
 
@@ -1713,7 +1713,7 @@ wGAENQAABiOoAQAwGEENAIDBCGoAAAxGUAMAYDCCGgAAg/1/aVtWIBGTU70AAAAASUVORK5CYII=
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>By eye, it is clear that there is a nearly linear relationship between the x and y variables.
-This is reminiscent of the linear regression data we explored in <a href="05.06-linear-regression.html">In Depth: Linear Regression</a>, but the problem setting here is slightly different: rather than attempting to <em>predict</em> the y values from the x values, the unsupervised learning problem attempts to learn about the <em>relationship</em> between the x and y values.</p>
+This is reminiscent of the linear regression data we explored in <a href="/PythonDataScienceHandbook/pages/05.06-linear-regression.html">In Depth: Linear Regression</a>, but the problem setting here is slightly different: rather than attempting to <em>predict</em> the y values from the x values, the unsupervised learning problem attempts to learn about the <em>relationship</em> between the x and y values.</p>
 <p>In principal component analysis, this relationship is quantified by finding a list of the <em>principal axes</em> in the data, and using those axes to describe the dataset.
 Using Scikit-Learn's <code>PCA</code> estimator, we can compute this as follows:</p>
 
@@ -2151,7 +2151,7 @@ The projection of each data point onto the principal axes are the "principal com
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><img src="/PythonDataScienceHandbook/figures/05.09-PCA-rotation.png" alt="">
-<a href="06.00-figure-code.html#Principal-Components-Rotation">figure source in Appendix</a></p>
+<a href="/PythonDataScienceHandbook/pages/06.00-figure-code.html#Principal-Components-Rotation">figure source in Appendix</a></p>
 
 </div>
 </div>
@@ -2553,7 +2553,7 @@ The fraction of variance that is cut out (proportional to the spread of points a
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="PCA-for-visualization:-Hand-written-digits">PCA for visualization: Hand-written digits<a class="anchor-link" href="#PCA-for-visualization:-Hand-written-digits">&#182;</a></h3><p>The usefulness of the dimensionality reduction may not be entirely apparent in only two dimensions, but becomes much more clear when looking at high-dimensional data.
-To see this, let's take a quick look at the application of PCA to the digits data we saw in <a href="05.08-random-forests.html">In-Depth: Decision Trees and Random Forests</a>.</p>
+To see this, let's take a quick look at the application of PCA to the digits data we saw in <a href="/PythonDataScienceHandbook/pages/05.08-random-forests.html">In-Depth: Decision Trees and Random Forests</a>.</p>
 <p>We start by loading the data:</p>
 
 </div>
@@ -4284,7 +4284,7 @@ For example, if we use only the first eight pixels, we get an eight-dimensional 
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><img src="/PythonDataScienceHandbook/figures/05.09-digits-pixel-components.png" alt="">
-<a href="06.00-figure-code.html#Digits-Pixel-Components">figure source in Appendix</a></p>
+<a href="/PythonDataScienceHandbook/pages/06.00-figure-code.html#Digits-Pixel-Components">figure source in Appendix</a></p>
 
 </div>
 </div>
@@ -4322,7 +4322,7 @@ This figure shows a similar depiction of reconstructing this digit using the mea
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><img src="/PythonDataScienceHandbook/figures/05.09-digits-pca-components.png" alt="">
-<a href="06.00-figure-code.html#Digits-PCA-Components">figure source in Appendix</a></p>
+<a href="/PythonDataScienceHandbook/pages/06.00-figure-code.html#Digits-PCA-Components">figure source in Appendix</a></p>
 
 </div>
 </div>
@@ -5355,7 +5355,7 @@ AEgeGx4AAJA8NjwAACB5bHgAAEDy/gcjsffkWE6IPAAAAABJRU5ErkJggg==
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Example:-Eigenfaces">Example: Eigenfaces<a class="anchor-link" href="#Example:-Eigenfaces">&#182;</a></h2><p>Earlier we explored an example of using a PCA projection as a feature selector for facial recognition with a support vector machine (see <a href="05.07-support-vector-machines.html">In-Depth: Support Vector Machines</a>).
+<h2 id="Example:-Eigenfaces">Example: Eigenfaces<a class="anchor-link" href="#Example:-Eigenfaces">&#182;</a></h2><p>Earlier we explored an example of using a PCA projection as a feature selector for facial recognition with a support vector machine (see <a href="/PythonDataScienceHandbook/pages/05.07-support-vector-machines.html">In-Depth: Support Vector Machines</a>).
 Here we will take a look back and explore a bit more of what went into that.
 Recall that we were using the Labeled Faces in the Wild dataset made available through Scikit-Learn:</p>
 
@@ -9518,7 +9518,7 @@ RU5ErkJggg==
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>The top row here shows the input images, while the bottom row shows the reconstruction of the images from just 150 of the ~3,000 initial features.
-This visualization makes clear why the PCA feature selection used in <a href="05.07-support-vector-machines.html">In-Depth: Support Vector Machines</a> was so successful: although it reduces the dimensionality of the data by nearly a factor of 20, the projected images contain enough information that we might, by eye, recognize the individuals in the image.
+This visualization makes clear why the PCA feature selection used in <a href="/PythonDataScienceHandbook/pages/05.07-support-vector-machines.html">In-Depth: Support Vector Machines</a> was so successful: although it reduces the dimensionality of the data by nearly a factor of 20, the projected images contain enough information that we might, by eye, recognize the individuals in the image.
 What this means is that our classification algorithm needs to be trained on 150-dimensional data rather than 3,000-dimensional data, which depending on the particular algorithm we choose, can lead to a much more efficient classification.</p>
 
 </div>
@@ -9536,7 +9536,7 @@ Certainly PCA is not useful for every high-dimensional dataset, but it offers a 
 <p>PCA's main weakness is that it tends to be highly affected by outliers in the data.
 For this reason, many robust variants of PCA have been developed, many of which act to iteratively discard data points that are poorly described by the initial components.
 Scikit-Learn contains a couple interesting variants on PCA, including <code>RandomizedPCA</code> and <code>SparsePCA</code>, both also in the <code>sklearn.decomposition</code> submodule.
-<code>RandomizedPCA</code>, which we saw earlier, uses a non-deterministic method to quickly approximate the first few principal components in very high-dimensional data, while <code>SparsePCA</code> introduces a regularization term (see <a href="05.06-linear-regression.html">In Depth: Linear Regression</a>) that serves to enforce sparsity of the components.</p>
+<code>RandomizedPCA</code>, which we saw earlier, uses a non-deterministic method to quickly approximate the first few principal components in very high-dimensional data, while <code>SparsePCA</code> introduces a regularization term (see <a href="/PythonDataScienceHandbook/pages/05.06-linear-regression.html">In Depth: Linear Regression</a>) that serves to enforce sparsity of the components.</p>
 <p>In the following sections, we will look at other unsupervised learning methods that build on some of the ideas of PCA.</p>
 
 </div>
@@ -9548,7 +9548,7 @@ Scikit-Learn contains a couple interesting variants on PCA, including <code>Rand
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><!--NAVIGATION-->
-&lt; <a href="05.08-random-forests.html">In-Depth: Decision Trees and Random Forests</a> | <a href="index.html">Contents</a> | <a href="05.10-manifold-learning.html">In-Depth: Manifold Learning</a> &gt;</p>
+&lt; <a href="/PythonDataScienceHandbook/pages/05.08-random-forests.html">In-Depth: Decision Trees and Random Forests</a> | <a href="/PythonDataScienceHandbook/pages/index.html">Contents</a> | <a href="/PythonDataScienceHandbook/pages/05.10-manifold-learning.html">In-Depth: Manifold Learning</a> &gt;</p>
 
 </div>
 </div>

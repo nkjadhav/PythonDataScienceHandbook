@@ -1422,7 +1422,7 @@ h6:hover .anchor-link {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><!--NAVIGATION-->
-&lt; <a href="05.12-gaussian-mixtures.html">In Depth: Gaussian Mixture Models</a> | <a href="index.html">Contents</a> | <a href="05.14-image-features.html">Application: A Face Detection Pipeline</a> &gt;</p>
+&lt; <a href="/PythonDataScienceHandbook/pages/05.12-gaussian-mixtures.html">In Depth: Gaussian Mixture Models</a> | <a href="/PythonDataScienceHandbook/pages/index.html">Contents</a> | <a href="/PythonDataScienceHandbook/pages/05.14-image-features.html">Application: A Face Detection Pipeline</a> &gt;</p>
 
 </div>
 </div>
@@ -2910,7 +2910,7 @@ Because we are looking at such a small dataset, we will use leave-one-out cross-
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Example:-KDE-on-a-Sphere">Example: KDE on a Sphere<a class="anchor-link" href="#Example:-KDE-on-a-Sphere">&#182;</a></h2><p>Perhaps the most common use of KDE is in graphically representing distributions of points.
-For example, in the Seaborn visualization library (see <a href="04.14-visualization-with-seaborn.html">Visualization With Seaborn</a>), KDE is built in and automatically used to help visualize points in one and two dimensions.</p>
+For example, in the Seaborn visualization library (see <a href="/PythonDataScienceHandbook/pages/04.14-visualization-with-seaborn.html">Visualization With Seaborn</a>), KDE is built in and automatically used to help visualize points in one and two dimensions.</p>
 <p>Here we will look at a slightly more sophisticated use of KDE for visualization of distributions.
 We will make use of some geographic data that can be loaded with Scikit-Learn: the geographic distributions of recorded observations of two South American mammals, <em>Bradypus variegatus</em> (the Brown-throated Sloth) and <em>Microryzomys minutus</em> (the Forest Small Rice Rat).</p>
 <p>With Scikit-Learn, we can fetch this data as follows:</p>
@@ -2944,7 +2944,7 @@ We will make use of some geographic data that can be loaded with Scikit-Learn: t
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>With this data loaded, we can use the Basemap toolkit (mentioned previously in <a href="04.13-geographic-data-with-basemap.html">Geographic Data with Basemap</a>) to plot the observed locations of these two species on the map of South America.</p>
+<p>With this data loaded, we can use the Basemap toolkit (mentioned previously in <a href="/PythonDataScienceHandbook/pages/04.13-geographic-data-with-basemap.html">Geographic Data with Basemap</a>) to plot the observed locations of these two species on the map of South America.</p>
 
 </div>
 </div>
@@ -4691,7 +4691,7 @@ KAkChBBCiA+UBAFCCCHEB0qCACGEEOIDJUGAEEII8YH6H+m+5dwrcLxQAAAAAElFTkSuQmCC
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Example:-Not-So-Naive-Bayes">Example: Not-So-Naive Bayes<a class="anchor-link" href="#Example:-Not-So-Naive-Bayes">&#182;</a></h2><p>This example looks at Bayesian generative classification with KDE, and demonstrates how to use the Scikit-Learn architecture to create a custom estimator.</p>
-<p>In <a href="05.05-naive-bayes.html">In Depth: Naive Bayes Classification</a>, we took a look at naive Bayesian classification, in which we created a simple generative model for each class, and used these models to build a fast classifier.
+<p>In <a href="/PythonDataScienceHandbook/pages/05.05-naive-bayes.html">In Depth: Naive Bayes Classification</a>, we took a look at naive Bayesian classification, in which we created a simple generative model for each class, and used these models to build a fast classifier.
 For Gaussian naive Bayes, the generative model is a simple axis-aligned Gaussian.
 With a density estimation algorithm like KDE, we can remove the "naive" element and perform the same classification with a more sophisticated generative model for each class.
 It's still Bayesian classification, but it's no longer naive.</p>
@@ -4791,7 +4791,7 @@ The class which maximizes this posterior is the label assigned to the point.</p>
 </pre></div>
 <p>Each estimator in Scikit-Learn is a class, and it is most convenient for this class to inherit from the <code>BaseEstimator</code> class as well as the appropriate mixin, which provides standard functionality.
 For example, among other things, here the <code>BaseEstimator</code> contains the logic necessary to clone/copy an estimator for use in a cross-validation procedure, and <code>ClassifierMixin</code> defines a default <code>score()</code> method used by such routines.
-We also provide a doc string, which will be captured by IPython's help functionality (see <a href="01.01-help-and-documentation.html">Help and Documentation in IPython</a>).</p>
+We also provide a doc string, which will be captured by IPython's help functionality (see <a href="/PythonDataScienceHandbook/pages/01.01-help-and-documentation.html">Help and Documentation in IPython</a>).</p>
 
 </div>
 </div>
@@ -4868,7 +4868,7 @@ Entry <code>[i, j]</code> of this array is the posterior probability that sample
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Using-our-custom-estimator">Using our custom estimator<a class="anchor-link" href="#Using-our-custom-estimator">&#182;</a></h3><p>Let's try this custom estimator on a problem we have seen before: the classification of hand-written digits.
-Here we will load the digits, and compute the cross-validation score for a range of candidate bandwidths using the <code>GridSearchCV</code> meta-estimator (refer back to <a href="05.03-hyperparameters-and-model-validation.html">Hyperparameters and Model Validation</a>):</p>
+Here we will load the digits, and compute the cross-validation score for a range of candidate bandwidths using the <code>GridSearchCV</code> meta-estimator (refer back to <a href="/PythonDataScienceHandbook/pages/05.03-hyperparameters-and-model-validation.html">Hyperparameters and Model Validation</a>):</p>
 
 </div>
 </div>
@@ -5334,7 +5334,7 @@ If desired, this offers an intuitive window into the reasons for a particular cl
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><!--NAVIGATION-->
-&lt; <a href="05.12-gaussian-mixtures.html">In Depth: Gaussian Mixture Models</a> | <a href="index.html">Contents</a> | <a href="05.14-image-features.html">Application: A Face Detection Pipeline</a> &gt;</p>
+&lt; <a href="/PythonDataScienceHandbook/pages/05.12-gaussian-mixtures.html">In Depth: Gaussian Mixture Models</a> | <a href="/PythonDataScienceHandbook/pages/index.html">Contents</a> | <a href="/PythonDataScienceHandbook/pages/05.14-image-features.html">Application: A Face Detection Pipeline</a> &gt;</p>
 
 </div>
 </div>

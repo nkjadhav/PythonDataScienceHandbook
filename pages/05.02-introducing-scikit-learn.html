@@ -1422,7 +1422,7 @@ h6:hover .anchor-link {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><!--NAVIGATION-->
-&lt; <a href="05.01-what-is-machine-learning.html">What Is Machine Learning?</a> | <a href="index.html">Contents</a> | <a href="05.03-hyperparameters-and-model-validation.html">Hyperparameters and Model Validation</a> &gt;</p>
+&lt; <a href="/PythonDataScienceHandbook/pages/05.01-what-is-machine-learning.html">What Is Machine Learning?</a> | <a href="/PythonDataScienceHandbook/pages/index.html">Contents</a> | <a href="/PythonDataScienceHandbook/pages/05.03-hyperparameters-and-model-validation.html">Hyperparameters and Model Validation</a> &gt;</p>
 
 </div>
 </div>
@@ -1601,7 +1601,7 @@ The target array may have continuous numerical values, or discrete classes/label
 While some Scikit-Learn estimators do handle multiple target values in the form of a two-dimensional, <code>[n_samples, n_targets]</code> target array, we will primarily be working with the common case of a one-dimensional target array.</p>
 <p>Often one point of confusion is how the target array differs from the other features columns. The distinguishing feature of the target array is that it is usually the quantity we want to <em>predict from the data</em>: in statistical terms, it is the dependent variable.
 For example, in the preceding data we may wish to construct a model that can predict the species of flower based on the other measurements; in this case, the <code>species</code> column would be considered the target array.</p>
-<p>With this target array in mind, we can use Seaborn (see <a href="04.14-visualization-with-seaborn.html">Visualization With Seaborn</a>) to conveniently visualize the data:</p>
+<p>With this target array in mind, we can use Seaborn (see <a href="/PythonDataScienceHandbook/pages/04.14-visualization-with-seaborn.html">Visualization With Seaborn</a>) to conveniently visualize the data:</p>
 
 </div>
 </div>
@@ -2650,7 +2650,7 @@ DAbDSGFJnsFgMBgMI4UleQaDwWAwjJT/AAiy/rMOX5PIAAAAAElFTkSuQmCC
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>For use in Scikit-Learn, we will extract the features matrix and target array from the <code>DataFrame</code>, which we can do using some of the Pandas <code>DataFrame</code> operations discussed in the <a href="03.00-introduction-to-pandas.html">Chapter 3</a>:</p>
+<p>For use in Scikit-Learn, we will extract the features matrix and target array from the <code>DataFrame</code>, which we can do using some of the Pandas <code>DataFrame</code> operations discussed in the <a href="/PythonDataScienceHandbook/pages/03.00-introduction-to-pandas.html">Chapter 3</a>:</p>
 
 </div>
 </div>
@@ -2735,7 +2735,7 @@ DAbDSGFJnsFgMBgMI4UleQaDwWAwjJT/AAiy/rMOX5PIAAAAAElFTkSuQmCC
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><img src="/PythonDataScienceHandbook/figures/05.02-samples-features.png" alt="">
-<a href="06.00-figure-code.html#Features-and-Labels-Grid">figure source in Appendix</a></p>
+<a href="/PythonDataScienceHandbook/pages/06.00-figure-code.html#Features-and-Labels-Grid">figure source in Appendix</a></p>
 
 </div>
 </div>
@@ -3035,7 +3035,7 @@ Depending on the model class we are working with, we might need to answer one or
 <p>These are examples of the important choices that must be made <em>once the model class is selected</em>.
 These choices are often represented as <em>hyperparameters</em>, or parameters that must be set before the model is fit to data.
 In Scikit-Learn, hyperparameters are chosen by passing values at model instantiation.
-We will explore how you can quantitatively motivate the choice of hyperparameters in <a href="05.03-hyperparameters-and-model-validation.html">Hyperparameters and Model Validation</a>.</p>
+We will explore how you can quantitatively motivate the choice of hyperparameters in <a href="/PythonDataScienceHandbook/pages/05.03-hyperparameters-and-model-validation.html">Hyperparameters and Model Validation</a>.</p>
 <p>For our linear regression example, we can instantiate the <code>LinearRegression</code> class and specify that we would like to fit the intercept using the <code>fit_intercept</code> hyperparameter:</p>
 
 </div>
@@ -3594,7 +3594,7 @@ UCCLiIh4AQWyiIiIF1Agi4iIeAEFsoiIiBdQIIuIiHiB/x/7wapt8g4LmAAAAABJRU5ErkJggg==
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Supervised-learning-example:-Iris-classification">Supervised learning example: Iris classification<a class="anchor-link" href="#Supervised-learning-example:-Iris-classification">&#182;</a></h3><p>Let's take a look at another example of this process, using the Iris dataset we discussed earlier.
 Our question will be this: given a model trained on a portion of the Iris data, how well can we predict the remaining labels?</p>
-<p>For this task, we will use an extremely simple generative model known as Gaussian naive Bayes, which proceeds by assuming each class is drawn from an axis-aligned Gaussian distribution (see <a href="05.05-naive-bayes.html">In Depth: Naive Bayes Classification</a> for more details).
+<p>For this task, we will use an extremely simple generative model known as Gaussian naive Bayes, which proceeds by assuming each class is drawn from an axis-aligned Gaussian distribution (see <a href="/PythonDataScienceHandbook/pages/05.05-naive-bayes.html">In Depth: Naive Bayes Classification</a> for more details).
 Because it is so fast and has no hyperparameters to choose, Gaussian naive Bayes is often a good model to use as a baseline classification, before exploring whether improvements can be found through more sophisticated models.</p>
 <p>We would like to evaluate the model on data it has not seen before, and so we will split the data into a <em>training set</em> and a <em>testing set</em>.
 This could be done by hand, but it is more convenient to use the <code>train_test_split</code> utility function:</p>
@@ -3704,7 +3704,7 @@ This could be done by hand, but it is more convenient to use the <code>train_tes
 Recall that the Iris data is four dimensional: there are four features recorded for each sample.</p>
 <p>The task of dimensionality reduction is to ask whether there is a suitable lower-dimensional representation that retains the essential features of the data.
 Often dimensionality reduction is used as an aid to visualizing data: after all, it is much easier to plot data in two dimensions than in four dimensions or higher!</p>
-<p>Here we will use principal component analysis (PCA; see <a href="05.09-principal-component-analysis.html">In Depth: Principal Component Analysis</a>), which is a fast linear dimensionality reduction technique.
+<p>Here we will use principal component analysis (PCA; see <a href="/PythonDataScienceHandbook/pages/05.09-principal-component-analysis.html">In Depth: Principal Component Analysis</a>), which is a fast linear dimensionality reduction technique.
 We will ask the model to return two components—that is, a two-dimensional representation of the data.</p>
 <p>Following the sequence of steps outlined earlier, we have:</p>
 
@@ -4057,7 +4057,7 @@ This indicates to us that a relatively straightforward classification will proba
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Unsupervised-learning:-Iris-clustering">Unsupervised learning: Iris clustering<a class="anchor-link" href="#Unsupervised-learning:-Iris-clustering">&#182;</a></h3><p>Let's next look at applying clustering to the Iris data.
 A clustering algorithm attempts to find distinct groups of data without reference to any labels.
-Here we will use a powerful clustering method called a Gaussian mixture model (GMM), discussed in more detail in <a href="05.12-gaussian-mixtures.html">In Depth: Gaussian Mixture Models</a>.
+Here we will use a powerful clustering method called a Gaussian mixture model (GMM), discussed in more detail in <a href="/PythonDataScienceHandbook/pages/05.12-gaussian-mixtures.html">In Depth: Gaussian Mixture Models</a>.
 A GMM attempts to model the data as a collection of Gaussian blobs.</p>
 <p>We can fit the Gaussian mixture model as follows:</p>
 
@@ -5191,7 +5191,7 @@ These two quantities are built into the digits dataset under the <code>data</cod
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Unsupervised-learning:-Dimensionality-reduction">Unsupervised learning: Dimensionality reduction<a class="anchor-link" href="#Unsupervised-learning:-Dimensionality-reduction">&#182;</a></h3><p>We'd like to visualize our points within the 64-dimensional parameter space, but it's difficult to effectively visualize points in such a high-dimensional space.
 Instead we'll reduce the dimensions to 2, using an unsupervised method.
-Here, we'll make use of a manifold learning algorithm called <em>Isomap</em> (see <a href="05.10-manifold-learning.html">In-Depth: Manifold Learning</a>), and transform the data to two dimensions:</p>
+Here, we'll make use of a manifold learning algorithm called <em>Isomap</em> (see <a href="/PythonDataScienceHandbook/pages/05.10-manifold-learning.html">In-Depth: Manifold Learning</a>), and transform the data to two dimensions:</p>
 
 </div>
 </div>
@@ -7401,7 +7401,7 @@ xpcAAAAASUVORK5CYII=
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Examining this subset of the data, we can gain insight regarding where the algorithm might be not performing optimally.
-To go beyond our 80% classification rate, we might move to a more sophisticated algorithm such as support vector machines (see <a href="05.07-support-vector-machines.html">In-Depth: Support Vector Machines</a>), random forests (see <a href="05.08-random-forests.html">In-Depth: Decision Trees and Random Forests</a>) or another classification approach.</p>
+To go beyond our 80% classification rate, we might move to a more sophisticated algorithm such as support vector machines (see <a href="/PythonDataScienceHandbook/pages/05.07-support-vector-machines.html">In-Depth: Support Vector Machines</a>), random forests (see <a href="/PythonDataScienceHandbook/pages/05.08-random-forests.html">In-Depth: Decision Trees and Random Forests</a>) or another classification approach.</p>
 
 </div>
 </div>
@@ -7434,7 +7434,7 @@ Armed with this information about the estimator API, you can explore the Scikit-
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><!--NAVIGATION-->
-&lt; <a href="05.01-what-is-machine-learning.html">What Is Machine Learning?</a> | <a href="index.html">Contents</a> | <a href="05.03-hyperparameters-and-model-validation.html">Hyperparameters and Model Validation</a> &gt;</p>
+&lt; <a href="/PythonDataScienceHandbook/pages/05.01-what-is-machine-learning.html">What Is Machine Learning?</a> | <a href="/PythonDataScienceHandbook/pages/index.html">Contents</a> | <a href="/PythonDataScienceHandbook/pages/05.03-hyperparameters-and-model-validation.html">Hyperparameters and Model Validation</a> &gt;</p>
 
 </div>
 </div>

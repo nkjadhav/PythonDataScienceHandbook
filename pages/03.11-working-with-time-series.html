@@ -1422,7 +1422,7 @@ h6:hover .anchor-link {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><!--NAVIGATION-->
-&lt; <a href="03.10-working-with-strings.html">Vectorized String Operations</a> | <a href="index.html">Contents</a> | <a href="03.12-performance-eval-and-query.html">High-Performance Pandas: eval() and query()</a> &gt;</p>
+&lt; <a href="/PythonDataScienceHandbook/pages/03.10-working-with-strings.html">Vectorized String Operations</a> | <a href="/PythonDataScienceHandbook/pages/index.html">Contents</a> | <a href="/PythonDataScienceHandbook/pages/03.12-performance-eval-and-query.html">High-Performance Pandas: eval() and query()</a> &gt;</p>
 
 </div>
 </div>
@@ -1695,7 +1695,7 @@ The <code>datetime64</code> requires a very specific input format:</p>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Because of the uniform type in NumPy <code>datetime64</code> arrays, this type of operation can be accomplished much more quickly than if we were working directly with Python's <code>datetime</code> objects, especially as arrays get large
-(we introduced this type of vectorization in <a href="02.03-computation-on-arrays-ufuncs.html">Computation on NumPy Arrays: Universal Functions</a>).</p>
+(we introduced this type of vectorization in <a href="/PythonDataScienceHandbook/pages/02.03-computation-on-arrays-ufuncs.html">Computation on NumPy Arrays: Universal Functions</a>).</p>
 <p>One detail of the <code>datetime64</code> and <code>timedelta64</code> objects is that they are built on a <em>fundamental time unit</em>.
 Because the <code>datetime64</code> object is limited to 64-bit precision, the range of encodable times is $2^{64}$ times this fundamental unit.
 In other words, <code>datetime64</code> imposes a trade-off between <em>time resolution</em> and <em>maximum time span</em>.</p>
@@ -2994,7 +2994,7 @@ Here we will load Google's closing price history:</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>We can visualize this using the <code>plot()</code> method, after the normal Matplotlib setup boilerplate (see <a href="04.00-introduction-to-matplotlib.html">Chapter 4</a>):</p>
+<p>We can visualize this using the <code>plot()</code> method, after the normal Matplotlib setup boilerplate (see <a href="/PythonDataScienceHandbook/pages/04.00-introduction-to-matplotlib.html">Chapter 4</a>):</p>
 
 </div>
 </div>
@@ -5700,7 +5700,7 @@ eREREUsp5EVERCylkBcREbGUQl5ERMRS/wEKJrU66VvILwAAAABJRU5ErkJggg==
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Rolling-windows">Rolling windows<a class="anchor-link" href="#Rolling-windows">&#182;</a></h3><p>Rolling statistics are a third type of time series-specific operation implemented by Pandas.
-These can be accomplished via the <code>rolling()</code> attribute of <code>Series</code> and <code>DataFrame</code> objects, which returns a view similar to what we saw with the <code>groupby</code> operation (see <a href="03.08-aggregation-and-grouping.html">Aggregation and Grouping</a>).
+These can be accomplished via the <code>rolling()</code> attribute of <code>Series</code> and <code>DataFrame</code> objects, which returns a view similar to what we saw with the <code>groupby</code> operation (see <a href="/PythonDataScienceHandbook/pages/03.08-aggregation-and-grouping.html">Aggregation and Grouping</a>).
 This rolling view makes available a number of aggregation operations by default.</p>
 <p>For example, here is the one-year centered rolling mean and standard deviation of the Google stock prices:</p>
 
@@ -8155,7 +8155,7 @@ AAAASUVORK5CYII=
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>This shows us some interesting seasonal trends: as you might expect, people bicycle more in the summer than in the winter, and even within a particular season the bicycle use varies from week to week (likely dependent on weather; see <a href="05.06-linear-regression.html">In Depth: Linear Regression</a> where we explore this further).</p>
+<p>This shows us some interesting seasonal trends: as you might expect, people bicycle more in the summer than in the winter, and even within a particular season the bicycle use varies from week to week (likely dependent on weather; see <a href="/PythonDataScienceHandbook/pages/05.06-linear-regression.html">In Depth: Linear Regression</a> where we explore this further).</p>
 <p>Another way that comes in handy for aggregating the data is to use a rolling mean, utilizing the <code>pd.rolling_mean()</code> function.
 Here we'll do a 30 day rolling mean of our data, making sure to center the window:</p>
 
@@ -9881,7 +9881,7 @@ Wbt2LfPnz+eJJ57A6XQSHR2tPnURF9LWqyIiIh5Ct99FREQ8hEJdRETEQyjURUREPIRCXURExEMo
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Digging-into-the-data">Digging into the data<a class="anchor-link" href="#Digging-into-the-data">&#182;</a></h3><p>While these smoothed data views are useful to get an idea of the general trend in the data, they hide much of the interesting structure.
 For example, we might want to look at the average traffic as a function of the time of day.
-We can do this using the GroupBy functionality discussed in <a href="03.08-aggregation-and-grouping.html">Aggregation and Grouping</a>:</p>
+We can do this using the GroupBy functionality discussed in <a href="/PythonDataScienceHandbook/pages/03.08-aggregation-and-grouping.html">Aggregation and Grouping</a>:</p>
 
 </div>
 </div>
@@ -10929,7 +10929,7 @@ We'll start by grouping by both a flag marking the weekend, and the time of day:
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Now we'll use some of the Matplotlib tools described in <a href="04.08-multiple-subplots.html">Multiple Subplots</a> to plot two panels side by side:</p>
+<p>Now we'll use some of the Matplotlib tools described in <a href="/PythonDataScienceHandbook/pages/04.08-multiple-subplots.html">Multiple Subplots</a> to plot two panels side by side:</p>
 
 </div>
 </div>
@@ -11877,7 +11877,7 @@ RhAEQRAEQRCEPun/A1rsNddykhZ+AAAAAElFTkSuQmCC
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>The result is very interesting: we see a bimodal commute pattern during the work week, and a unimodal recreational pattern during the weekends.
 It would be interesting to dig through this data in more detail, and examine the effect of weather, temperature, time of year, and other factors on people's commuting patterns; for further discussion, see my blog post <a href="https://jakevdp.github.io/blog/2014/06/10/is-seattle-really-seeing-an-uptick-in-cycling/">"Is Seattle Really Seeing an Uptick In Cycling?"</a>, which uses a subset of this data.
-We will also revisit this dataset in the context of modeling in <a href="05.06-linear-regression.html">In Depth: Linear Regression</a>.</p>
+We will also revisit this dataset in the context of modeling in <a href="/PythonDataScienceHandbook/pages/05.06-linear-regression.html">In Depth: Linear Regression</a>.</p>
 
 </div>
 </div>
@@ -11888,7 +11888,7 @@ We will also revisit this dataset in the context of modeling in <a href="05.06-l
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><!--NAVIGATION-->
-&lt; <a href="03.10-working-with-strings.html">Vectorized String Operations</a> | <a href="index.html">Contents</a> | <a href="03.12-performance-eval-and-query.html">High-Performance Pandas: eval() and query()</a> &gt;</p>
+&lt; <a href="/PythonDataScienceHandbook/pages/03.10-working-with-strings.html">Vectorized String Operations</a> | <a href="/PythonDataScienceHandbook/pages/index.html">Contents</a> | <a href="/PythonDataScienceHandbook/pages/03.12-performance-eval-and-query.html">High-Performance Pandas: eval() and query()</a> &gt;</p>
 
 </div>
 </div>
