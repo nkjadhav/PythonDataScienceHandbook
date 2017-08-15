@@ -6,7 +6,7 @@
         <meta name="author" content="Jake VanderPlas">
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
-        <title>Python Data Science Handbook | Python Data Science Handbook</title>
+        <title>Profiling and Timing Code | Python Data Science Handbook</title>
 
 	<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
 	<link rel="icon" href="/favicon.ico" type="image/x-icon">
@@ -424,11 +424,23 @@ article .meta a.comments_btn:hover {
         </header>
 
         <div id="wrap">
+
+<div class="container bookinfo">
+<p>
+<img align="left" style="padding-right:10px;" src="/PythonDataScienceHandbook/figures/PDSH-cover-small.png">
+<em>This is an excerpt from the <a href="http://shop.oreilly.com/product/0636920034919.do">Python Data Science Handbook</a> by Jake VanderPlas; Jupyter notebooks are available <a href="https://github.com/jakevdp/PythonDataScienceHandbook">on GitHub</a>.</em>
+</p>
+<p>
+<em>The text is released under the <a href="https://creativecommons.org/licenses/by-nc-nd/3.0/us/legalcode">CC-BY-NC-ND license</a>, and code is released under the <a href="https://opensource.org/licenses/MIT">MIT license</a>. If you find this content useful, please consider supporting the work by <a href="http://shop.oreilly.com/product/0636920034919.do">buying the book</a>!</em>
+</p>
+</div>
+
+
 <div class="container post">
 
     <article>
         <header>
-            <h1>Python Data Science Handbook</h1>
+            <h1>Profiling and Timing Code</h1>
         </header>
 
         <div class="article_content">
@@ -1409,8 +1421,8 @@ h6:hover .anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><em>Jake VanderPlas</em></p>
-<p><img src="/PythonDataScienceHandbook/figures/PDSH-cover.png" alt="Book Cover"></p>
+<p><!--NAVIGATION-->
+&lt; <a href="01.06-errors-and-debugging.html">Errors and Debugging</a> | <a href="index.html">Contents</a> | <a href="01.08-more-ipython-resources.html">More IPython Resources</a> &gt;</p>
 
 </div>
 </div>
@@ -1420,8 +1432,21 @@ h6:hover .anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>This is the Jupyter notebook version of the <a href="http://shop.oreilly.com/product/0636920034919.do">Python Data Science Handbook</a> by Jake VanderPlas; the content is available <a href="https://github.com/jakevdp/PythonDataScienceHandbook">on GitHub</a>.*
-The text is released under the <a href="https://creativecommons.org/licenses/by-nc-nd/3.0/us/legalcode">CC-BY-NC-ND license</a>, and code is released under the <a href="https://opensource.org/licenses/MIT">MIT license</a>. If you find this content useful, please consider supporting the work by <a href="http://shop.oreilly.com/product/0636920034919.do">buying the book</a>!</p>
+<p>In the process of developing code and creating data processing pipelines, there are often trade-offs you can make between various implementations.
+Early in developing your algorithm, it can be counterproductive to worry about such things. As Donald Knuth famously quipped, "We should forget about small efficiencies, say about 97% of the time: premature optimization is the root of all evil."</p>
+<p>But once you have your code working, it can be useful to dig into its efficiency a bit.
+Sometimes it's useful to check the execution time of a given command or set of commands; other times it's useful to dig into a multiline process and determine where the bottleneck lies in some complicated series of operations.
+IPython provides access to a wide array of functionality for this kind of timing and profiling of code.
+Here we'll discuss the following IPython magic commands:</p>
+<ul>
+<li><code>%time</code>: Time the execution of a single statement</li>
+<li><code>%timeit</code>: Time repeated execution of a single statement for more accuracy</li>
+<li><code>%prun</code>: Run code with the profiler</li>
+<li><code>%lprun</code>: Run code with the line-by-line profiler</li>
+<li><code>%memit</code>: Measure the memory use of a single statement</li>
+<li><code>%mprun</code>: Run code with the line-by-line memory profiler</li>
+</ul>
+<p>The last four commands are not bundled with IPython–you'll need to get the <code>line_profiler</code> and <code>memory_profiler</code> extensions, which we will discuss in the following sections.</p>
 
 </div>
 </div>
@@ -1431,77 +1456,629 @@ The text is released under the <a href="https://creativecommons.org/licenses/by-
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Table-of-Contents">Table of Contents<a class="anchor-link" href="#Table-of-Contents">&#182;</a></h2><h3 id="Preface"><a href="00.00-preface.html">Preface</a><a class="anchor-link" href="#Preface">&#182;</a></h3><h3 id="1.-IPython:-Beyond-Normal-Python"><a href="01.00-ipython-beyond-normal-python.html">1. IPython: Beyond Normal Python</a><a class="anchor-link" href="#1.-IPython:-Beyond-Normal-Python">&#182;</a></h3><ul>
-<li><a href="01.01-help-and-documentation.html">Help and Documentation in IPython</a></li>
-<li><a href="01.02-shell-keyboard-shortcuts.html">Keyboard Shortcuts in the IPython Shell</a></li>
-<li><a href="01.03-magic-commands.html">IPython Magic Commands</a></li>
-<li><a href="01.04-input-output-history.html">Input and Output History</a></li>
-<li><a href="01.05-ipython-and-shell-commands.html">IPython and Shell Commands</a></li>
-<li><a href="01.06-errors-and-debugging.html">Errors and Debugging</a></li>
-<li><a href="01.07-timing-and-profiling.html">Profiling and Timing Code</a></li>
-<li><a href="01.08-more-ipython-resources.html">More IPython Resources</a></li>
-</ul>
-<h3 id="2.-Introduction-to-NumPy"><a href="02.00-introduction-to-numpy.html">2. Introduction to NumPy</a><a class="anchor-link" href="#2.-Introduction-to-NumPy">&#182;</a></h3><ul>
-<li><a href="02.01-understanding-data-types.html">Understanding Data Types in Python</a></li>
-<li><a href="02.02-the-basics-of-numpy-arrays.html">The Basics of NumPy Arrays</a></li>
-<li><a href="02.03-computation-on-arrays-ufuncs.html">Computation on NumPy Arrays: Universal Functions</a></li>
-<li><a href="02.04-computation-on-arrays-aggregates.html">Aggregations: Min, Max, and Everything In Between</a></li>
-<li><a href="02.05-computation-on-arrays-broadcasting.html">Computation on Arrays: Broadcasting</a></li>
-<li><a href="02.06-boolean-arrays-and-masks.html">Comparisons, Masks, and Boolean Logic</a></li>
-<li><a href="02.07-fancy-indexing.html">Fancy Indexing</a></li>
-<li><a href="02.08-sorting.html">Sorting Arrays</a></li>
-<li><a href="02.09-structured-data-numpy.html">Structured Data: NumPy's Structured Arrays</a></li>
-</ul>
-<h3 id="3.-Data-Manipulation-with-Pandas"><a href="03.00-introduction-to-pandas.html">3. Data Manipulation with Pandas</a><a class="anchor-link" href="#3.-Data-Manipulation-with-Pandas">&#182;</a></h3><ul>
-<li><a href="03.01-introducing-pandas-objects.html">Introducing Pandas Objects</a></li>
-<li><a href="03.02-data-indexing-and-selection.html">Data Indexing and Selection</a></li>
-<li><a href="03.03-operations-in-pandas.html">Operating on Data in Pandas</a></li>
-<li><a href="03.04-missing-values.html">Handling Missing Data</a></li>
-<li><a href="03.05-hierarchical-indexing.html">Hierarchical Indexing</a></li>
-<li><a href="03.06-concat-and-append.html">Combining Datasets: Concat and Append</a></li>
-<li><a href="03.07-merge-and-join.html">Combining Datasets: Merge and Join</a></li>
-<li><a href="03.08-aggregation-and-grouping.html">Aggregation and Grouping</a></li>
-<li><a href="03.09-pivot-tables.html">Pivot Tables</a></li>
-<li><a href="03.10-working-with-strings.html">Vectorized String Operations</a></li>
-<li><a href="03.11-working-with-time-series.html">Working with Time Series</a></li>
-<li><a href="03.12-performance-eval-and-query.html">High-Performance Pandas: eval() and query()</a></li>
-<li><a href="03.13-further-resources.html">Further Resources</a></li>
-</ul>
-<h3 id="4.-Visualization-with-Matplotlib"><a href="04.00-introduction-to-matplotlib.html">4. Visualization with Matplotlib</a><a class="anchor-link" href="#4.-Visualization-with-Matplotlib">&#182;</a></h3><ul>
-<li><a href="04.01-simple-line-plots.html">Simple Line Plots</a></li>
-<li><a href="04.02-simple-scatter-plots.html">Simple Scatter Plots</a></li>
-<li><a href="04.03-errorbars.html">Visualizing Errors</a></li>
-<li><a href="04.04-density-and-contour-plots.html">Density and Contour Plots</a></li>
-<li><a href="04.05-histograms-and-binnings.html">Histograms, Binnings, and Density</a></li>
-<li><a href="04.06-customizing-legends.html">Customizing Plot Legends</a></li>
-<li><a href="04.07-customizing-colorbars.html">Customizing Colorbars</a></li>
-<li><a href="04.08-multiple-subplots.html">Multiple Subplots</a></li>
-<li><a href="04.09-text-and-annotation.html">Text and Annotation</a></li>
-<li><a href="04.10-customizing-ticks.html">Customizing Ticks</a></li>
-<li><a href="04.11-settings-and-stylesheets.html">Customizing Matplotlib: Configurations and Stylesheets</a></li>
-<li><a href="04.12-three-dimensional-plotting.html">Three-Dimensional Plotting in Matplotlib</a></li>
-<li><a href="04.13-geographic-data-with-basemap.html">Geographic Data with Basemap</a></li>
-<li><a href="04.14-visualization-with-seaborn.html">Visualization with Seaborn</a></li>
-<li><a href="04.15-further-resources.html">Further Resources</a></li>
-</ul>
-<h3 id="5.-Machine-Learning"><a href="05.00-machine-learning.html">5. Machine Learning</a><a class="anchor-link" href="#5.-Machine-Learning">&#182;</a></h3><ul>
-<li><a href="05.01-what-is-machine-learning.html">What Is Machine Learning?</a></li>
-<li><a href="05.02-introducing-scikit-learn.html">Introducing Scikit-Learn</a></li>
-<li><a href="05.03-hyperparameters-and-model-validation.html">Hyperparameters and Model Validation</a></li>
-<li><a href="05.04-feature-engineering.html">Feature Engineering</a></li>
-<li><a href="05.05-naive-bayes.html">In Depth: Naive Bayes Classification</a></li>
-<li><a href="05.06-linear-regression.html">In Depth: Linear Regression</a></li>
-<li><a href="05.07-support-vector-machines.html">In-Depth: Support Vector Machines</a></li>
-<li><a href="05.08-random-forests.html">In-Depth: Decision Trees and Random Forests</a></li>
-<li><a href="05.09-principal-component-analysis.html">In Depth: Principal Component Analysis</a></li>
-<li><a href="05.10-manifold-learning.html">In-Depth: Manifold Learning</a></li>
-<li><a href="05.11-k-means.html">In Depth: k-Means Clustering</a></li>
-<li><a href="05.12-gaussian-mixtures.html">In Depth: Gaussian Mixture Models</a></li>
-<li><a href="05.13-kernel-density-estimation.html">In-Depth: Kernel Density Estimation</a></li>
-<li><a href="05.14-image-features.html">Application: A Face Detection Pipeline</a></li>
-<li><a href="05.15-learning-more.html">Further Machine Learning Resources</a></li>
-</ul>
-<h3 id="Appendix:-Figure-Code"><a href="06.00-figure-code.html">Appendix: Figure Code</a><a class="anchor-link" href="#Appendix:-Figure-Code">&#182;</a></h3>
+<h2 id="Timing-Code-Snippets:-%timeit-and-%time">Timing Code Snippets: <code>%timeit</code> and <code>%time</code><a class="anchor-link" href="#Timing-Code-Snippets:-%timeit-and-%time">&#182;</a></h2><p>We saw the <code>%timeit</code> line-magic and <code>%%timeit</code> cell-magic in the introduction to magic functions in <a href="01.03-magic-commands.html">IPython Magic Commands</a>; it can be used to time the repeated execution of snippets of code:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">timeit</span> sum(range(100))
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>100000 loops, best of 3: 1.54 µs per loop
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Note that because this operation is so fast, <code>%timeit</code> automatically does a large number of repetitions.
+For slower commands, <code>%timeit</code> will automatically adjust and perform fewer repetitions:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">timeit</span>
+total = 0
+for i in range(1000):
+    for j in range(1000):
+        total += i * (-1) ** j
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>1 loops, best of 3: 407 ms per loop
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Sometimes repeating an operation is not the best option.
+For example, if we have a list that we'd like to sort, we might be misled by a repeated operation.
+Sorting a pre-sorted list is much faster than sorting an unsorted list, so the repetition will skew the result:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
+<span class="n">L</span> <span class="o">=</span> <span class="p">[</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100000</span><span class="p">)]</span>
+<span class="o">%</span><span class="k">timeit</span> L.sort()
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>100 loops, best of 3: 1.9 ms per loop
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>For this, the <code>%time</code> magic function may be a better choice. It also is a good choice for longer-running commands, when short, system-related delays are unlikely to affect the result.
+Let's time the sorting of an unsorted and a presorted list:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
+<span class="n">L</span> <span class="o">=</span> <span class="p">[</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100000</span><span class="p">)]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;sorting an unsorted list:&quot;</span><span class="p">)</span>
+<span class="o">%</span><span class="k">time</span> L.sort()
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>sorting an unsorted list:
+CPU times: user 40.6 ms, sys: 896 µs, total: 41.5 ms
+Wall time: 41.5 ms
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;sorting an already sorted list:&quot;</span><span class="p">)</span>
+<span class="o">%</span><span class="k">time</span> L.sort()
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>sorting an already sorted list:
+CPU times: user 8.18 ms, sys: 10 µs, total: 8.19 ms
+Wall time: 8.24 ms
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Notice how much faster the presorted list is to sort, but notice also how much longer the timing takes with <code>%time</code> versus <code>%timeit</code>, even for the presorted list!
+This is a result of the fact that <code>%timeit</code> does some clever things under the hood to prevent system calls from interfering with the timing.
+For example, it prevents cleanup of unused Python objects (known as <em>garbage collection</em>) which might otherwise affect the timing.
+For this reason, <code>%timeit</code> results are usually noticeably faster than <code>%time</code> results.</p>
+<p>For <code>%time</code> as with <code>%timeit</code>, using the double-percent-sign cell magic syntax allows timing of multiline scripts:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">time</span>
+total = 0
+for i in range(1000):
+    for j in range(1000):
+        total += i * (-1) ** j
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>CPU times: user 504 ms, sys: 979 µs, total: 505 ms
+Wall time: 505 ms
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>For more information on <code>%time</code> and <code>%timeit</code>, as well as their available options, use the IPython help functionality (i.e., type <code>%time?</code> at the IPython prompt).</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Profiling-Full-Scripts:-%prun">Profiling Full Scripts: <code>%prun</code><a class="anchor-link" href="#Profiling-Full-Scripts:-%prun">&#182;</a></h2><p>A program is made of many single statements, and sometimes timing these statements in context is more important than timing them on their own.
+Python contains a built-in code profiler (which you can read about in the Python documentation), but IPython offers a much more convenient way to use this profiler, in the form of the magic function <code>%prun</code>.</p>
+<p>By way of example, we'll define a simple function that does some calculations:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">sum_of_lists</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
+    <span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+        <span class="n">L</span> <span class="o">=</span> <span class="p">[</span><span class="n">j</span> <span class="o">^</span> <span class="p">(</span><span class="n">j</span> <span class="o">&gt;&gt;</span> <span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">)]</span>
+        <span class="n">total</span> <span class="o">+=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">L</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">total</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Now we can call <code>%prun</code> with a function call to see the profiled results:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">prun</span> sum_of_lists(1000000)
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre> </pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>In the notebook, the output is printed to the pager, and looks something like this:</p>
+
+<pre><code>14 function calls in 0.714 seconds
+
+   Ordered by: internal time
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        5    0.599    0.120    0.599    0.120 &lt;ipython-input-19&gt;:4(&lt;listcomp&gt;)
+        5    0.064    0.013    0.064    0.013 {built-in method sum}
+        1    0.036    0.036    0.699    0.699 &lt;ipython-input-19&gt;:1(sum_of_lists)
+        1    0.014    0.014    0.714    0.714 &lt;string&gt;:1(&lt;module&gt;)
+        1    0.000    0.000    0.714    0.714 {built-in method exec}</code></pre>
+<p>The result is a table that indicates, in order of total time on each function call, where the execution is spending the most time. In this case, the bulk of execution time is in the list comprehension inside <code>sum_of_lists</code>.
+From here, we could start thinking about what changes we might make to improve the performance in the algorithm.</p>
+<p>For more information on <code>%prun</code>, as well as its available options, use the IPython help functionality (i.e., type <code>%prun?</code> at the IPython prompt).</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Line-By-Line-Profiling-with-%lprun">Line-By-Line Profiling with <code>%lprun</code><a class="anchor-link" href="#Line-By-Line-Profiling-with-%lprun">&#182;</a></h2><p>The function-by-function profiling of <code>%prun</code> is useful, but sometimes it's more convenient to have a line-by-line profile report.
+This is not built into Python or IPython, but there is a <code>line_profiler</code> package available for installation that can do this.
+Start by using Python's packaging tool, <code>pip</code>, to install the <code>line_profiler</code> package:</p>
+
+<pre><code>$ pip install line_profiler</code></pre>
+<p>Next, you can use IPython to load the <code>line_profiler</code> IPython extension, offered as part of this package:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> line_profiler
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Now the <code>%lprun</code> command will do a line-by-line profiling of any function–in this case, we need to tell it explicitly which functions we're interested in profiling:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[10]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">lprun</span> -f sum_of_lists sum_of_lists(5000)
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>As before, the notebook sends the result to the pager, but it looks something like this:</p>
+
+<pre><code>Timer unit: 1e-06 s
+
+Total time: 0.009382 s
+File: &lt;ipython-input-19-fa2be176cc3e&gt;
+Function: sum_of_lists at line 1
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+     1                                           def sum_of_lists(N):
+     2         1            2      2.0      0.0      total = 0
+     3         6            8      1.3      0.1      for i in range(5):
+     4         5         9001   1800.2     95.9          L = [j ^ (j &gt;&gt; i) for j in range(N)]
+     5         5          371     74.2      4.0          total += sum(L)
+     6         1            0      0.0      0.0      return total</code></pre>
+<p>The information at the top gives us the key to reading the results: the time is reported in microseconds and we can see where the program is spending the most time.
+At this point, we may be able to use this information to modify aspects of the script and make it perform better for our desired use case.</p>
+<p>For more information on <code>%lprun</code>, as well as its available options, use the IPython help functionality (i.e., type <code>%lprun?</code> at the IPython prompt).</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Profiling-Memory-Use:-%memit-and-%mprun">Profiling Memory Use: <code>%memit</code> and <code>%mprun</code><a class="anchor-link" href="#Profiling-Memory-Use:-%memit-and-%mprun">&#182;</a></h2><p>Another aspect of profiling is the amount of memory an operation uses.
+This can be evaluated with another IPython extension, the <code>memory_profiler</code>.
+As with the <code>line_profiler</code>, we start by <code>pip</code>-installing the extension:</p>
+
+<pre><code>$ pip install memory_profiler</code></pre>
+<p>Then we can use IPython to load the extension:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[12]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> memory_profiler
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The memory profiler extension contains two useful magic functions: the <code>%memit</code> magic (which offers a memory-measuring equivalent of <code>%timeit</code>) and the <code>%mprun</code> function (which offers a memory-measuring equivalent of <code>%lprun</code>).
+The <code>%memit</code> function can be used rather simply:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[13]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">memit</span> sum_of_lists(1000000)
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>peak memory: 100.08 MiB, increment: 61.36 MiB
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We see that this function uses about 100 MB of memory.</p>
+<p>For a line-by-line description of memory use, we can use the <code>%mprun</code> magic.
+Unfortunately, this magic works only for functions defined in separate modules rather than the notebook itself, so we'll start by using the <code>%%file</code> magic to create a simple module called <code>mprun_demo.py</code>, which contains our <code>sum_of_lists</code> function, with one addition that will make our memory profiling results more clear:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[14]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">file</span> mprun_demo.py
+def sum_of_lists(N):
+    total = 0
+    for i in range(5):
+        L = [j ^ (j &gt;&gt; i) for j in range(N)]
+        total += sum(L)
+        del L # remove reference to L
+    return total
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Overwriting mprun_demo.py
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We can now import the new version of this function and run the memory line profiler:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[15]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">mprun_demo</span> <span class="k">import</span> <span class="n">sum_of_lists</span>
+<span class="o">%</span><span class="k">mprun</span> -f sum_of_lists sum_of_lists(1000000)
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The result, printed to the pager, gives us a summary of the memory use of the function, and looks something like this:</p>
+
+<pre><code>Filename: ./mprun_demo.py
+
+Line #    Mem usage    Increment   Line Contents
+================================================
+     4     71.9 MiB      0.0 MiB           L = [j ^ (j &gt;&gt; i) for j in range(N)]
+
+
+Filename: ./mprun_demo.py
+
+Line #    Mem usage    Increment   Line Contents
+================================================
+     1     39.0 MiB      0.0 MiB   def sum_of_lists(N):
+     2     39.0 MiB      0.0 MiB       total = 0
+     3     46.5 MiB      7.5 MiB       for i in range(5):
+     4     71.9 MiB     25.4 MiB           L = [j ^ (j &gt;&gt; i) for j in range(N)]
+     5     71.9 MiB      0.0 MiB           total += sum(L)
+     6     46.5 MiB    -25.4 MiB           del L # remove reference to L
+     7     39.1 MiB     -7.4 MiB       return total</code></pre>
+<p>Here the <code>Increment</code> column tells us how much each line affects the total memory budget: observe that when we create and delete the list <code>L</code>, we are adding about 25 MB of memory usage.
+This is on top of the background memory usage from the Python interpreter itself.</p>
+<p>For more information on <code>%memit</code> and <code>%mprun</code>, as well as their available options, use the IPython help functionality (i.e., type <code>%memit?</code> at the IPython prompt).</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><!--NAVIGATION-->
+&lt; <a href="01.06-errors-and-debugging.html">Errors and Debugging</a> | <a href="index.html">Contents</a> | <a href="01.08-more-ipython-resources.html">More IPython Resources</a> &gt;</p>
+
 </div>
 </div>
 </div>

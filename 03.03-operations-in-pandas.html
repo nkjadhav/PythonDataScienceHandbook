@@ -6,7 +6,7 @@
         <meta name="author" content="Jake VanderPlas">
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
-        <title>Python Data Science Handbook | Python Data Science Handbook</title>
+        <title>Operating on Data in Pandas | Python Data Science Handbook</title>
 
 	<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
 	<link rel="icon" href="/favicon.ico" type="image/x-icon">
@@ -424,11 +424,23 @@ article .meta a.comments_btn:hover {
         </header>
 
         <div id="wrap">
+
+<div class="container bookinfo">
+<p>
+<img align="left" style="padding-right:10px;" src="/PythonDataScienceHandbook/figures/PDSH-cover-small.png">
+<em>This is an excerpt from the <a href="http://shop.oreilly.com/product/0636920034919.do">Python Data Science Handbook</a> by Jake VanderPlas; Jupyter notebooks are available <a href="https://github.com/jakevdp/PythonDataScienceHandbook">on GitHub</a>.</em>
+</p>
+<p>
+<em>The text is released under the <a href="https://creativecommons.org/licenses/by-nc-nd/3.0/us/legalcode">CC-BY-NC-ND license</a>, and code is released under the <a href="https://opensource.org/licenses/MIT">MIT license</a>. If you find this content useful, please consider supporting the work by <a href="http://shop.oreilly.com/product/0636920034919.do">buying the book</a>!</em>
+</p>
+</div>
+
+
 <div class="container post">
 
     <article>
         <header>
-            <h1>Python Data Science Handbook</h1>
+            <h1>Operating on Data in Pandas</h1>
         </header>
 
         <div class="article_content">
@@ -1409,8 +1421,8 @@ h6:hover .anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><em>Jake VanderPlas</em></p>
-<p><img src="/PythonDataScienceHandbook/figures/PDSH-cover.png" alt="Book Cover"></p>
+<p><!--NAVIGATION-->
+&lt; <a href="03.02-data-indexing-and-selection.html">Data Indexing and Selection</a> | <a href="index.html">Contents</a> | <a href="03.04-missing-values.html">Handling Missing Data</a> &gt;</p>
 
 </div>
 </div>
@@ -1420,8 +1432,11 @@ h6:hover .anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>This is the Jupyter notebook version of the <a href="http://shop.oreilly.com/product/0636920034919.do">Python Data Science Handbook</a> by Jake VanderPlas; the content is available <a href="https://github.com/jakevdp/PythonDataScienceHandbook">on GitHub</a>.*
-The text is released under the <a href="https://creativecommons.org/licenses/by-nc-nd/3.0/us/legalcode">CC-BY-NC-ND license</a>, and code is released under the <a href="https://opensource.org/licenses/MIT">MIT license</a>. If you find this content useful, please consider supporting the work by <a href="http://shop.oreilly.com/product/0636920034919.do">buying the book</a>!</p>
+<p>One of the essential pieces of NumPy is the ability to perform quick element-wise operations, both with basic arithmetic (addition, subtraction, multiplication, etc.) and with more sophisticated operations (trigonometric functions, exponential and logarithmic functions, etc.).
+Pandas inherits much of this functionality from NumPy, and the ufuncs that we introduced in <a href="02.03-computation-on-arrays-ufuncs.html">Computation on NumPy Arrays: Universal Functions</a> are key to this.</p>
+<p>Pandas includes a couple useful twists, however: for unary operations like negation and trigonometric functions, these ufuncs will <em>preserve index and column labels</em> in the output, and for binary operations such as addition and multiplication, Pandas will automatically <em>align indices</em> when passing the objects to the ufunc.
+This means that keeping the context of data and combining data from different sources–both potentially error-prone tasks with raw NumPy arrays–become essentially foolproof ones with Pandas.
+We will additionally see that there are well-defined operations between one-dimensional <code>Series</code> structures and two-dimensional <code>DataFrame</code> structures.</p>
 
 </div>
 </div>
@@ -1431,77 +1446,1144 @@ The text is released under the <a href="https://creativecommons.org/licenses/by-
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Table-of-Contents">Table of Contents<a class="anchor-link" href="#Table-of-Contents">&#182;</a></h2><h3 id="Preface"><a href="00.00-preface.html">Preface</a><a class="anchor-link" href="#Preface">&#182;</a></h3><h3 id="1.-IPython:-Beyond-Normal-Python"><a href="01.00-ipython-beyond-normal-python.html">1. IPython: Beyond Normal Python</a><a class="anchor-link" href="#1.-IPython:-Beyond-Normal-Python">&#182;</a></h3><ul>
-<li><a href="01.01-help-and-documentation.html">Help and Documentation in IPython</a></li>
-<li><a href="01.02-shell-keyboard-shortcuts.html">Keyboard Shortcuts in the IPython Shell</a></li>
-<li><a href="01.03-magic-commands.html">IPython Magic Commands</a></li>
-<li><a href="01.04-input-output-history.html">Input and Output History</a></li>
-<li><a href="01.05-ipython-and-shell-commands.html">IPython and Shell Commands</a></li>
-<li><a href="01.06-errors-and-debugging.html">Errors and Debugging</a></li>
-<li><a href="01.07-timing-and-profiling.html">Profiling and Timing Code</a></li>
-<li><a href="01.08-more-ipython-resources.html">More IPython Resources</a></li>
-</ul>
-<h3 id="2.-Introduction-to-NumPy"><a href="02.00-introduction-to-numpy.html">2. Introduction to NumPy</a><a class="anchor-link" href="#2.-Introduction-to-NumPy">&#182;</a></h3><ul>
-<li><a href="02.01-understanding-data-types.html">Understanding Data Types in Python</a></li>
-<li><a href="02.02-the-basics-of-numpy-arrays.html">The Basics of NumPy Arrays</a></li>
-<li><a href="02.03-computation-on-arrays-ufuncs.html">Computation on NumPy Arrays: Universal Functions</a></li>
-<li><a href="02.04-computation-on-arrays-aggregates.html">Aggregations: Min, Max, and Everything In Between</a></li>
-<li><a href="02.05-computation-on-arrays-broadcasting.html">Computation on Arrays: Broadcasting</a></li>
-<li><a href="02.06-boolean-arrays-and-masks.html">Comparisons, Masks, and Boolean Logic</a></li>
-<li><a href="02.07-fancy-indexing.html">Fancy Indexing</a></li>
-<li><a href="02.08-sorting.html">Sorting Arrays</a></li>
-<li><a href="02.09-structured-data-numpy.html">Structured Data: NumPy's Structured Arrays</a></li>
-</ul>
-<h3 id="3.-Data-Manipulation-with-Pandas"><a href="03.00-introduction-to-pandas.html">3. Data Manipulation with Pandas</a><a class="anchor-link" href="#3.-Data-Manipulation-with-Pandas">&#182;</a></h3><ul>
-<li><a href="03.01-introducing-pandas-objects.html">Introducing Pandas Objects</a></li>
-<li><a href="03.02-data-indexing-and-selection.html">Data Indexing and Selection</a></li>
-<li><a href="03.03-operations-in-pandas.html">Operating on Data in Pandas</a></li>
-<li><a href="03.04-missing-values.html">Handling Missing Data</a></li>
-<li><a href="03.05-hierarchical-indexing.html">Hierarchical Indexing</a></li>
-<li><a href="03.06-concat-and-append.html">Combining Datasets: Concat and Append</a></li>
-<li><a href="03.07-merge-and-join.html">Combining Datasets: Merge and Join</a></li>
-<li><a href="03.08-aggregation-and-grouping.html">Aggregation and Grouping</a></li>
-<li><a href="03.09-pivot-tables.html">Pivot Tables</a></li>
-<li><a href="03.10-working-with-strings.html">Vectorized String Operations</a></li>
-<li><a href="03.11-working-with-time-series.html">Working with Time Series</a></li>
-<li><a href="03.12-performance-eval-and-query.html">High-Performance Pandas: eval() and query()</a></li>
-<li><a href="03.13-further-resources.html">Further Resources</a></li>
-</ul>
-<h3 id="4.-Visualization-with-Matplotlib"><a href="04.00-introduction-to-matplotlib.html">4. Visualization with Matplotlib</a><a class="anchor-link" href="#4.-Visualization-with-Matplotlib">&#182;</a></h3><ul>
-<li><a href="04.01-simple-line-plots.html">Simple Line Plots</a></li>
-<li><a href="04.02-simple-scatter-plots.html">Simple Scatter Plots</a></li>
-<li><a href="04.03-errorbars.html">Visualizing Errors</a></li>
-<li><a href="04.04-density-and-contour-plots.html">Density and Contour Plots</a></li>
-<li><a href="04.05-histograms-and-binnings.html">Histograms, Binnings, and Density</a></li>
-<li><a href="04.06-customizing-legends.html">Customizing Plot Legends</a></li>
-<li><a href="04.07-customizing-colorbars.html">Customizing Colorbars</a></li>
-<li><a href="04.08-multiple-subplots.html">Multiple Subplots</a></li>
-<li><a href="04.09-text-and-annotation.html">Text and Annotation</a></li>
-<li><a href="04.10-customizing-ticks.html">Customizing Ticks</a></li>
-<li><a href="04.11-settings-and-stylesheets.html">Customizing Matplotlib: Configurations and Stylesheets</a></li>
-<li><a href="04.12-three-dimensional-plotting.html">Three-Dimensional Plotting in Matplotlib</a></li>
-<li><a href="04.13-geographic-data-with-basemap.html">Geographic Data with Basemap</a></li>
-<li><a href="04.14-visualization-with-seaborn.html">Visualization with Seaborn</a></li>
-<li><a href="04.15-further-resources.html">Further Resources</a></li>
-</ul>
-<h3 id="5.-Machine-Learning"><a href="05.00-machine-learning.html">5. Machine Learning</a><a class="anchor-link" href="#5.-Machine-Learning">&#182;</a></h3><ul>
-<li><a href="05.01-what-is-machine-learning.html">What Is Machine Learning?</a></li>
-<li><a href="05.02-introducing-scikit-learn.html">Introducing Scikit-Learn</a></li>
-<li><a href="05.03-hyperparameters-and-model-validation.html">Hyperparameters and Model Validation</a></li>
-<li><a href="05.04-feature-engineering.html">Feature Engineering</a></li>
-<li><a href="05.05-naive-bayes.html">In Depth: Naive Bayes Classification</a></li>
-<li><a href="05.06-linear-regression.html">In Depth: Linear Regression</a></li>
-<li><a href="05.07-support-vector-machines.html">In-Depth: Support Vector Machines</a></li>
-<li><a href="05.08-random-forests.html">In-Depth: Decision Trees and Random Forests</a></li>
-<li><a href="05.09-principal-component-analysis.html">In Depth: Principal Component Analysis</a></li>
-<li><a href="05.10-manifold-learning.html">In-Depth: Manifold Learning</a></li>
-<li><a href="05.11-k-means.html">In Depth: k-Means Clustering</a></li>
-<li><a href="05.12-gaussian-mixtures.html">In Depth: Gaussian Mixture Models</a></li>
-<li><a href="05.13-kernel-density-estimation.html">In-Depth: Kernel Density Estimation</a></li>
-<li><a href="05.14-image-features.html">Application: A Face Detection Pipeline</a></li>
-<li><a href="05.15-learning-more.html">Further Machine Learning Resources</a></li>
-</ul>
-<h3 id="Appendix:-Figure-Code"><a href="06.00-figure-code.html">Appendix: Figure Code</a><a class="anchor-link" href="#Appendix:-Figure-Code">&#182;</a></h3>
+<h2 id="Ufuncs:-Index-Preservation">Ufuncs: Index Preservation<a class="anchor-link" href="#Ufuncs:-Index-Preservation">&#182;</a></h2><p>Because Pandas is designed to work with NumPy, any NumPy ufunc will work on Pandas <code>Series</code> and <code>DataFrame</code> objects.
+Let's start by defining a simple <code>Series</code> and <code>DataFrame</code> on which to demonstrate this:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">RandomState</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">ser</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">rng</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">ser</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[2]:</div>
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>0    6
+1    3
+2    7
+3    4
+dtype: int64</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">rng</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)),</span>
+                  <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="s1">&#39;D&#39;</span><span class="p">])</span>
+<span class="n">df</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[3]:</div>
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>A</th>
+      <th>B</th>
+      <th>C</th>
+      <th>D</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>6</td>
+      <td>9</td>
+      <td>2</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>7</td>
+      <td>4</td>
+      <td>3</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>7</td>
+      <td>2</td>
+      <td>5</td>
+      <td>4</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>If we apply a NumPy ufunc on either of these objects, the result will be another Pandas object <em>with the indices preserved:</em></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">ser</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[4]:</div>
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>0     403.428793
+1      20.085537
+2    1096.633158
+3      54.598150
+dtype: float64</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Or, for a slightly more complex calculation:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">df</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mi">4</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[5]:</div>
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>A</th>
+      <th>B</th>
+      <th>C</th>
+      <th>D</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>-1.000000</td>
+      <td>7.071068e-01</td>
+      <td>1.000000</td>
+      <td>-1.000000e+00</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>-0.707107</td>
+      <td>1.224647e-16</td>
+      <td>0.707107</td>
+      <td>-7.071068e-01</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>-0.707107</td>
+      <td>1.000000e+00</td>
+      <td>-0.707107</td>
+      <td>1.224647e-16</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Any of the ufuncs discussed in <a href="02.03-computation-on-arrays-ufuncs.html">Computation on NumPy Arrays: Universal Functions</a> can be used in a similar manner.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="UFuncs:-Index-Alignment">UFuncs: Index Alignment<a class="anchor-link" href="#UFuncs:-Index-Alignment">&#182;</a></h2><p>For binary operations on two <code>Series</code> or <code>DataFrame</code> objects, Pandas will align indices in the process of performing the operation.
+This is very convenient when working with incomplete data, as we'll see in some of the examples that follow.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Index-alignment-in-Series">Index alignment in Series<a class="anchor-link" href="#Index-alignment-in-Series">&#182;</a></h3><p>As an example, suppose we are combining two different data sources, and find only the top three US states by <em>area</em> and the top three US states by <em>population</em>:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">area</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">({</span><span class="s1">&#39;Alaska&#39;</span><span class="p">:</span> <span class="mi">1723337</span><span class="p">,</span> <span class="s1">&#39;Texas&#39;</span><span class="p">:</span> <span class="mi">695662</span><span class="p">,</span>
+                  <span class="s1">&#39;California&#39;</span><span class="p">:</span> <span class="mi">423967</span><span class="p">},</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;area&#39;</span><span class="p">)</span>
+<span class="n">population</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">({</span><span class="s1">&#39;California&#39;</span><span class="p">:</span> <span class="mi">38332521</span><span class="p">,</span> <span class="s1">&#39;Texas&#39;</span><span class="p">:</span> <span class="mi">26448193</span><span class="p">,</span>
+                        <span class="s1">&#39;New York&#39;</span><span class="p">:</span> <span class="mi">19651127</span><span class="p">},</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;population&#39;</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Let's see what happens when we divide these to compute the population density:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">population</span> <span class="o">/</span> <span class="n">area</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[7]:</div>
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>Alaska              NaN
+California    90.413926
+New York            NaN
+Texas         38.018740
+dtype: float64</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The resulting array contains the <em>union</em> of indices of the two input arrays, which could be determined using standard Python set arithmetic on these indices:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">area</span><span class="o">.</span><span class="n">index</span> <span class="o">|</span> <span class="n">population</span><span class="o">.</span><span class="n">index</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[8]:</div>
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>Index([&#39;Alaska&#39;, &#39;California&#39;, &#39;New York&#39;, &#39;Texas&#39;], dtype=&#39;object&#39;)</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Any item for which one or the other does not have an entry is marked with <code>NaN</code>, or "Not a Number," which is how Pandas marks missing data (see further discussion of missing data in <a href="03.04-missing-values.html">Handling Missing Data</a>).
+This index matching is implemented this way for any of Python's built-in arithmetic expressions; any missing values are filled in with NaN by default:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+<span class="n">B</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="n">A</span> <span class="o">+</span> <span class="n">B</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[9]:</div>
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>0    NaN
+1    5.0
+2    9.0
+3    NaN
+dtype: float64</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>If using NaN values is not the desired behavior, the fill value can be modified using appropriate object methods in place of the operators.
+For example, calling <code>A.add(B)</code> is equivalent to calling <code>A + B</code>, but allows optional explicit specification of the fill value for any elements in <code>A</code> or <code>B</code> that might be missing:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[10]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">A</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">B</span><span class="p">,</span> <span class="n">fill_value</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[10]:</div>
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>0    2.0
+1    5.0
+2    9.0
+3    5.0
+dtype: float64</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Index-alignment-in-DataFrame">Index alignment in DataFrame<a class="anchor-link" href="#Index-alignment-in-DataFrame">&#182;</a></h3><p>A similar type of alignment takes place for <em>both</em> columns and indices when performing operations on <code>DataFrame</code>s:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[11]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">rng</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)),</span>
+                 <span class="n">columns</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="s1">&#39;AB&#39;</span><span class="p">))</span>
+<span class="n">A</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[11]:</div>
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>A</th>
+      <th>B</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>11</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>5</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[12]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">B</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">rng</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)),</span>
+                 <span class="n">columns</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="s1">&#39;BAC&#39;</span><span class="p">))</span>
+<span class="n">B</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[12]:</div>
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>B</th>
+      <th>A</th>
+      <th>C</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>4</td>
+      <td>0</td>
+      <td>9</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>5</td>
+      <td>8</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>9</td>
+      <td>2</td>
+      <td>6</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[13]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">A</span> <span class="o">+</span> <span class="n">B</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[13]:</div>
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>A</th>
+      <th>B</th>
+      <th>C</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1.0</td>
+      <td>15.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>13.0</td>
+      <td>6.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Notice that indices are aligned correctly irrespective of their order in the two objects, and indices in the result are sorted.
+As was the case with <code>Series</code>, we can use the associated object's arithmetic method and pass any desired <code>fill_value</code> to be used in place of missing entries.
+Here we'll fill with the mean of all values in <code>A</code> (computed by first stacking the rows of <code>A</code>):</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[14]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">fill</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">stack</span><span class="p">()</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">A</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">B</span><span class="p">,</span> <span class="n">fill_value</span><span class="o">=</span><span class="n">fill</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[14]:</div>
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>A</th>
+      <th>B</th>
+      <th>C</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1.0</td>
+      <td>15.0</td>
+      <td>13.5</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>13.0</td>
+      <td>6.0</td>
+      <td>4.5</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>6.5</td>
+      <td>13.5</td>
+      <td>10.5</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The following table lists Python operators and their equivalent Pandas object methods:</p>
+<table>
+<thead><tr>
+<th>Python Operator</th>
+<th>Pandas Method(s)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>+</code></td>
+<td><code>add()</code></td>
+</tr>
+<tr>
+<td><code>-</code></td>
+<td><code>sub()</code>, <code>subtract()</code></td>
+</tr>
+<tr>
+<td><code>*</code></td>
+<td><code>mul()</code>, <code>multiply()</code></td>
+</tr>
+<tr>
+<td><code>/</code></td>
+<td><code>truediv()</code>, <code>div()</code>, <code>divide()</code></td>
+</tr>
+<tr>
+<td><code>//</code></td>
+<td><code>floordiv()</code></td>
+</tr>
+<tr>
+<td><code>%</code></td>
+<td><code>mod()</code></td>
+</tr>
+<tr>
+<td><code>**</code></td>
+<td><code>pow()</code></td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Ufuncs:-Operations-Between-DataFrame-and-Series">Ufuncs: Operations Between DataFrame and Series<a class="anchor-link" href="#Ufuncs:-Operations-Between-DataFrame-and-Series">&#182;</a></h2><p>When performing operations between a <code>DataFrame</code> and a <code>Series</code>, the index and column alignment is similarly maintained.
+Operations between a <code>DataFrame</code> and a <code>Series</code> are similar to operations between a two-dimensional and one-dimensional NumPy array.
+Consider one common operation, where we find the difference of a two-dimensional array and one of its rows:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[15]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">A</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[15]:</div>
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([[3, 8, 2, 4],
+       [2, 6, 4, 8],
+       [6, 1, 3, 8]])</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[16]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">A</span> <span class="o">-</span> <span class="n">A</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[16]:</div>
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([[ 0,  0,  0,  0],
+       [-1, -2,  2,  4],
+       [ 3, -7,  1,  4]])</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>According to NumPy's broadcasting rules (see <a href="02.05-computation-on-arrays-broadcasting.html">Computation on Arrays: Broadcasting</a>), subtraction between a two-dimensional array and one of its rows is applied row-wise.</p>
+<p>In Pandas, the convention similarly operates row-wise by default:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[17]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="s1">&#39;QRST&#39;</span><span class="p">))</span>
+<span class="n">df</span> <span class="o">-</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[17]:</div>
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Q</th>
+      <th>R</th>
+      <th>S</th>
+      <th>T</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>-1</td>
+      <td>-2</td>
+      <td>2</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>-7</td>
+      <td>1</td>
+      <td>4</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>If you would instead like to operate column-wise, you can use the object methods mentioned earlier, while specifying the <code>axis</code> keyword:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[18]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">subtract</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;R&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[18]:</div>
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Q</th>
+      <th>R</th>
+      <th>S</th>
+      <th>T</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>-5</td>
+      <td>0</td>
+      <td>-6</td>
+      <td>-4</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>-4</td>
+      <td>0</td>
+      <td>-2</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>5</td>
+      <td>0</td>
+      <td>2</td>
+      <td>7</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Note that these <code>DataFrame</code>/<code>Series</code> operations, like the operations discussed above, will automatically align  indices between the two elements:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[19]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">halfrow</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">::</span><span class="mi">2</span><span class="p">]</span>
+<span class="n">halfrow</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[19]:</div>
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>Q    3
+S    2
+Name: 0, dtype: int64</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[20]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span> <span class="o">-</span> <span class="n">halfrow</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[20]:</div>
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Q</th>
+      <th>R</th>
+      <th>S</th>
+      <th>T</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>-1.0</td>
+      <td>NaN</td>
+      <td>2.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3.0</td>
+      <td>NaN</td>
+      <td>1.0</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>This preservation and alignment of indices and columns means that operations on data in Pandas will always maintain the data context, which prevents the types of silly errors that might come up when working with heterogeneous and/or misaligned data in raw NumPy arrays.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><!--NAVIGATION-->
+&lt; <a href="03.02-data-indexing-and-selection.html">Data Indexing and Selection</a> | <a href="index.html">Contents</a> | <a href="03.04-missing-values.html">Handling Missing Data</a> &gt;</p>
+
 </div>
 </div>
 </div>

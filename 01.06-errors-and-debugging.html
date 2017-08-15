@@ -6,7 +6,7 @@
         <meta name="author" content="Jake VanderPlas">
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
-        <title>Python Data Science Handbook | Python Data Science Handbook</title>
+        <title>Errors and Debugging | Python Data Science Handbook</title>
 
 	<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
 	<link rel="icon" href="/favicon.ico" type="image/x-icon">
@@ -424,11 +424,23 @@ article .meta a.comments_btn:hover {
         </header>
 
         <div id="wrap">
+
+<div class="container bookinfo">
+<p>
+<img align="left" style="padding-right:10px;" src="/PythonDataScienceHandbook/figures/PDSH-cover-small.png">
+<em>This is an excerpt from the <a href="http://shop.oreilly.com/product/0636920034919.do">Python Data Science Handbook</a> by Jake VanderPlas; Jupyter notebooks are available <a href="https://github.com/jakevdp/PythonDataScienceHandbook">on GitHub</a>.</em>
+</p>
+<p>
+<em>The text is released under the <a href="https://creativecommons.org/licenses/by-nc-nd/3.0/us/legalcode">CC-BY-NC-ND license</a>, and code is released under the <a href="https://opensource.org/licenses/MIT">MIT license</a>. If you find this content useful, please consider supporting the work by <a href="http://shop.oreilly.com/product/0636920034919.do">buying the book</a>!</em>
+</p>
+</div>
+
+
 <div class="container post">
 
     <article>
         <header>
-            <h1>Python Data Science Handbook</h1>
+            <h1>Errors and Debugging</h1>
         </header>
 
         <div class="article_content">
@@ -1409,8 +1421,8 @@ h6:hover .anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><em>Jake VanderPlas</em></p>
-<p><img src="/PythonDataScienceHandbook/figures/PDSH-cover.png" alt="Book Cover"></p>
+<p><!--NAVIGATION-->
+&lt; <a href="01.05-ipython-and-shell-commands.html">IPython and Shell Commands</a> | <a href="index.html">Contents</a> | <a href="01.07-timing-and-profiling.html">Profiling and Timing Code</a> &gt;</p>
 
 </div>
 </div>
@@ -1420,8 +1432,8 @@ h6:hover .anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>This is the Jupyter notebook version of the <a href="http://shop.oreilly.com/product/0636920034919.do">Python Data Science Handbook</a> by Jake VanderPlas; the content is available <a href="https://github.com/jakevdp/PythonDataScienceHandbook">on GitHub</a>.*
-The text is released under the <a href="https://creativecommons.org/licenses/by-nc-nd/3.0/us/legalcode">CC-BY-NC-ND license</a>, and code is released under the <a href="https://opensource.org/licenses/MIT">MIT license</a>. If you find this content useful, please consider supporting the work by <a href="http://shop.oreilly.com/product/0636920034919.do">buying the book</a>!</p>
+<p>Code development and data analysis always require a bit of trial and error, and IPython contains tools to streamline this process.
+This section will briefly cover some options for controlling Python's exception reporting, followed by exploring tools for debugging errors in code.</p>
 
 </div>
 </div>
@@ -1431,77 +1443,540 @@ The text is released under the <a href="https://creativecommons.org/licenses/by-
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Table-of-Contents">Table of Contents<a class="anchor-link" href="#Table-of-Contents">&#182;</a></h2><h3 id="Preface"><a href="00.00-preface.html">Preface</a><a class="anchor-link" href="#Preface">&#182;</a></h3><h3 id="1.-IPython:-Beyond-Normal-Python"><a href="01.00-ipython-beyond-normal-python.html">1. IPython: Beyond Normal Python</a><a class="anchor-link" href="#1.-IPython:-Beyond-Normal-Python">&#182;</a></h3><ul>
-<li><a href="01.01-help-and-documentation.html">Help and Documentation in IPython</a></li>
-<li><a href="01.02-shell-keyboard-shortcuts.html">Keyboard Shortcuts in the IPython Shell</a></li>
-<li><a href="01.03-magic-commands.html">IPython Magic Commands</a></li>
-<li><a href="01.04-input-output-history.html">Input and Output History</a></li>
-<li><a href="01.05-ipython-and-shell-commands.html">IPython and Shell Commands</a></li>
-<li><a href="01.06-errors-and-debugging.html">Errors and Debugging</a></li>
-<li><a href="01.07-timing-and-profiling.html">Profiling and Timing Code</a></li>
-<li><a href="01.08-more-ipython-resources.html">More IPython Resources</a></li>
-</ul>
-<h3 id="2.-Introduction-to-NumPy"><a href="02.00-introduction-to-numpy.html">2. Introduction to NumPy</a><a class="anchor-link" href="#2.-Introduction-to-NumPy">&#182;</a></h3><ul>
-<li><a href="02.01-understanding-data-types.html">Understanding Data Types in Python</a></li>
-<li><a href="02.02-the-basics-of-numpy-arrays.html">The Basics of NumPy Arrays</a></li>
-<li><a href="02.03-computation-on-arrays-ufuncs.html">Computation on NumPy Arrays: Universal Functions</a></li>
-<li><a href="02.04-computation-on-arrays-aggregates.html">Aggregations: Min, Max, and Everything In Between</a></li>
-<li><a href="02.05-computation-on-arrays-broadcasting.html">Computation on Arrays: Broadcasting</a></li>
-<li><a href="02.06-boolean-arrays-and-masks.html">Comparisons, Masks, and Boolean Logic</a></li>
-<li><a href="02.07-fancy-indexing.html">Fancy Indexing</a></li>
-<li><a href="02.08-sorting.html">Sorting Arrays</a></li>
-<li><a href="02.09-structured-data-numpy.html">Structured Data: NumPy's Structured Arrays</a></li>
-</ul>
-<h3 id="3.-Data-Manipulation-with-Pandas"><a href="03.00-introduction-to-pandas.html">3. Data Manipulation with Pandas</a><a class="anchor-link" href="#3.-Data-Manipulation-with-Pandas">&#182;</a></h3><ul>
-<li><a href="03.01-introducing-pandas-objects.html">Introducing Pandas Objects</a></li>
-<li><a href="03.02-data-indexing-and-selection.html">Data Indexing and Selection</a></li>
-<li><a href="03.03-operations-in-pandas.html">Operating on Data in Pandas</a></li>
-<li><a href="03.04-missing-values.html">Handling Missing Data</a></li>
-<li><a href="03.05-hierarchical-indexing.html">Hierarchical Indexing</a></li>
-<li><a href="03.06-concat-and-append.html">Combining Datasets: Concat and Append</a></li>
-<li><a href="03.07-merge-and-join.html">Combining Datasets: Merge and Join</a></li>
-<li><a href="03.08-aggregation-and-grouping.html">Aggregation and Grouping</a></li>
-<li><a href="03.09-pivot-tables.html">Pivot Tables</a></li>
-<li><a href="03.10-working-with-strings.html">Vectorized String Operations</a></li>
-<li><a href="03.11-working-with-time-series.html">Working with Time Series</a></li>
-<li><a href="03.12-performance-eval-and-query.html">High-Performance Pandas: eval() and query()</a></li>
-<li><a href="03.13-further-resources.html">Further Resources</a></li>
-</ul>
-<h3 id="4.-Visualization-with-Matplotlib"><a href="04.00-introduction-to-matplotlib.html">4. Visualization with Matplotlib</a><a class="anchor-link" href="#4.-Visualization-with-Matplotlib">&#182;</a></h3><ul>
-<li><a href="04.01-simple-line-plots.html">Simple Line Plots</a></li>
-<li><a href="04.02-simple-scatter-plots.html">Simple Scatter Plots</a></li>
-<li><a href="04.03-errorbars.html">Visualizing Errors</a></li>
-<li><a href="04.04-density-and-contour-plots.html">Density and Contour Plots</a></li>
-<li><a href="04.05-histograms-and-binnings.html">Histograms, Binnings, and Density</a></li>
-<li><a href="04.06-customizing-legends.html">Customizing Plot Legends</a></li>
-<li><a href="04.07-customizing-colorbars.html">Customizing Colorbars</a></li>
-<li><a href="04.08-multiple-subplots.html">Multiple Subplots</a></li>
-<li><a href="04.09-text-and-annotation.html">Text and Annotation</a></li>
-<li><a href="04.10-customizing-ticks.html">Customizing Ticks</a></li>
-<li><a href="04.11-settings-and-stylesheets.html">Customizing Matplotlib: Configurations and Stylesheets</a></li>
-<li><a href="04.12-three-dimensional-plotting.html">Three-Dimensional Plotting in Matplotlib</a></li>
-<li><a href="04.13-geographic-data-with-basemap.html">Geographic Data with Basemap</a></li>
-<li><a href="04.14-visualization-with-seaborn.html">Visualization with Seaborn</a></li>
-<li><a href="04.15-further-resources.html">Further Resources</a></li>
-</ul>
-<h3 id="5.-Machine-Learning"><a href="05.00-machine-learning.html">5. Machine Learning</a><a class="anchor-link" href="#5.-Machine-Learning">&#182;</a></h3><ul>
-<li><a href="05.01-what-is-machine-learning.html">What Is Machine Learning?</a></li>
-<li><a href="05.02-introducing-scikit-learn.html">Introducing Scikit-Learn</a></li>
-<li><a href="05.03-hyperparameters-and-model-validation.html">Hyperparameters and Model Validation</a></li>
-<li><a href="05.04-feature-engineering.html">Feature Engineering</a></li>
-<li><a href="05.05-naive-bayes.html">In Depth: Naive Bayes Classification</a></li>
-<li><a href="05.06-linear-regression.html">In Depth: Linear Regression</a></li>
-<li><a href="05.07-support-vector-machines.html">In-Depth: Support Vector Machines</a></li>
-<li><a href="05.08-random-forests.html">In-Depth: Decision Trees and Random Forests</a></li>
-<li><a href="05.09-principal-component-analysis.html">In Depth: Principal Component Analysis</a></li>
-<li><a href="05.10-manifold-learning.html">In-Depth: Manifold Learning</a></li>
-<li><a href="05.11-k-means.html">In Depth: k-Means Clustering</a></li>
-<li><a href="05.12-gaussian-mixtures.html">In Depth: Gaussian Mixture Models</a></li>
-<li><a href="05.13-kernel-density-estimation.html">In-Depth: Kernel Density Estimation</a></li>
-<li><a href="05.14-image-features.html">Application: A Face Detection Pipeline</a></li>
-<li><a href="05.15-learning-more.html">Further Machine Learning Resources</a></li>
-</ul>
-<h3 id="Appendix:-Figure-Code"><a href="06.00-figure-code.html">Appendix: Figure Code</a><a class="anchor-link" href="#Appendix:-Figure-Code">&#182;</a></h3>
+<h2 id="Controlling-Exceptions:-%xmode">Controlling Exceptions: <code>%xmode</code><a class="anchor-link" href="#Controlling-Exceptions:-%xmode">&#182;</a></h2><p>Most of the time when a Python script fails, it will raise an Exception.
+When the interpreter hits one of these exceptions, information about the cause of the error can be found in the <em>traceback</em>, which can be accessed from within Python.
+With the <code>%xmode</code> magic function, IPython allows you to control the amount of information printed when the exception is raised.
+Consider the following code:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">func1</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">a</span> <span class="o">/</span> <span class="n">b</span>
+
+<span class="k">def</span> <span class="nf">func2</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="n">x</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="n">x</span> <span class="o">-</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">func1</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">func2</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+
+<div class="output_subarea output_text output_error">
+<pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">ZeroDivisionError</span>                         Traceback (most recent call last)
+<span class="ansi-green-fg">&lt;ipython-input-2-b2e110f6fc8f&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span><span class="ansi-blue-fg">()</span>
+<span class="ansi-green-fg">----&gt; 1</span><span class="ansi-red-fg"> </span>func2<span class="ansi-blue-fg">(</span><span class="ansi-cyan-fg">1</span><span class="ansi-blue-fg">)</span>
+
+<span class="ansi-green-fg">&lt;ipython-input-1-d849e34d61fb&gt;</span> in <span class="ansi-cyan-fg">func2</span><span class="ansi-blue-fg">(x)</span>
+<span class="ansi-green-intense-fg ansi-bold">      5</span>     a <span class="ansi-blue-fg">=</span> x
+<span class="ansi-green-intense-fg ansi-bold">      6</span>     b <span class="ansi-blue-fg">=</span> x <span class="ansi-blue-fg">-</span> <span class="ansi-cyan-fg">1</span>
+<span class="ansi-green-fg">----&gt; 7</span><span class="ansi-red-fg">     </span><span class="ansi-green-fg">return</span> func1<span class="ansi-blue-fg">(</span>a<span class="ansi-blue-fg">,</span> b<span class="ansi-blue-fg">)</span>
+
+<span class="ansi-green-fg">&lt;ipython-input-1-d849e34d61fb&gt;</span> in <span class="ansi-cyan-fg">func1</span><span class="ansi-blue-fg">(a, b)</span>
+<span class="ansi-green-intense-fg ansi-bold">      1</span> <span class="ansi-green-fg">def</span> func1<span class="ansi-blue-fg">(</span>a<span class="ansi-blue-fg">,</span> b<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
+<span class="ansi-green-fg">----&gt; 2</span><span class="ansi-red-fg">     </span><span class="ansi-green-fg">return</span> a <span class="ansi-blue-fg">/</span> b
+<span class="ansi-green-intense-fg ansi-bold">      3</span> 
+<span class="ansi-green-intense-fg ansi-bold">      4</span> <span class="ansi-green-fg">def</span> func2<span class="ansi-blue-fg">(</span>x<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
+<span class="ansi-green-intense-fg ansi-bold">      5</span>     a <span class="ansi-blue-fg">=</span> x
+
+<span class="ansi-red-fg">ZeroDivisionError</span>: division by zero</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Calling <code>func2</code> results in an error, and reading the printed trace lets us see exactly what happened.
+By default, this trace includes several lines showing the context of each step that led to the error.
+Using the <code>%xmode</code> magic function (short for <em>Exception mode</em>), we can change what information is printed.</p>
+<p><code>%xmode</code> takes a single argument, the mode, and there are three possibilities: <code>Plain</code>, <code>Context</code>, and <code>Verbose</code>.
+The default is <code>Context</code>, and gives output like that just shown before.
+<code>Plain</code> is more compact and gives less information:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">xmode</span> Plain
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Exception reporting mode: Plain
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">func2</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+
+<div class="output_subarea output_text output_error">
+<pre>
+Traceback <span class="ansi-cyan-fg">(most recent call last)</span>:
+
+  File <span class="ansi-green-intense-fg ansi-bold">&#34;&lt;ipython-input-4-b2e110f6fc8f&gt;&#34;</span>, line <span class="ansi-green-intense-fg ansi-bold">1</span>, in <span class="ansi-magenta-intense-fg ansi-bold">&lt;module&gt;</span>
+    func2(1)
+
+  File <span class="ansi-green-intense-fg ansi-bold">&#34;&lt;ipython-input-1-d849e34d61fb&gt;&#34;</span>, line <span class="ansi-green-intense-fg ansi-bold">7</span>, in <span class="ansi-magenta-intense-fg ansi-bold">func2</span>
+    return func1(a, b)
+
+<span class="ansi-cyan-fg">  File </span><span class="ansi-green-fg">&#34;&lt;ipython-input-1-d849e34d61fb&gt;&#34;</span><span class="ansi-cyan-fg">, line </span><span class="ansi-green-fg">2</span><span class="ansi-cyan-fg">, in </span><span class="ansi-magenta-fg">func1</span>
+<span class="ansi-red-fg">    return a / b</span>
+
+<span class="ansi-red-fg">ZeroDivisionError</span><span class="ansi-red-fg">:</span> division by zero
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The <code>Verbose</code> mode adds some extra information, including the arguments to any functions that are called:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">xmode</span> Verbose
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Exception reporting mode: Verbose
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">func2</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+
+<div class="output_subarea output_text output_error">
+<pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">ZeroDivisionError</span>                         Traceback (most recent call last)
+<span class="ansi-green-fg">&lt;ipython-input-6-b2e110f6fc8f&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span><span class="ansi-blue-fg">()</span>
+<span class="ansi-green-fg">----&gt; 1</span><span class="ansi-red-fg"> </span>func2<span class="ansi-blue-fg">(</span><span class="ansi-cyan-fg">1</span><span class="ansi-blue-fg">)</span>
+        <span class="ansi-cyan-fg">global</span> <span class="ansi-cyan-fg">func2</span> <span class="ansi-blue-fg">= &lt;function func2 at 0x103729320&gt;</span>
+
+<span class="ansi-green-fg">&lt;ipython-input-1-d849e34d61fb&gt;</span> in <span class="ansi-cyan-fg">func2</span><span class="ansi-blue-fg">(x=1)</span>
+<span class="ansi-green-intense-fg ansi-bold">      5</span>     a <span class="ansi-blue-fg">=</span> x
+<span class="ansi-green-intense-fg ansi-bold">      6</span>     b <span class="ansi-blue-fg">=</span> x <span class="ansi-blue-fg">-</span> <span class="ansi-cyan-fg">1</span>
+<span class="ansi-green-fg">----&gt; 7</span><span class="ansi-red-fg">     </span><span class="ansi-green-fg">return</span> func1<span class="ansi-blue-fg">(</span>a<span class="ansi-blue-fg">,</span> b<span class="ansi-blue-fg">)</span>
+        <span class="ansi-cyan-fg">global</span> <span class="ansi-cyan-fg">func1</span> <span class="ansi-blue-fg">= &lt;function func1 at 0x1037294d0&gt;</span><span class="ansi-blue-fg">
+        </span><span class="ansi-cyan-fg">a</span> <span class="ansi-blue-fg">= 1</span><span class="ansi-blue-fg">
+        </span><span class="ansi-cyan-fg">b</span> <span class="ansi-blue-fg">= 0</span>
+
+<span class="ansi-green-fg">&lt;ipython-input-1-d849e34d61fb&gt;</span> in <span class="ansi-cyan-fg">func1</span><span class="ansi-blue-fg">(a=1, b=0)</span>
+<span class="ansi-green-intense-fg ansi-bold">      1</span> <span class="ansi-green-fg">def</span> func1<span class="ansi-blue-fg">(</span>a<span class="ansi-blue-fg">,</span> b<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
+<span class="ansi-green-fg">----&gt; 2</span><span class="ansi-red-fg">     </span><span class="ansi-green-fg">return</span> a <span class="ansi-blue-fg">/</span> b
+        <span class="ansi-cyan-fg">a</span> <span class="ansi-blue-fg">= 1</span><span class="ansi-blue-fg">
+        </span><span class="ansi-cyan-fg">b</span> <span class="ansi-blue-fg">= 0</span>
+<span class="ansi-green-intense-fg ansi-bold">      3</span> 
+<span class="ansi-green-intense-fg ansi-bold">      4</span> <span class="ansi-green-fg">def</span> func2<span class="ansi-blue-fg">(</span>x<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
+<span class="ansi-green-intense-fg ansi-bold">      5</span>     a <span class="ansi-blue-fg">=</span> x
+
+<span class="ansi-red-fg">ZeroDivisionError</span>: division by zero</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>This extra information can help narrow-in on why the exception is being raised.
+So why not use the <code>Verbose</code> mode all the time?
+As code gets complicated, this kind of traceback can get extremely long.
+Depending on the context, sometimes the brevity of <code>Default</code> mode is easier to work with.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Debugging:-When-Reading-Tracebacks-Is-Not-Enough">Debugging: When Reading Tracebacks Is Not Enough<a class="anchor-link" href="#Debugging:-When-Reading-Tracebacks-Is-Not-Enough">&#182;</a></h2><p>The standard Python tool for interactive debugging is <code>pdb</code>, the Python debugger.
+This debugger lets the user step through the code line by line in order to see what might be causing a more difficult error.
+The IPython-enhanced version of this is <code>ipdb</code>, the IPython debugger.</p>
+<p>There are many ways to launch and use both these debuggers; we won't cover them fully here.
+Refer to the online documentation of these two utilities to learn more.</p>
+<p>In IPython, perhaps the most convenient interface to debugging is the <code>%debug</code> magic command.
+If you call it after hitting an exception, it will automatically open an interactive debugging prompt at the point of the exception.
+The <code>ipdb</code> prompt lets you explore the current state of the stack, explore the available variables, and even run Python commands!</p>
+<p>Let's look at the most recent exception, then do some basic tasks–print the values of <code>a</code> and <code>b</code>, and type <code>quit</code> to quit the debugging session:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">debug</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>&gt; <span class="ansi-green-fg">&lt;ipython-input-1-d849e34d61fb&gt;</span>(2)<span class="ansi-cyan-fg">func1</span><span class="ansi-blue-fg">()</span>
+<span class="ansi-green-fg">      1 </span><span class="ansi-green-fg">def</span> func1<span class="ansi-blue-fg">(</span>a<span class="ansi-blue-fg">,</span> b<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
+<span class="ansi-green-fg">----&gt; 2 </span><span class="ansi-red-fg">    </span><span class="ansi-green-fg">return</span> a <span class="ansi-blue-fg">/</span> b
+<span class="ansi-green-fg">      3 </span>
+
+ipdb&gt; print(a)
+1
+ipdb&gt; print(b)
+0
+ipdb&gt; quit
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The interactive debugger allows much more than this, though–we can even step up and down through the stack and explore the values of variables there:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">debug</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>&gt; <span class="ansi-green-fg">&lt;ipython-input-1-d849e34d61fb&gt;</span>(2)<span class="ansi-cyan-fg">func1</span><span class="ansi-blue-fg">()</span>
+<span class="ansi-green-fg">      1 </span><span class="ansi-green-fg">def</span> func1<span class="ansi-blue-fg">(</span>a<span class="ansi-blue-fg">,</span> b<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
+<span class="ansi-green-fg">----&gt; 2 </span><span class="ansi-red-fg">    </span><span class="ansi-green-fg">return</span> a <span class="ansi-blue-fg">/</span> b
+<span class="ansi-green-fg">      3 </span>
+
+ipdb&gt; up
+&gt; <span class="ansi-green-fg">&lt;ipython-input-1-d849e34d61fb&gt;</span>(7)<span class="ansi-cyan-fg">func2</span><span class="ansi-blue-fg">()</span>
+<span class="ansi-green-fg">      5 </span><span class="ansi-red-fg">    </span>a <span class="ansi-blue-fg">=</span> x
+<span class="ansi-green-fg">      6 </span><span class="ansi-red-fg">    </span>b <span class="ansi-blue-fg">=</span> x <span class="ansi-blue-fg">-</span> <span class="ansi-cyan-fg">1</span>
+<span class="ansi-green-fg">----&gt; 7 </span><span class="ansi-red-fg">    </span><span class="ansi-green-fg">return</span> func1<span class="ansi-blue-fg">(</span>a<span class="ansi-blue-fg">,</span> b<span class="ansi-blue-fg">)</span>
+
+ipdb&gt; print(x)
+1
+ipdb&gt; up
+&gt; <span class="ansi-green-fg">&lt;ipython-input-6-b2e110f6fc8f&gt;</span>(1)<span class="ansi-cyan-fg">&lt;module&gt;</span><span class="ansi-blue-fg">()</span>
+<span class="ansi-green-fg">----&gt; 1 </span>func2<span class="ansi-blue-fg">(</span><span class="ansi-cyan-fg">1</span><span class="ansi-blue-fg">)</span>
+
+ipdb&gt; down
+&gt; <span class="ansi-green-fg">&lt;ipython-input-1-d849e34d61fb&gt;</span>(7)<span class="ansi-cyan-fg">func2</span><span class="ansi-blue-fg">()</span>
+<span class="ansi-green-fg">      5 </span><span class="ansi-red-fg">    </span>a <span class="ansi-blue-fg">=</span> x
+<span class="ansi-green-fg">      6 </span><span class="ansi-red-fg">    </span>b <span class="ansi-blue-fg">=</span> x <span class="ansi-blue-fg">-</span> <span class="ansi-cyan-fg">1</span>
+<span class="ansi-green-fg">----&gt; 7 </span><span class="ansi-red-fg">    </span><span class="ansi-green-fg">return</span> func1<span class="ansi-blue-fg">(</span>a<span class="ansi-blue-fg">,</span> b<span class="ansi-blue-fg">)</span>
+
+ipdb&gt; quit
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>This allows you to quickly find out not only what caused the error, but what function calls led up to the error.</p>
+<p>If you'd like the debugger to launch automatically whenever an exception is raised, you can use the <code>%pdb</code> magic function to turn on this automatic behavior:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">xmode</span> Plain
+<span class="o">%</span><span class="k">pdb</span> on
+<span class="n">func2</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Exception reporting mode: Plain
+Automatic pdb calling has been turned ON
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+<div class="prompt"></div>
+
+<div class="output_subarea output_text output_error">
+<pre>
+Traceback <span class="ansi-cyan-fg">(most recent call last)</span>:
+
+  File <span class="ansi-green-intense-fg ansi-bold">&#34;&lt;ipython-input-9-569a67d2d312&gt;&#34;</span>, line <span class="ansi-green-intense-fg ansi-bold">3</span>, in <span class="ansi-magenta-intense-fg ansi-bold">&lt;module&gt;</span>
+    func2(1)
+
+  File <span class="ansi-green-intense-fg ansi-bold">&#34;&lt;ipython-input-1-d849e34d61fb&gt;&#34;</span>, line <span class="ansi-green-intense-fg ansi-bold">7</span>, in <span class="ansi-magenta-intense-fg ansi-bold">func2</span>
+    return func1(a, b)
+
+<span class="ansi-cyan-fg">  File </span><span class="ansi-green-fg">&#34;&lt;ipython-input-1-d849e34d61fb&gt;&#34;</span><span class="ansi-cyan-fg">, line </span><span class="ansi-green-fg">2</span><span class="ansi-cyan-fg">, in </span><span class="ansi-magenta-fg">func1</span>
+<span class="ansi-red-fg">    return a / b</span>
+
+<span class="ansi-red-fg">ZeroDivisionError</span><span class="ansi-red-fg">:</span> division by zero
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+<div class="prompt"></div>
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>&gt; <span class="ansi-green-fg">&lt;ipython-input-1-d849e34d61fb&gt;</span>(2)<span class="ansi-cyan-fg">func1</span><span class="ansi-blue-fg">()</span>
+<span class="ansi-green-fg">      1 </span><span class="ansi-green-fg">def</span> func1<span class="ansi-blue-fg">(</span>a<span class="ansi-blue-fg">,</span> b<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
+<span class="ansi-green-fg">----&gt; 2 </span><span class="ansi-red-fg">    </span><span class="ansi-green-fg">return</span> a <span class="ansi-blue-fg">/</span> b
+<span class="ansi-green-fg">      3 </span>
+
+ipdb&gt; print(b)
+0
+ipdb&gt; quit
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Finally, if you have a script that you'd like to run from the beginning in interactive mode, you can run it with the command <code>%run -d</code>, and use the <code>next</code> command to step through the lines of code interactively.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Partial-list-of-debugging-commands">Partial list of debugging commands<a class="anchor-link" href="#Partial-list-of-debugging-commands">&#182;</a></h3><p>There are many more available commands for interactive debugging than we've listed here; the following table contains a description of some of the more common and useful ones:</p>
+<table>
+<thead><tr>
+<th>Command</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>list</code></td>
+<td>Show the current location in the file</td>
+</tr>
+<tr>
+<td><code>h(elp)</code></td>
+<td>Show a list of commands, or find help on a specific command</td>
+</tr>
+<tr>
+<td><code>q(uit)</code></td>
+<td>Quit the debugger and the program</td>
+</tr>
+<tr>
+<td><code>c(ontinue)</code></td>
+<td>Quit the debugger, continue in the program</td>
+</tr>
+<tr>
+<td><code>n(ext)</code></td>
+<td>Go to the next step of the program</td>
+</tr>
+<tr>
+<td><code>&lt;enter&gt;</code></td>
+<td>Repeat the previous command</td>
+</tr>
+<tr>
+<td><code>p(rint)</code></td>
+<td>Print variables</td>
+</tr>
+<tr>
+<td><code>s(tep)</code></td>
+<td>Step into a subroutine</td>
+</tr>
+<tr>
+<td><code>r(eturn)</code></td>
+<td>Return out of a subroutine</td>
+</tr>
+</tbody>
+</table>
+<p>For more information, use the <code>help</code> command in the debugger, or take a look at <code>ipdb</code>'s <a href="https://github.com/gotcha/ipdb">online documentation</a>.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><!--NAVIGATION-->
+&lt; <a href="01.05-ipython-and-shell-commands.html">IPython and Shell Commands</a> | <a href="index.html">Contents</a> | <a href="01.07-timing-and-profiling.html">Profiling and Timing Code</a> &gt;</p>
+
 </div>
 </div>
 </div>

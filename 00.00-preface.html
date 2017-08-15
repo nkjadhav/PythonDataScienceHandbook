@@ -6,7 +6,7 @@
         <meta name="author" content="Jake VanderPlas">
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
-        <title>Python Data Science Handbook | Python Data Science Handbook</title>
+        <title>Preface | Python Data Science Handbook</title>
 
 	<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
 	<link rel="icon" href="/favicon.ico" type="image/x-icon">
@@ -424,11 +424,23 @@ article .meta a.comments_btn:hover {
         </header>
 
         <div id="wrap">
+
+<div class="container bookinfo">
+<p>
+<img align="left" style="padding-right:10px;" src="/PythonDataScienceHandbook/figures/PDSH-cover-small.png">
+<em>This is an excerpt from the <a href="http://shop.oreilly.com/product/0636920034919.do">Python Data Science Handbook</a> by Jake VanderPlas; Jupyter notebooks are available <a href="https://github.com/jakevdp/PythonDataScienceHandbook">on GitHub</a>.</em>
+</p>
+<p>
+<em>The text is released under the <a href="https://creativecommons.org/licenses/by-nc-nd/3.0/us/legalcode">CC-BY-NC-ND license</a>, and code is released under the <a href="https://opensource.org/licenses/MIT">MIT license</a>. If you find this content useful, please consider supporting the work by <a href="http://shop.oreilly.com/product/0636920034919.do">buying the book</a>!</em>
+</p>
+</div>
+
+
 <div class="container post">
 
     <article>
         <header>
-            <h1>Python Data Science Handbook</h1>
+            <h1>Preface</h1>
         </header>
 
         <div class="article_content">
@@ -1409,8 +1421,8 @@ h6:hover .anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><em>Jake VanderPlas</em></p>
-<p><img src="/PythonDataScienceHandbook/figures/PDSH-cover.png" alt="Book Cover"></p>
+<p><!--NAVIGATION-->
+| <a href="index.html">Contents</a> | <a href="01.00-ipython-beyond-normal-python.html">IPython: Beyond Normal Python</a> &gt;</p>
 
 </div>
 </div>
@@ -1420,8 +1432,12 @@ h6:hover .anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>This is the Jupyter notebook version of the <a href="http://shop.oreilly.com/product/0636920034919.do">Python Data Science Handbook</a> by Jake VanderPlas; the content is available <a href="https://github.com/jakevdp/PythonDataScienceHandbook">on GitHub</a>.*
-The text is released under the <a href="https://creativecommons.org/licenses/by-nc-nd/3.0/us/legalcode">CC-BY-NC-ND license</a>, and code is released under the <a href="https://opensource.org/licenses/MIT">MIT license</a>. If you find this content useful, please consider supporting the work by <a href="http://shop.oreilly.com/product/0636920034919.do">buying the book</a>!</p>
+<h2 id="What-Is-Data-Science?">What Is Data Science?<a class="anchor-link" href="#What-Is-Data-Science?">&#182;</a></h2><p>This is a book about doing data science with Python, which immediately begs the question: what is <em>data science</em>?
+It's a surprisingly hard definition to nail down, especially given how ubiquitous the term has become.
+Vocal critics have variously dismissed the term as a superfluous label (after all, what science doesn't involve data?) or a simple buzzword that only exists to salt resumes and catch the eye of overzealous tech recruiters.</p>
+<p>In my mind, these critiques miss something important.
+Data science, despite its hype-laden veneer, is perhaps the best label we have for the cross-disciplinary set of skills that are becoming increasingly important in many applications across industry and academia.
+This cross-disciplinary piece is key: in my mind, the best extisting definition of data science is illustrated by Drew Conway's Data Science Venn Diagram, first published on his blog in September 2010:</p>
 
 </div>
 </div>
@@ -1431,77 +1447,134 @@ The text is released under the <a href="https://creativecommons.org/licenses/by-
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Table-of-Contents">Table of Contents<a class="anchor-link" href="#Table-of-Contents">&#182;</a></h2><h3 id="Preface"><a href="00.00-preface.html">Preface</a><a class="anchor-link" href="#Preface">&#182;</a></h3><h3 id="1.-IPython:-Beyond-Normal-Python"><a href="01.00-ipython-beyond-normal-python.html">1. IPython: Beyond Normal Python</a><a class="anchor-link" href="#1.-IPython:-Beyond-Normal-Python">&#182;</a></h3><ul>
-<li><a href="01.01-help-and-documentation.html">Help and Documentation in IPython</a></li>
-<li><a href="01.02-shell-keyboard-shortcuts.html">Keyboard Shortcuts in the IPython Shell</a></li>
-<li><a href="01.03-magic-commands.html">IPython Magic Commands</a></li>
-<li><a href="01.04-input-output-history.html">Input and Output History</a></li>
-<li><a href="01.05-ipython-and-shell-commands.html">IPython and Shell Commands</a></li>
-<li><a href="01.06-errors-and-debugging.html">Errors and Debugging</a></li>
-<li><a href="01.07-timing-and-profiling.html">Profiling and Timing Code</a></li>
-<li><a href="01.08-more-ipython-resources.html">More IPython Resources</a></li>
+<p><img src="/PythonDataScienceHandbook/figures/Data_Science_VD.png" alt="Data Science Venn Diagram"></p>
+<p><small>(Source: [Drew Conway](http://drewconway.com/zia/2013/3/26/the-data-science-venn-diagram). Used by permission.)</small></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>While some of the intersection labels are a bit tongue-in-cheek, this diagram captures the essence of what I think people mean when they say "data science": it is fundamentally an <em>interdisciplinary</em> subject.
+Data science comprises three distinct and overlapping areas: the skills of a <em>statistician</em> who knows how to model and summarize datasets (which are growing ever larger); the skills of a <em>computer scientist</em> who can design and use algorithms to efficiently store, process, and visualize this data; and the <em>domain expertise</em>—what we might think of as "classical" training in a subject—necessary both to formulate the right questions and to put their answers in context.</p>
+<p>With this in mind, I would encourage you to think of data science not as a new domain of knowledge to learn, but a new set of skills that you can apply within your current area of expertise.
+Whether you are reporting election results, forecasting stock returns, optimizing online ad clicks, identifying microorganisms in microscope photos, seeking new classes of astronomical objects, or working with data in any other field, the goal of this book is to give you the ability to ask and answer new questions about your chosen subject area.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Who-Is-This-Book-For?">Who Is This Book For?<a class="anchor-link" href="#Who-Is-This-Book-For?">&#182;</a></h2><p>In my teaching both at the University of Washington and at various tech-focused conferences and meetups, one of the most common questions I have heard is this: "how should I learn Python?"
+The people asking are generally technically minded students, developers, or researchers, often with an already strong background in writing code and using computational and numerical tools.
+Most of these folks don't want to learn Python <em>per se</em>, but want to learn the language with the aim of using it as a tool for data-intensive and computational science.
+While a large patchwork of videos, blog posts, and tutorials for this audience is available online, I've long been frustrated by the lack of a single good answer to this question; that is what inspired this book.</p>
+<p>The book is not meant to be an introduction to Python or to programming in general; I assume the reader has familiarity with the Python language, including defining functions, assigning variables, calling methods of objects, controlling the flow of a program, and other basic tasks.
+Instead it is meant to help Python users learn to use Python's data science stack–libraries such as IPython, NumPy, Pandas, Matplotlib, Scikit-Learn, and related tools–to effectively store, manipulate, and gain insight from data.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Why-Python?">Why Python?<a class="anchor-link" href="#Why-Python?">&#182;</a></h2><p>Python has emerged over the last couple decades as a first-class tool for scientific computing tasks, including the analysis and visualization of large datasets.
+This may have come as a surprise to early proponents of the Python language: the language itself was not specifically designed with data analysis or scientific computing in mind.
+The usefulness of Python for data science stems primarily from the large and active ecosystem of third-party packages: <em>NumPy</em> for manipulation of homogeneous array-based data, <em>Pandas</em> for manipulation of heterogeneous and labeled data, <em>SciPy</em> for common scientific computing tasks, <em>Matplotlib</em> for publication-quality visualizations, <em>IPython</em> for interactive execution and sharing of code, <em>Scikit-Learn</em> for machine learning, and many more tools that will be mentioned in the following pages.</p>
+<p>If you are looking for a guide to the Python language itself, I would suggest the sister project to this book, "<a href="https://github.com/jakevdp/WhirlwindTourOfPython">A Whirlwind Tour of the Python Language</a>".
+This short report provides a tour of the essential features of the Python language, aimed at data scientists who already are familiar with one or more other programming languages.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Python-2-vs-Python-3">Python 2 vs Python 3<a class="anchor-link" href="#Python-2-vs-Python-3">&#182;</a></h3><p>This book uses the syntax of Python 3, which contains language enhancements that are not compatible with the 2.x series of Python.
+Though Python 3.0 was first released in 2008, adoption has been relatively slow, particularly in the scientific and web development communities.
+This is primarily because it took some time for many of the essential third-party packages and toolkits to be made compatible with the new language internals.
+Since early 2014, however, stable releases of the most important tools in the data science ecosystem have been fully compatible with both Python 2 and 3, and so this book will use the newer Python 3 syntax.
+However, the vast majority of code snippets in this book will also work without modification in Python 2: in cases where a Py2-incompatible syntax is used, I will make every effort to note it explicitly.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Outline-of-the-Book">Outline of the Book<a class="anchor-link" href="#Outline-of-the-Book">&#182;</a></h2><p>Each chapter of this book focuses on a particular package or tool that contributes a fundamental piece of the Python Data Sciece story.</p>
+<ol>
+<li>IPython and Jupyter: these packages provide the computational environment in which many Python-using data scientists work.</li>
+<li>NumPy: this library provides the <code>ndarray</code> for efficient storage and manipulation of dense data arrays in Python.</li>
+<li>Pandas: this library provides the <code>DataFrame</code> for efficient storage and manipulation of labeled/columnar data in Python.</li>
+<li>Matplotlib: this library provides capabilities for a flexible range of data visualizations in Python.</li>
+<li>Scikit-Learn: this library provides efficient &amp; clean Python implementations of the most important and established machine learning algorithms.</li>
+</ol>
+<p>The PyData world is certainly much larger than these five packages, and is growing every day.
+With this in mind, I make every attempt through these pages to provide references to other interesting efforts, projects, and packages that are pushing the boundaries of what can be done in Python.
+Nevertheless, these five are currently fundamental to much of the work being done in the Python data science space, and I expect they will remain important even as the ecosystem continues growing around them.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Using-Code-Examples">Using Code Examples<a class="anchor-link" href="#Using-Code-Examples">&#182;</a></h2><p>Supplemental material (code examples, figures, etc.) is available for download at <a href="http://github.com/jakevdp/PythonDataScienceHandbook/">http://github.com/jakevdp/PythonDataScienceHandbook/</a>. This book is here to help you get your job done. In general, if example code is offered with this book, you may use it in your programs and documentation. You do not need to contact us for permission unless you’re reproducing a significant portion of the code. For example, writing a program that uses several chunks of code from this book does not require permission. Selling or distributing a CD-ROM of examples from O’Reilly books does require permission. Answering a question by citing this book and quoting example code does not require permission. Incorporating a significant amount of example code from this book into your product’s documentation does require permission.</p>
+<p>We appreciate, but do not require, attribution. An attribution usually includes the title, author, publisher, and ISBN. For example:</p>
+<blockquote><p><em>The Python Data Science Handbook</em> by Jake VanderPlas (O’Reilly). Copyright 2016 Jake VanderPlas, 978-1-491-91205-8.</p>
+</blockquote>
+<p>If you feel your use of code examples falls outside fair use or the per‐ mission given above, feel free to contact us at permissions@oreilly.com.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Installation-Considerations">Installation Considerations<a class="anchor-link" href="#Installation-Considerations">&#182;</a></h2><p>Installing Python and the suite of libraries that enable scientific computing is straightforward . This section will outline some of the considerations when setting up your computer.</p>
+<p>Though there are various ways to install Python, the one I would suggest for use in data science is the Anaconda distribution, which works similarly whether you use Windows, Linux, or Mac OS X.
+The Anaconda distribution comes in two flavors:</p>
+<ul>
+<li><p><a href="http://conda.pydata.org/miniconda.html">Miniconda</a> gives you the Python interpreter itself, along with a command-line tool called <code>conda</code> which operates as a cross-platform package manager geared toward Python packages, similar in spirit to the apt or yum tools that Linux users might be familiar with.</p>
+</li>
+<li><p><a href="https://www.continuum.io/downloads">Anaconda</a> includes both Python and conda, and additionally bundles a suite of other pre-installed packages geared toward scientific computing. Because of the size of this bundle, expect the installation to consume several gigabytes of disk space.</p>
+</li>
 </ul>
-<h3 id="2.-Introduction-to-NumPy"><a href="02.00-introduction-to-numpy.html">2. Introduction to NumPy</a><a class="anchor-link" href="#2.-Introduction-to-NumPy">&#182;</a></h3><ul>
-<li><a href="02.01-understanding-data-types.html">Understanding Data Types in Python</a></li>
-<li><a href="02.02-the-basics-of-numpy-arrays.html">The Basics of NumPy Arrays</a></li>
-<li><a href="02.03-computation-on-arrays-ufuncs.html">Computation on NumPy Arrays: Universal Functions</a></li>
-<li><a href="02.04-computation-on-arrays-aggregates.html">Aggregations: Min, Max, and Everything In Between</a></li>
-<li><a href="02.05-computation-on-arrays-broadcasting.html">Computation on Arrays: Broadcasting</a></li>
-<li><a href="02.06-boolean-arrays-and-masks.html">Comparisons, Masks, and Boolean Logic</a></li>
-<li><a href="02.07-fancy-indexing.html">Fancy Indexing</a></li>
-<li><a href="02.08-sorting.html">Sorting Arrays</a></li>
-<li><a href="02.09-structured-data-numpy.html">Structured Data: NumPy's Structured Arrays</a></li>
-</ul>
-<h3 id="3.-Data-Manipulation-with-Pandas"><a href="03.00-introduction-to-pandas.html">3. Data Manipulation with Pandas</a><a class="anchor-link" href="#3.-Data-Manipulation-with-Pandas">&#182;</a></h3><ul>
-<li><a href="03.01-introducing-pandas-objects.html">Introducing Pandas Objects</a></li>
-<li><a href="03.02-data-indexing-and-selection.html">Data Indexing and Selection</a></li>
-<li><a href="03.03-operations-in-pandas.html">Operating on Data in Pandas</a></li>
-<li><a href="03.04-missing-values.html">Handling Missing Data</a></li>
-<li><a href="03.05-hierarchical-indexing.html">Hierarchical Indexing</a></li>
-<li><a href="03.06-concat-and-append.html">Combining Datasets: Concat and Append</a></li>
-<li><a href="03.07-merge-and-join.html">Combining Datasets: Merge and Join</a></li>
-<li><a href="03.08-aggregation-and-grouping.html">Aggregation and Grouping</a></li>
-<li><a href="03.09-pivot-tables.html">Pivot Tables</a></li>
-<li><a href="03.10-working-with-strings.html">Vectorized String Operations</a></li>
-<li><a href="03.11-working-with-time-series.html">Working with Time Series</a></li>
-<li><a href="03.12-performance-eval-and-query.html">High-Performance Pandas: eval() and query()</a></li>
-<li><a href="03.13-further-resources.html">Further Resources</a></li>
-</ul>
-<h3 id="4.-Visualization-with-Matplotlib"><a href="04.00-introduction-to-matplotlib.html">4. Visualization with Matplotlib</a><a class="anchor-link" href="#4.-Visualization-with-Matplotlib">&#182;</a></h3><ul>
-<li><a href="04.01-simple-line-plots.html">Simple Line Plots</a></li>
-<li><a href="04.02-simple-scatter-plots.html">Simple Scatter Plots</a></li>
-<li><a href="04.03-errorbars.html">Visualizing Errors</a></li>
-<li><a href="04.04-density-and-contour-plots.html">Density and Contour Plots</a></li>
-<li><a href="04.05-histograms-and-binnings.html">Histograms, Binnings, and Density</a></li>
-<li><a href="04.06-customizing-legends.html">Customizing Plot Legends</a></li>
-<li><a href="04.07-customizing-colorbars.html">Customizing Colorbars</a></li>
-<li><a href="04.08-multiple-subplots.html">Multiple Subplots</a></li>
-<li><a href="04.09-text-and-annotation.html">Text and Annotation</a></li>
-<li><a href="04.10-customizing-ticks.html">Customizing Ticks</a></li>
-<li><a href="04.11-settings-and-stylesheets.html">Customizing Matplotlib: Configurations and Stylesheets</a></li>
-<li><a href="04.12-three-dimensional-plotting.html">Three-Dimensional Plotting in Matplotlib</a></li>
-<li><a href="04.13-geographic-data-with-basemap.html">Geographic Data with Basemap</a></li>
-<li><a href="04.14-visualization-with-seaborn.html">Visualization with Seaborn</a></li>
-<li><a href="04.15-further-resources.html">Further Resources</a></li>
-</ul>
-<h3 id="5.-Machine-Learning"><a href="05.00-machine-learning.html">5. Machine Learning</a><a class="anchor-link" href="#5.-Machine-Learning">&#182;</a></h3><ul>
-<li><a href="05.01-what-is-machine-learning.html">What Is Machine Learning?</a></li>
-<li><a href="05.02-introducing-scikit-learn.html">Introducing Scikit-Learn</a></li>
-<li><a href="05.03-hyperparameters-and-model-validation.html">Hyperparameters and Model Validation</a></li>
-<li><a href="05.04-feature-engineering.html">Feature Engineering</a></li>
-<li><a href="05.05-naive-bayes.html">In Depth: Naive Bayes Classification</a></li>
-<li><a href="05.06-linear-regression.html">In Depth: Linear Regression</a></li>
-<li><a href="05.07-support-vector-machines.html">In-Depth: Support Vector Machines</a></li>
-<li><a href="05.08-random-forests.html">In-Depth: Decision Trees and Random Forests</a></li>
-<li><a href="05.09-principal-component-analysis.html">In Depth: Principal Component Analysis</a></li>
-<li><a href="05.10-manifold-learning.html">In-Depth: Manifold Learning</a></li>
-<li><a href="05.11-k-means.html">In Depth: k-Means Clustering</a></li>
-<li><a href="05.12-gaussian-mixtures.html">In Depth: Gaussian Mixture Models</a></li>
-<li><a href="05.13-kernel-density-estimation.html">In-Depth: Kernel Density Estimation</a></li>
-<li><a href="05.14-image-features.html">Application: A Face Detection Pipeline</a></li>
-<li><a href="05.15-learning-more.html">Further Machine Learning Resources</a></li>
-</ul>
-<h3 id="Appendix:-Figure-Code"><a href="06.00-figure-code.html">Appendix: Figure Code</a><a class="anchor-link" href="#Appendix:-Figure-Code">&#182;</a></h3>
+<p>Any of the packages included with Anaconda can also be installed manually on top of Miniconda; for this reason I suggest starting with Miniconda.</p>
+<p>To get started, download and install the Miniconda package–make sure to choose a version with Python 3–and then install the core packages used in this book:</p>
+
+<pre><code>[~]$ conda install numpy pandas scikit-learn matplotlib seaborn jupyter</code></pre>
+<p>Throughout the text, we will also make use of other more specialized tools in Python's scientific ecosystem; installation is usually as easy as typing <strong><code>conda install packagename</code></strong>.
+For more information on conda, including information about creating and using conda environments (which I would <em>highly</em> recommend), refer to <a href="http://conda.pydata.org/docs/">conda's online documentation</a>.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><!--NAVIGATION-->
+| <a href="index.html">Contents</a> | <a href="01.00-ipython-beyond-normal-python.html">IPython: Beyond Normal Python</a> &gt;</p>
+
 </div>
 </div>
 </div>

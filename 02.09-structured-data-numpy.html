@@ -6,7 +6,7 @@
         <meta name="author" content="Jake VanderPlas">
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
-        <title>Python Data Science Handbook | Python Data Science Handbook</title>
+        <title>Structured Data: NumPy's Structured Arrays | Python Data Science Handbook</title>
 
 	<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
 	<link rel="icon" href="/favicon.ico" type="image/x-icon">
@@ -424,11 +424,23 @@ article .meta a.comments_btn:hover {
         </header>
 
         <div id="wrap">
+
+<div class="container bookinfo">
+<p>
+<img align="left" style="padding-right:10px;" src="/PythonDataScienceHandbook/figures/PDSH-cover-small.png">
+<em>This is an excerpt from the <a href="http://shop.oreilly.com/product/0636920034919.do">Python Data Science Handbook</a> by Jake VanderPlas; Jupyter notebooks are available <a href="https://github.com/jakevdp/PythonDataScienceHandbook">on GitHub</a>.</em>
+</p>
+<p>
+<em>The text is released under the <a href="https://creativecommons.org/licenses/by-nc-nd/3.0/us/legalcode">CC-BY-NC-ND license</a>, and code is released under the <a href="https://opensource.org/licenses/MIT">MIT license</a>. If you find this content useful, please consider supporting the work by <a href="http://shop.oreilly.com/product/0636920034919.do">buying the book</a>!</em>
+</p>
+</div>
+
+
 <div class="container post">
 
     <article>
         <header>
-            <h1>Python Data Science Handbook</h1>
+            <h1>Structured Data: NumPy's Structured Arrays</h1>
         </header>
 
         <div class="article_content">
@@ -1409,8 +1421,8 @@ h6:hover .anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><em>Jake VanderPlas</em></p>
-<p><img src="/PythonDataScienceHandbook/figures/PDSH-cover.png" alt="Book Cover"></p>
+<p><!--NAVIGATION-->
+&lt; <a href="02.08-sorting.html">Sorting Arrays</a> | <a href="index.html">Contents</a> | <a href="03.00-introduction-to-pandas.html">Data Manipulation with Pandas</a> &gt;</p>
 
 </div>
 </div>
@@ -1420,8 +1432,320 @@ h6:hover .anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>This is the Jupyter notebook version of the <a href="http://shop.oreilly.com/product/0636920034919.do">Python Data Science Handbook</a> by Jake VanderPlas; the content is available <a href="https://github.com/jakevdp/PythonDataScienceHandbook">on GitHub</a>.*
-The text is released under the <a href="https://creativecommons.org/licenses/by-nc-nd/3.0/us/legalcode">CC-BY-NC-ND license</a>, and code is released under the <a href="https://opensource.org/licenses/MIT">MIT license</a>. If you find this content useful, please consider supporting the work by <a href="http://shop.oreilly.com/product/0636920034919.do">buying the book</a>!</p>
+<p>While often our data can be well represented by a homogeneous array of values, sometimes this is not the case. This section demonstrates the use of NumPy's <em>structured arrays</em> and <em>record arrays</em>, which provide efficient storage for compound, heterogeneous data.  While the patterns shown here are useful for simple operations, scenarios like this often lend themselves to the use of Pandas <code>Dataframe</code>s, which we'll explore in <a href="03.00-introduction-to-pandas.html">Chapter 3</a>.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Imagine that we have several categories of data on a number of people (say, name, age, and weight), and we'd like to store these values for use in a Python program.
+It would be possible to store these in three separate arrays:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">name</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Alice&#39;</span><span class="p">,</span> <span class="s1">&#39;Bob&#39;</span><span class="p">,</span> <span class="s1">&#39;Cathy&#39;</span><span class="p">,</span> <span class="s1">&#39;Doug&#39;</span><span class="p">]</span>
+<span class="n">age</span> <span class="o">=</span> <span class="p">[</span><span class="mi">25</span><span class="p">,</span> <span class="mi">45</span><span class="p">,</span> <span class="mi">37</span><span class="p">,</span> <span class="mi">19</span><span class="p">]</span>
+<span class="n">weight</span> <span class="o">=</span> <span class="p">[</span><span class="mf">55.0</span><span class="p">,</span> <span class="mf">85.5</span><span class="p">,</span> <span class="mf">68.0</span><span class="p">,</span> <span class="mf">61.5</span><span class="p">]</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>But this is a bit clumsy. There's nothing here that tells us that the three arrays are related; it would be more natural if we could use a single structure to store all of this data.
+NumPy can handle this through structured arrays, which are arrays with compound data types.</p>
+<p>Recall that previously we created a simple array using an expression like this:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We can similarly create a structured array using a compound data type specification:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Use a compound data type for structured arrays</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;names&#39;</span><span class="p">:(</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="s1">&#39;age&#39;</span><span class="p">,</span> <span class="s1">&#39;weight&#39;</span><span class="p">),</span>
+                          <span class="s1">&#39;formats&#39;</span><span class="p">:(</span><span class="s1">&#39;U10&#39;</span><span class="p">,</span> <span class="s1">&#39;i4&#39;</span><span class="p">,</span> <span class="s1">&#39;f8&#39;</span><span class="p">)})</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[(&#39;name&#39;, &#39;&lt;U10&#39;), (&#39;age&#39;, &#39;&lt;i4&#39;), (&#39;weight&#39;, &#39;&lt;f8&#39;)]
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Here <code>'U10'</code> translates to "Unicode string of maximum length 10," <code>'i4'</code> translates to "4-byte (i.e., 32 bit) integer," and <code>'f8'</code> translates to "8-byte (i.e., 64 bit) float."
+We'll discuss other options for these type codes in the following section.</p>
+<p>Now that we've created an empty container array, we can fill the array with our lists of values:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">name</span>
+<span class="n">data</span><span class="p">[</span><span class="s1">&#39;age&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">age</span>
+<span class="n">data</span><span class="p">[</span><span class="s1">&#39;weight&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">weight</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[(&#39;Alice&#39;, 25, 55.0) (&#39;Bob&#39;, 45, 85.5) (&#39;Cathy&#39;, 37, 68.0)
+ (&#39;Doug&#39;, 19, 61.5)]
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>As we had hoped, the data is now arranged together in one convenient block of memory.</p>
+<p>The handy thing with structured arrays is that you can now refer to values either by index or by name:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Get all names</span>
+<span class="n">data</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[6]:</div>
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([&#39;Alice&#39;, &#39;Bob&#39;, &#39;Cathy&#39;, &#39;Doug&#39;], 
+      dtype=&#39;&lt;U10&#39;)</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Get first row of data</span>
+<span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[7]:</div>
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>(&#39;Alice&#39;, 25, 55.0)</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Get the name from the last row</span>
+<span class="n">data</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="s1">&#39;name&#39;</span><span class="p">]</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[8]:</div>
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&#39;Doug&#39;</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Using Boolean masking, this even allows you to do some more sophisticated operations such as filtering on age:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Get names where age is under 30</span>
+<span class="n">data</span><span class="p">[</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;age&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">30</span><span class="p">][</span><span class="s1">&#39;name&#39;</span><span class="p">]</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[9]:</div>
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([&#39;Alice&#39;, &#39;Doug&#39;], 
+      dtype=&#39;&lt;U10&#39;)</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Note that if you'd like to do any operations that are any more complicated than these, you should probably consider the Pandas package, covered in the next chapter.
+As we'll see, Pandas provides a <code>Dataframe</code> object, which is a structure built on NumPy arrays that offers a variety of useful data manipulation functionality similar to what we've shown here, as well as much, much more.</p>
 
 </div>
 </div>
@@ -1431,77 +1755,448 @@ The text is released under the <a href="https://creativecommons.org/licenses/by-
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Table-of-Contents">Table of Contents<a class="anchor-link" href="#Table-of-Contents">&#182;</a></h2><h3 id="Preface"><a href="00.00-preface.html">Preface</a><a class="anchor-link" href="#Preface">&#182;</a></h3><h3 id="1.-IPython:-Beyond-Normal-Python"><a href="01.00-ipython-beyond-normal-python.html">1. IPython: Beyond Normal Python</a><a class="anchor-link" href="#1.-IPython:-Beyond-Normal-Python">&#182;</a></h3><ul>
-<li><a href="01.01-help-and-documentation.html">Help and Documentation in IPython</a></li>
-<li><a href="01.02-shell-keyboard-shortcuts.html">Keyboard Shortcuts in the IPython Shell</a></li>
-<li><a href="01.03-magic-commands.html">IPython Magic Commands</a></li>
-<li><a href="01.04-input-output-history.html">Input and Output History</a></li>
-<li><a href="01.05-ipython-and-shell-commands.html">IPython and Shell Commands</a></li>
-<li><a href="01.06-errors-and-debugging.html">Errors and Debugging</a></li>
-<li><a href="01.07-timing-and-profiling.html">Profiling and Timing Code</a></li>
-<li><a href="01.08-more-ipython-resources.html">More IPython Resources</a></li>
-</ul>
-<h3 id="2.-Introduction-to-NumPy"><a href="02.00-introduction-to-numpy.html">2. Introduction to NumPy</a><a class="anchor-link" href="#2.-Introduction-to-NumPy">&#182;</a></h3><ul>
-<li><a href="02.01-understanding-data-types.html">Understanding Data Types in Python</a></li>
-<li><a href="02.02-the-basics-of-numpy-arrays.html">The Basics of NumPy Arrays</a></li>
-<li><a href="02.03-computation-on-arrays-ufuncs.html">Computation on NumPy Arrays: Universal Functions</a></li>
-<li><a href="02.04-computation-on-arrays-aggregates.html">Aggregations: Min, Max, and Everything In Between</a></li>
-<li><a href="02.05-computation-on-arrays-broadcasting.html">Computation on Arrays: Broadcasting</a></li>
-<li><a href="02.06-boolean-arrays-and-masks.html">Comparisons, Masks, and Boolean Logic</a></li>
-<li><a href="02.07-fancy-indexing.html">Fancy Indexing</a></li>
-<li><a href="02.08-sorting.html">Sorting Arrays</a></li>
-<li><a href="02.09-structured-data-numpy.html">Structured Data: NumPy's Structured Arrays</a></li>
-</ul>
-<h3 id="3.-Data-Manipulation-with-Pandas"><a href="03.00-introduction-to-pandas.html">3. Data Manipulation with Pandas</a><a class="anchor-link" href="#3.-Data-Manipulation-with-Pandas">&#182;</a></h3><ul>
-<li><a href="03.01-introducing-pandas-objects.html">Introducing Pandas Objects</a></li>
-<li><a href="03.02-data-indexing-and-selection.html">Data Indexing and Selection</a></li>
-<li><a href="03.03-operations-in-pandas.html">Operating on Data in Pandas</a></li>
-<li><a href="03.04-missing-values.html">Handling Missing Data</a></li>
-<li><a href="03.05-hierarchical-indexing.html">Hierarchical Indexing</a></li>
-<li><a href="03.06-concat-and-append.html">Combining Datasets: Concat and Append</a></li>
-<li><a href="03.07-merge-and-join.html">Combining Datasets: Merge and Join</a></li>
-<li><a href="03.08-aggregation-and-grouping.html">Aggregation and Grouping</a></li>
-<li><a href="03.09-pivot-tables.html">Pivot Tables</a></li>
-<li><a href="03.10-working-with-strings.html">Vectorized String Operations</a></li>
-<li><a href="03.11-working-with-time-series.html">Working with Time Series</a></li>
-<li><a href="03.12-performance-eval-and-query.html">High-Performance Pandas: eval() and query()</a></li>
-<li><a href="03.13-further-resources.html">Further Resources</a></li>
-</ul>
-<h3 id="4.-Visualization-with-Matplotlib"><a href="04.00-introduction-to-matplotlib.html">4. Visualization with Matplotlib</a><a class="anchor-link" href="#4.-Visualization-with-Matplotlib">&#182;</a></h3><ul>
-<li><a href="04.01-simple-line-plots.html">Simple Line Plots</a></li>
-<li><a href="04.02-simple-scatter-plots.html">Simple Scatter Plots</a></li>
-<li><a href="04.03-errorbars.html">Visualizing Errors</a></li>
-<li><a href="04.04-density-and-contour-plots.html">Density and Contour Plots</a></li>
-<li><a href="04.05-histograms-and-binnings.html">Histograms, Binnings, and Density</a></li>
-<li><a href="04.06-customizing-legends.html">Customizing Plot Legends</a></li>
-<li><a href="04.07-customizing-colorbars.html">Customizing Colorbars</a></li>
-<li><a href="04.08-multiple-subplots.html">Multiple Subplots</a></li>
-<li><a href="04.09-text-and-annotation.html">Text and Annotation</a></li>
-<li><a href="04.10-customizing-ticks.html">Customizing Ticks</a></li>
-<li><a href="04.11-settings-and-stylesheets.html">Customizing Matplotlib: Configurations and Stylesheets</a></li>
-<li><a href="04.12-three-dimensional-plotting.html">Three-Dimensional Plotting in Matplotlib</a></li>
-<li><a href="04.13-geographic-data-with-basemap.html">Geographic Data with Basemap</a></li>
-<li><a href="04.14-visualization-with-seaborn.html">Visualization with Seaborn</a></li>
-<li><a href="04.15-further-resources.html">Further Resources</a></li>
-</ul>
-<h3 id="5.-Machine-Learning"><a href="05.00-machine-learning.html">5. Machine Learning</a><a class="anchor-link" href="#5.-Machine-Learning">&#182;</a></h3><ul>
-<li><a href="05.01-what-is-machine-learning.html">What Is Machine Learning?</a></li>
-<li><a href="05.02-introducing-scikit-learn.html">Introducing Scikit-Learn</a></li>
-<li><a href="05.03-hyperparameters-and-model-validation.html">Hyperparameters and Model Validation</a></li>
-<li><a href="05.04-feature-engineering.html">Feature Engineering</a></li>
-<li><a href="05.05-naive-bayes.html">In Depth: Naive Bayes Classification</a></li>
-<li><a href="05.06-linear-regression.html">In Depth: Linear Regression</a></li>
-<li><a href="05.07-support-vector-machines.html">In-Depth: Support Vector Machines</a></li>
-<li><a href="05.08-random-forests.html">In-Depth: Decision Trees and Random Forests</a></li>
-<li><a href="05.09-principal-component-analysis.html">In Depth: Principal Component Analysis</a></li>
-<li><a href="05.10-manifold-learning.html">In-Depth: Manifold Learning</a></li>
-<li><a href="05.11-k-means.html">In Depth: k-Means Clustering</a></li>
-<li><a href="05.12-gaussian-mixtures.html">In Depth: Gaussian Mixture Models</a></li>
-<li><a href="05.13-kernel-density-estimation.html">In-Depth: Kernel Density Estimation</a></li>
-<li><a href="05.14-image-features.html">Application: A Face Detection Pipeline</a></li>
-<li><a href="05.15-learning-more.html">Further Machine Learning Resources</a></li>
-</ul>
-<h3 id="Appendix:-Figure-Code"><a href="06.00-figure-code.html">Appendix: Figure Code</a><a class="anchor-link" href="#Appendix:-Figure-Code">&#182;</a></h3>
+<h2 id="Creating-Structured-Arrays">Creating Structured Arrays<a class="anchor-link" href="#Creating-Structured-Arrays">&#182;</a></h2><p>Structured array data types can be specified in a number of ways.
+Earlier, we saw the dictionary method:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[10]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">dtype</span><span class="p">({</span><span class="s1">&#39;names&#39;</span><span class="p">:(</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="s1">&#39;age&#39;</span><span class="p">,</span> <span class="s1">&#39;weight&#39;</span><span class="p">),</span>
+          <span class="s1">&#39;formats&#39;</span><span class="p">:(</span><span class="s1">&#39;U10&#39;</span><span class="p">,</span> <span class="s1">&#39;i4&#39;</span><span class="p">,</span> <span class="s1">&#39;f8&#39;</span><span class="p">)})</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[10]:</div>
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>dtype([(&#39;name&#39;, &#39;&lt;U10&#39;), (&#39;age&#39;, &#39;&lt;i4&#39;), (&#39;weight&#39;, &#39;&lt;f8&#39;)])</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>For clarity, numerical types can be specified using Python types or NumPy <code>dtype</code>s instead:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[11]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">dtype</span><span class="p">({</span><span class="s1">&#39;names&#39;</span><span class="p">:(</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="s1">&#39;age&#39;</span><span class="p">,</span> <span class="s1">&#39;weight&#39;</span><span class="p">),</span>
+          <span class="s1">&#39;formats&#39;</span><span class="p">:((</span><span class="n">np</span><span class="o">.</span><span class="n">str_</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="nb">int</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)})</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[11]:</div>
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>dtype([(&#39;name&#39;, &#39;&lt;U10&#39;), (&#39;age&#39;, &#39;&lt;i8&#39;), (&#39;weight&#39;, &#39;&lt;f4&#39;)])</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>A compound type can also be specified as a list of tuples:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[12]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">dtype</span><span class="p">([(</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="s1">&#39;S10&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;age&#39;</span><span class="p">,</span> <span class="s1">&#39;i4&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;weight&#39;</span><span class="p">,</span> <span class="s1">&#39;f8&#39;</span><span class="p">)])</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[12]:</div>
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>dtype([(&#39;name&#39;, &#39;S10&#39;), (&#39;age&#39;, &#39;&lt;i4&#39;), (&#39;weight&#39;, &#39;&lt;f8&#39;)])</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>If the names of the types do not matter to you, you can specify the types alone in a comma-separated string:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[13]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">dtype</span><span class="p">(</span><span class="s1">&#39;S10,i4,f8&#39;</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[13]:</div>
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>dtype([(&#39;f0&#39;, &#39;S10&#39;), (&#39;f1&#39;, &#39;&lt;i4&#39;), (&#39;f2&#39;, &#39;&lt;f8&#39;)])</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The shortened string format codes may seem confusing, but they are built on simple principles.
+The first (optional) character is <code>&lt;</code> or <code>&gt;</code>, which means "little endian" or "big endian," respectively, and specifies the ordering convention for significant bits.
+The next character specifies the type of data: characters, bytes, ints, floating points, and so on (see the table below).
+The last character or characters represents the size of the object in bytes.</p>
+<table>
+<thead><tr>
+<th>Character</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>'b'</code></td>
+<td>Byte</td>
+<td><code>np.dtype('b')</code></td>
+</tr>
+<tr>
+<td><code>'i'</code></td>
+<td>Signed integer</td>
+<td><code>np.dtype('i4') == np.int32</code></td>
+</tr>
+<tr>
+<td><code>'u'</code></td>
+<td>Unsigned integer</td>
+<td><code>np.dtype('u1') == np.uint8</code></td>
+</tr>
+<tr>
+<td><code>'f'</code></td>
+<td>Floating point</td>
+<td><code>np.dtype('f8') == np.int64</code></td>
+</tr>
+<tr>
+<td><code>'c'</code></td>
+<td>Complex floating point</td>
+<td><code>np.dtype('c16') == np.complex128</code></td>
+</tr>
+<tr>
+<td><code>'S'</code>, <code>'a'</code></td>
+<td>String</td>
+<td><code>np.dtype('S5')</code></td>
+</tr>
+<tr>
+<td><code>'U'</code></td>
+<td>Unicode string</td>
+<td><code>np.dtype('U') == np.str_</code></td>
+</tr>
+<tr>
+<td><code>'V'</code></td>
+<td>Raw data (void)</td>
+<td><code>np.dtype('V') == np.void</code></td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="More-Advanced-Compound-Types">More Advanced Compound Types<a class="anchor-link" href="#More-Advanced-Compound-Types">&#182;</a></h2><p>It is possible to define even more advanced compound types.
+For example, you can create a type where each element contains an array or matrix of values.
+Here, we'll create a data type with a <code>mat</code> component consisting of a $3\times 3$ floating-point matrix:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[14]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">tp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dtype</span><span class="p">([(</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;i8&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;mat&#39;</span><span class="p">,</span> <span class="s1">&#39;f8&#39;</span><span class="p">,</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">))])</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">tp</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="s1">&#39;mat&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>(0, [[0.0, 0.0, 0.0], [0.0, 0.0, 0.0], [0.0, 0.0, 0.0]])
+[[ 0.  0.  0.]
+ [ 0.  0.  0.]
+ [ 0.  0.  0.]]
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Now each element in the <code>X</code> array consists of an <code>id</code> and a $3\times 3$ matrix.
+Why would you use this rather than a simple multidimensional array, or perhaps a Python dictionary?
+The reason is that this NumPy <code>dtype</code> directly maps onto a C structure definition, so the buffer containing the array content can be accessed directly within an appropriately written C program.
+If you find yourself writing a Python interface to a legacy C or Fortran library that manipulates structured data, you'll probably find structured arrays quite useful!</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="RecordArrays:-Structured-Arrays-with-a-Twist">RecordArrays: Structured Arrays with a Twist<a class="anchor-link" href="#RecordArrays:-Structured-Arrays-with-a-Twist">&#182;</a></h2><p>NumPy also provides the <code>np.recarray</code> class, which is almost identical to the structured arrays just described, but with one additional feature: fields can be accessed as attributes rather than as dictionary keys.
+Recall that we previously accessed the ages by writing:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[15]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;age&#39;</span><span class="p">]</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[15]:</div>
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([25, 45, 37, 19], dtype=int32)</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>If we view our data as a record array instead, we can access this with slightly fewer keystrokes:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[16]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">data_rec</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">recarray</span><span class="p">)</span>
+<span class="n">data_rec</span><span class="o">.</span><span class="n">age</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[16]:</div>
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([25, 45, 37, 19], dtype=int32)</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The downside is that for record arrays, there is some extra overhead involved in accessing the fields, even when using the same syntax. We can see this here:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[17]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">timeit</span> data[&#39;age&#39;]
+<span class="o">%</span><span class="k">timeit</span> data_rec[&#39;age&#39;]
+<span class="o">%</span><span class="k">timeit</span> data_rec.age
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>1000000 loops, best of 3: 241 ns per loop
+100000 loops, best of 3: 4.61 µs per loop
+100000 loops, best of 3: 7.27 µs per loop
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Whether the more convenient notation is worth the additional overhead will depend on your own application.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="On-to-Pandas">On to Pandas<a class="anchor-link" href="#On-to-Pandas">&#182;</a></h2><p>This section on structured and record arrays is purposely at the end of this chapter, because it leads so well into the next package we will cover: Pandas.
+Structured arrays like the ones discussed here are good to know about for certain situations, especially in case you're using NumPy arrays to map onto binary data formats in C, Fortran, or another language.
+For day-to-day use of structured data, the Pandas package is a much better choice, and we'll dive into a full discussion of it in the chapter that follows.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><!--NAVIGATION-->
+&lt; <a href="02.08-sorting.html">Sorting Arrays</a> | <a href="index.html">Contents</a> | <a href="03.00-introduction-to-pandas.html">Data Manipulation with Pandas</a> &gt;</p>
+
 </div>
 </div>
 </div>

@@ -6,7 +6,7 @@
         <meta name="author" content="Jake VanderPlas">
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
-        <title>Python Data Science Handbook | Python Data Science Handbook</title>
+        <title>IPython Magic Commands | Python Data Science Handbook</title>
 
 	<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
 	<link rel="icon" href="/favicon.ico" type="image/x-icon">
@@ -424,11 +424,23 @@ article .meta a.comments_btn:hover {
         </header>
 
         <div id="wrap">
+
+<div class="container bookinfo">
+<p>
+<img align="left" style="padding-right:10px;" src="/PythonDataScienceHandbook/figures/PDSH-cover-small.png">
+<em>This is an excerpt from the <a href="http://shop.oreilly.com/product/0636920034919.do">Python Data Science Handbook</a> by Jake VanderPlas; Jupyter notebooks are available <a href="https://github.com/jakevdp/PythonDataScienceHandbook">on GitHub</a>.</em>
+</p>
+<p>
+<em>The text is released under the <a href="https://creativecommons.org/licenses/by-nc-nd/3.0/us/legalcode">CC-BY-NC-ND license</a>, and code is released under the <a href="https://opensource.org/licenses/MIT">MIT license</a>. If you find this content useful, please consider supporting the work by <a href="http://shop.oreilly.com/product/0636920034919.do">buying the book</a>!</em>
+</p>
+</div>
+
+
 <div class="container post">
 
     <article>
         <header>
-            <h1>Python Data Science Handbook</h1>
+            <h1>IPython Magic Commands</h1>
         </header>
 
         <div class="article_content">
@@ -1409,8 +1421,8 @@ h6:hover .anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><em>Jake VanderPlas</em></p>
-<p><img src="/PythonDataScienceHandbook/figures/PDSH-cover.png" alt="Book Cover"></p>
+<p><!--NAVIGATION-->
+&lt; <a href="01.02-shell-keyboard-shortcuts.html">Keyboard Shortcuts in the IPython Shell</a> | <a href="index.html">Contents</a> | <a href="01.04-input-output-history.html">Input and Output History</a> &gt;</p>
 
 </div>
 </div>
@@ -1420,8 +1432,12 @@ h6:hover .anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>This is the Jupyter notebook version of the <a href="http://shop.oreilly.com/product/0636920034919.do">Python Data Science Handbook</a> by Jake VanderPlas; the content is available <a href="https://github.com/jakevdp/PythonDataScienceHandbook">on GitHub</a>.*
-The text is released under the <a href="https://creativecommons.org/licenses/by-nc-nd/3.0/us/legalcode">CC-BY-NC-ND license</a>, and code is released under the <a href="https://opensource.org/licenses/MIT">MIT license</a>. If you find this content useful, please consider supporting the work by <a href="http://shop.oreilly.com/product/0636920034919.do">buying the book</a>!</p>
+<p>The previous two sections showed how IPython lets you use and explore Python efficiently and interactively.
+Here we'll begin discussing some of the enhancements that IPython adds on top of the normal Python syntax.
+These are known in IPython as <em>magic commands</em>, and are prefixed by the <code>%</code> character.
+These magic commands are designed to succinctly solve various common problems in standard data analysis.
+Magic commands come in two flavors: <em>line magics</em>, which are denoted by a single <code>%</code> prefix and operate on a single line of input, and <em>cell magics</em>, which are denoted by a double <code>%%</code> prefix and operate on multiple lines of input.
+We'll demonstrate and discuss a few brief examples here, and come back to more focused discussion of several useful magic commands later in the chapter.</p>
 
 </div>
 </div>
@@ -1431,77 +1447,147 @@ The text is released under the <a href="https://creativecommons.org/licenses/by-
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Table-of-Contents">Table of Contents<a class="anchor-link" href="#Table-of-Contents">&#182;</a></h2><h3 id="Preface"><a href="00.00-preface.html">Preface</a><a class="anchor-link" href="#Preface">&#182;</a></h3><h3 id="1.-IPython:-Beyond-Normal-Python"><a href="01.00-ipython-beyond-normal-python.html">1. IPython: Beyond Normal Python</a><a class="anchor-link" href="#1.-IPython:-Beyond-Normal-Python">&#182;</a></h3><ul>
-<li><a href="01.01-help-and-documentation.html">Help and Documentation in IPython</a></li>
-<li><a href="01.02-shell-keyboard-shortcuts.html">Keyboard Shortcuts in the IPython Shell</a></li>
-<li><a href="01.03-magic-commands.html">IPython Magic Commands</a></li>
-<li><a href="01.04-input-output-history.html">Input and Output History</a></li>
-<li><a href="01.05-ipython-and-shell-commands.html">IPython and Shell Commands</a></li>
-<li><a href="01.06-errors-and-debugging.html">Errors and Debugging</a></li>
-<li><a href="01.07-timing-and-profiling.html">Profiling and Timing Code</a></li>
-<li><a href="01.08-more-ipython-resources.html">More IPython Resources</a></li>
-</ul>
-<h3 id="2.-Introduction-to-NumPy"><a href="02.00-introduction-to-numpy.html">2. Introduction to NumPy</a><a class="anchor-link" href="#2.-Introduction-to-NumPy">&#182;</a></h3><ul>
-<li><a href="02.01-understanding-data-types.html">Understanding Data Types in Python</a></li>
-<li><a href="02.02-the-basics-of-numpy-arrays.html">The Basics of NumPy Arrays</a></li>
-<li><a href="02.03-computation-on-arrays-ufuncs.html">Computation on NumPy Arrays: Universal Functions</a></li>
-<li><a href="02.04-computation-on-arrays-aggregates.html">Aggregations: Min, Max, and Everything In Between</a></li>
-<li><a href="02.05-computation-on-arrays-broadcasting.html">Computation on Arrays: Broadcasting</a></li>
-<li><a href="02.06-boolean-arrays-and-masks.html">Comparisons, Masks, and Boolean Logic</a></li>
-<li><a href="02.07-fancy-indexing.html">Fancy Indexing</a></li>
-<li><a href="02.08-sorting.html">Sorting Arrays</a></li>
-<li><a href="02.09-structured-data-numpy.html">Structured Data: NumPy's Structured Arrays</a></li>
-</ul>
-<h3 id="3.-Data-Manipulation-with-Pandas"><a href="03.00-introduction-to-pandas.html">3. Data Manipulation with Pandas</a><a class="anchor-link" href="#3.-Data-Manipulation-with-Pandas">&#182;</a></h3><ul>
-<li><a href="03.01-introducing-pandas-objects.html">Introducing Pandas Objects</a></li>
-<li><a href="03.02-data-indexing-and-selection.html">Data Indexing and Selection</a></li>
-<li><a href="03.03-operations-in-pandas.html">Operating on Data in Pandas</a></li>
-<li><a href="03.04-missing-values.html">Handling Missing Data</a></li>
-<li><a href="03.05-hierarchical-indexing.html">Hierarchical Indexing</a></li>
-<li><a href="03.06-concat-and-append.html">Combining Datasets: Concat and Append</a></li>
-<li><a href="03.07-merge-and-join.html">Combining Datasets: Merge and Join</a></li>
-<li><a href="03.08-aggregation-and-grouping.html">Aggregation and Grouping</a></li>
-<li><a href="03.09-pivot-tables.html">Pivot Tables</a></li>
-<li><a href="03.10-working-with-strings.html">Vectorized String Operations</a></li>
-<li><a href="03.11-working-with-time-series.html">Working with Time Series</a></li>
-<li><a href="03.12-performance-eval-and-query.html">High-Performance Pandas: eval() and query()</a></li>
-<li><a href="03.13-further-resources.html">Further Resources</a></li>
-</ul>
-<h3 id="4.-Visualization-with-Matplotlib"><a href="04.00-introduction-to-matplotlib.html">4. Visualization with Matplotlib</a><a class="anchor-link" href="#4.-Visualization-with-Matplotlib">&#182;</a></h3><ul>
-<li><a href="04.01-simple-line-plots.html">Simple Line Plots</a></li>
-<li><a href="04.02-simple-scatter-plots.html">Simple Scatter Plots</a></li>
-<li><a href="04.03-errorbars.html">Visualizing Errors</a></li>
-<li><a href="04.04-density-and-contour-plots.html">Density and Contour Plots</a></li>
-<li><a href="04.05-histograms-and-binnings.html">Histograms, Binnings, and Density</a></li>
-<li><a href="04.06-customizing-legends.html">Customizing Plot Legends</a></li>
-<li><a href="04.07-customizing-colorbars.html">Customizing Colorbars</a></li>
-<li><a href="04.08-multiple-subplots.html">Multiple Subplots</a></li>
-<li><a href="04.09-text-and-annotation.html">Text and Annotation</a></li>
-<li><a href="04.10-customizing-ticks.html">Customizing Ticks</a></li>
-<li><a href="04.11-settings-and-stylesheets.html">Customizing Matplotlib: Configurations and Stylesheets</a></li>
-<li><a href="04.12-three-dimensional-plotting.html">Three-Dimensional Plotting in Matplotlib</a></li>
-<li><a href="04.13-geographic-data-with-basemap.html">Geographic Data with Basemap</a></li>
-<li><a href="04.14-visualization-with-seaborn.html">Visualization with Seaborn</a></li>
-<li><a href="04.15-further-resources.html">Further Resources</a></li>
-</ul>
-<h3 id="5.-Machine-Learning"><a href="05.00-machine-learning.html">5. Machine Learning</a><a class="anchor-link" href="#5.-Machine-Learning">&#182;</a></h3><ul>
-<li><a href="05.01-what-is-machine-learning.html">What Is Machine Learning?</a></li>
-<li><a href="05.02-introducing-scikit-learn.html">Introducing Scikit-Learn</a></li>
-<li><a href="05.03-hyperparameters-and-model-validation.html">Hyperparameters and Model Validation</a></li>
-<li><a href="05.04-feature-engineering.html">Feature Engineering</a></li>
-<li><a href="05.05-naive-bayes.html">In Depth: Naive Bayes Classification</a></li>
-<li><a href="05.06-linear-regression.html">In Depth: Linear Regression</a></li>
-<li><a href="05.07-support-vector-machines.html">In-Depth: Support Vector Machines</a></li>
-<li><a href="05.08-random-forests.html">In-Depth: Decision Trees and Random Forests</a></li>
-<li><a href="05.09-principal-component-analysis.html">In Depth: Principal Component Analysis</a></li>
-<li><a href="05.10-manifold-learning.html">In-Depth: Manifold Learning</a></li>
-<li><a href="05.11-k-means.html">In Depth: k-Means Clustering</a></li>
-<li><a href="05.12-gaussian-mixtures.html">In Depth: Gaussian Mixture Models</a></li>
-<li><a href="05.13-kernel-density-estimation.html">In-Depth: Kernel Density Estimation</a></li>
-<li><a href="05.14-image-features.html">Application: A Face Detection Pipeline</a></li>
-<li><a href="05.15-learning-more.html">Further Machine Learning Resources</a></li>
-</ul>
-<h3 id="Appendix:-Figure-Code"><a href="06.00-figure-code.html">Appendix: Figure Code</a><a class="anchor-link" href="#Appendix:-Figure-Code">&#182;</a></h3>
+<h2 id="Pasting-Code-Blocks:-%paste-and-%cpaste">Pasting Code Blocks: <code>%paste</code> and <code>%cpaste</code><a class="anchor-link" href="#Pasting-Code-Blocks:-%paste-and-%cpaste">&#182;</a></h2><p>When working in the IPython interpreter, one common gotcha is that pasting multi-line code blocks can lead to unexpected errors, especially when indentation and interpreter markers are involved.
+A common case is that you find some example code on a website and want to paste it into your interpreter.
+Consider the following simple function:</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="k">def</span> <span class="nf">donothing</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+<span class="o">...</span>     <span class="k">return</span> <span class="n">x</span>
+</pre></div>
+<p>The code is formatted as it would appear in the Python interpreter, and if you copy and paste this directly into IPython you get an error:</p>
+
+<pre><code>ipython
+In [2]: &gt;&gt;&gt; def donothing(x):
+   ...:     ...     return x
+   ...:     
+  File "&lt;ipython-input-20-5a66c8964687&gt;", line 2
+    ...     return x
+                 ^
+SyntaxError: invalid syntax</code></pre>
+<p>In the direct paste, the interpreter is confused by the additional prompt characters.
+But never fear–IPython's <code>%paste</code> magic function is designed to handle this exact type of multi-line, marked-up input:</p>
+
+<pre><code>ipython
+In [3]: %paste
+&gt;&gt;&gt; def donothing(x):
+...     return x
+
+## -- End pasted text --</code></pre>
+<p>The <code>%paste</code> command both enters and executes the code, so now the function is ready to be used:</p>
+
+<pre><code>ipython
+In [4]: donothing(10)
+Out[4]: 10</code></pre>
+<p>A command with a similar intent is <code>%cpaste</code>, which opens up an interactive multiline prompt in which you can paste one or more chunks of code to be executed in a batch:</p>
+
+<pre><code>ipython
+In [5]: %cpaste
+Pasting code; enter '--' alone on the line to stop or use Ctrl-D.
+:&gt;&gt;&gt; def donothing(x):
+:...     return x
+:--</code></pre>
+<p>These magic commands, like others we'll see, make available functionality that would be difficult or impossible in a standard Python interpreter.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Running-External-Code:-%run">Running External Code: <code>%run</code><a class="anchor-link" href="#Running-External-Code:-%run">&#182;</a></h2><p>As you begin developing more extensive code, you will likely find yourself working in both IPython for interactive exploration, as well as a text editor to store code that you want to reuse.
+Rather than running this code in a new window, it can be convenient to run it within your IPython session.
+This can be done with the <code>%run</code> magic.</p>
+<p>For example, imagine you've created a <code>myscript.py</code> file with the following contents:</p>
+<div class="highlight"><pre><span></span><span class="c1">#-------------------------------------</span>
+<span class="c1"># file: myscript.py</span>
+
+<span class="k">def</span> <span class="nf">square</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;square a number&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">x</span> <span class="o">**</span> <span class="mi">2</span>
+
+<span class="k">for</span> <span class="n">N</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="s2">&quot;squared is&quot;</span><span class="p">,</span> <span class="n">square</span><span class="p">(</span><span class="n">N</span><span class="p">))</span>
+</pre></div>
+<p>You can execute this from your IPython session as follows:</p>
+
+<pre><code>ipython
+In [6]: %run myscript.py
+1 squared is 1
+2 squared is 4
+3 squared is 9</code></pre>
+<p>Note also that after you've run this script, any functions defined within it are available for use in your IPython session:</p>
+
+<pre><code>ipython
+In [7]: square(5)
+Out[7]: 25</code></pre>
+<p>There are several options to fine-tune how your code is run; you can see the documentation in the normal way, by typing <strong><code>%run?</code></strong> in the IPython interpreter.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Timing-Code-Execution:-%timeit">Timing Code Execution: <code>%timeit</code><a class="anchor-link" href="#Timing-Code-Execution:-%timeit">&#182;</a></h2><p>Another example of a useful magic function is <code>%timeit</code>, which will automatically determine the execution time of the single-line Python statement that follows it.
+For example, we may want to check the performance of a list comprehension:</p>
+
+<pre><code>ipython
+In [8]: %timeit L = [n ** 2 for n in range(1000)]
+1000 loops, best of 3: 325 µs per loop</code></pre>
+<p>The benefit of <code>%timeit</code> is that for short commands it will automatically perform multiple runs in order to attain more robust results.
+For multi line statements, adding a second <code>%</code> sign will turn this into a cell magic that can handle multiple lines of input.
+For example, here's the equivalent construction with a <code>for</code>-loop:</p>
+
+<pre><code>ipython
+In [9]: %%timeit
+   ...: L = []
+   ...: for n in range(1000):
+   ...:     L.append(n ** 2)
+   ...: 
+1000 loops, best of 3: 373 µs per loop</code></pre>
+<p>We can immediately see that list comprehensions are about 10% faster than the equivalent <code>for</code>-loop construction in this case.
+We'll explore <code>%timeit</code> and other approaches to timing and profiling code in <a href="01.07-timing-and-profiling.html">Profiling and Timing Code</a>.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Help-on-Magic-Functions:-?,-%magic,-and-%lsmagic">Help on Magic Functions: <code>?</code>, <code>%magic</code>, and <code>%lsmagic</code><a class="anchor-link" href="#Help-on-Magic-Functions:-?,-%magic,-and-%lsmagic">&#182;</a></h2><p>Like normal Python functions, IPython magic functions have docstrings, and this useful
+documentation can be accessed in the standard manner.
+So, for example, to read the documentation of the <code>%timeit</code> magic simply type this:</p>
+
+<pre><code>ipython
+In [10]: %timeit?</code></pre>
+<p>Documentation for other functions can be accessed similarly.
+To access a general description of available magic functions, including some examples, you can type this:</p>
+
+<pre><code>ipython
+In [11]: %magic</code></pre>
+<p>For a quick and simple list of all available magic functions, type this:</p>
+
+<pre><code>ipython
+In [12]: %lsmagic</code></pre>
+<p>Finally, I'll mention that it is quite straightforward to define your own magic functions if you wish.
+We won't discuss it here, but if you are interested, see the references listed in <a href="01.08-more-ipython-resources.html">More IPython Resources</a>.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><!--NAVIGATION-->
+&lt; <a href="01.02-shell-keyboard-shortcuts.html">Keyboard Shortcuts in the IPython Shell</a> | <a href="index.html">Contents</a> | <a href="01.04-input-output-history.html">Input and Output History</a> &gt;</p>
+
 </div>
 </div>
 </div>
